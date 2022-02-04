@@ -12,7 +12,7 @@
     "devDependencies": {
         "@mdi/font": "^6.5.95",
         "@popperjs/core": "^2.10.2",
-        "axios": "^0.21",
+        "axios": "^0.21.4",
         "bootstrap": "^5.1.3",
         "deepmerge": "^4.2.2",
         "laravel-mix": "^6.0.6",
@@ -34,6 +34,7 @@
         "vue-router": "^3.5.3",
         "vue-scroll-snap": "^0.1.11",
         "vuetify": "^2.6.3",
-        "vuetify-loader": "^1.7.3"
+        "vuetify-loader": "^1.7.3",
+        "vuex": "^3.6.2"
     }
 }

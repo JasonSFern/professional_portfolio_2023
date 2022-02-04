@@ -13,6 +13,7 @@ import router from './router';
 import App from './layouts/App.vue';
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { store } from "./store/store.js";
 
 import $ from 'jquery';
 import jQuery from 'jquery'
@@ -54,6 +55,7 @@ const app = new Vue({
     router,
     el: '#app',
     vuetify,
+    store: store,
     data: {
         rotX: 0,
         rotY: 0
