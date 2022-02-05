@@ -35,6 +35,7 @@ Vue.component('project-tile', require('./components/ProjectTile.vue').default);
 Vue.component('header-bar', require('./components/HeaderBar.vue').default);
 Vue.component('footer-bar', require('./components/FooterBar.vue').default);
 Vue.component('splash-logo.vue', require('./components/SplashLogo.vue').default) ;
+Vue.component('flying-letters.vue', require('./components/FlyingLetters.vue').default) ;
 
 Vue.mixin({
     created: function () {
