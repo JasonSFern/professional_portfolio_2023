@@ -1,10 +1,10 @@
 <template>
     <div style="padding-top: 50px" @mousemove="mouseMoved">
         <div class="per-container per-center" :style="rotation">
-            <img ref="per-image" class="per-image" src="https://www.dropbox.com/s/b0h57o6sxznnowy/drone-00.webp?raw=1">
-            <h1 class="per-title">Dr.one</h1>
+            <img ref="per-image" class="per-image" width="500px" :src="item.photo">
+            <h1 class="per-title">{{ item.title }}</h1>
             <div class="per-card">
-                <p>Chupa chups lollipop jelly cake icing wafer chocolate lollipop candy canes. Marzipan dragée biscuit cotton candy sweet roll sugar plum. Toffee sweet jelly beans cake gummies gummies jujubes cotton candy sugar plum.</p>
+                <p>{{ item.subtitle }}</p>
             </div>
         </div>
     </div>
@@ -16,6 +16,9 @@ const maxRotationDegrees = 20;
 
 export default {
     name: "ProjectTile",
+    props: {
+      item: Object,
+    },
     data: function () {
         return {
             rotX: 0,

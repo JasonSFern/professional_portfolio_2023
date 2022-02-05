@@ -55,7 +55,8 @@ export default new VueRouter({
             title: "Graphics",
             icon: "mdi-panorama-outline",
             hidden: false,
-            component: Graphics
+            component: Graphics,
+            meta: { transitionName: 'fade' },
         },
         {
             path: "/contact",
@@ -64,7 +65,7 @@ export default new VueRouter({
             icon: "mdi-email",
             hidden: false,
             component: Contact,
-            meta: { transitionName: 'slide' },
+            meta: { transitionName: 'fade' },
         },
         {
             path: "/:pathMatch(.*)*",
