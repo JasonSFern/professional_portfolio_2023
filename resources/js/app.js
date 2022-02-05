@@ -43,6 +43,10 @@ Vue.mixin({
 
 import vuetify from './plugins/vuetify';
 
+import Vue from 'vue'
+import VueParticles from 'vue-particles'
+Vue.use(VueParticles)
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
