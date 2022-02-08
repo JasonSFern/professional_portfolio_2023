@@ -15,10 +15,9 @@ export default {
     }
   },
   actions: {
-    async getAllGraphicsProjects(context, payload) {
+    getAllGraphicsProjects(context, payload) {
       return Api.getAllGraphicsProjects(payload).then(response => {
         let data = response.data
-        console.log(data)
         context.commit('getAllGraphicsProjects', data)
         return data
       })
