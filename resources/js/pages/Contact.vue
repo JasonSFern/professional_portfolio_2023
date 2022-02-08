@@ -17,15 +17,19 @@
 
                   <p>Please fill out</p><br>
                   <div class="py-4">
+                    <p class="blue-text"><strong>Name</strong></p><br>
                     <v-icon :color="this.nameStyle.color" class="pr-2">{{ this.nameStyle.icon }}</v-icon><input :value="this.name"/><br/>
                   </div>
                   <div class="py-4">
+                    <p class="blue-text"><strong>Email</strong></p><br>
                     <v-icon :color="this.emailStyle.color" class="pr-2">{{ this.emailStyle.icon }}</v-icon><input :value="this.email"/><br/>
                   </div>
                   <div class="py-4">
+                    <p class="blue-text"><strong>Subject</strong></p><br>
                     <v-icon :color="this.subjectStyle.color" class="pr-2">{{ this.subjectStyle.icon }}</v-icon><input :value="this.subject"/><br/>
                   </div>
                   <div class="py-4">
+                    <p class="blue-text"><strong>Content</strong></p><br>
                     <v-icon :color="this.messageStyle.color" class="pr-2">{{ this.messageStyle.icon }}</v-icon><input rows="5" :value="this.message"/><br/>
                   </div>
 
@@ -153,6 +157,7 @@ export default {
 
 .blue-text {
   color: #00cfc8;
+  margin-bottom: 0px;
 }
 
 .green-text {
