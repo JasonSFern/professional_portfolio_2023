@@ -8,6 +8,7 @@ import Overlay from './pages/Overlay.vue';
 import Experience from './pages/Experience.vue';
 import Coding from './pages/Coding.vue';
 import Graphics from './pages/Graphics.vue';
+import AnimationTest from './pages/AnimationTest.vue';
 import ViewProject from './pages/ViewProject.vue';
 import Contact from './pages/Contact.vue';
 import PageNotFound from './pages/PageNotFound.vue';
@@ -93,6 +94,15 @@ export default new VueRouter({
             hidden: false,
             component: Contact,
             meta: { transitionName: 'fade' },
+        },
+        {
+            path: "/animations",
+            name: "animation",
+            title: "Animation",
+            icon: "mdi-draw-pen",
+            hidden: false,
+            component: AnimationTest,
+            meta: { transitionName: 'slide' },
         },
         {
             path: "/:pathMatch(.*)*",
