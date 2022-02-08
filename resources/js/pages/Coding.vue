@@ -1,8 +1,13 @@
 <template>
   <vue-scroll-snap :fullscreen="true">
-    <project-tile v-for="item in items" :key="item.id" :item="item" class="item"></project-tile>  
+    <project-tile
+      v-for="item in items"
+      :key="item.id"
+      :item="item"
+      class="item"
+      v-on:click.native="viewProject(item.id)"
+    /> 
   </vue-scroll-snap>
-
 </template>
 
 <script
@@ -30,6 +35,17 @@ export default {
   },
   created() {
     this.$store.dispatch('projects/getAllCodingProjects')
+  },
+  methods: {
+    viewProject(item_id) {
+      this.$router.push({
+        name: 'viewcodingproject',
+        params: {
+          item_id: item_id,
+          type: 1
+        }
+      })
+    }
   }
 };
 </script>
