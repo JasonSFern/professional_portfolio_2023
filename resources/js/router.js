@@ -9,6 +9,7 @@ import Experience from './pages/Experience.vue';
 import Coding from './pages/Coding.vue';
 import Graphics from './pages/Graphics.vue';
 import AnimationTest from './pages/AnimationTest.vue';
+import ViewProject from './pages/ViewProject.vue';
 import Contact from './pages/Contact.vue';
 import PageNotFound from './pages/PageNotFound.vue';
 
@@ -50,13 +51,40 @@ export default new VueRouter({
             hidden: false,
             component: Coding
         },
+        {   
+            path: '/coding/:item_id',
+            name: 'viewcodingproject',
+            title: "ViewCodingProject",
+            icon: "",
+            hidden: true,
+            component: ViewProject,
+            props(route) {
+                let props = { ...route.params }
+                props.item_id = parseInt(props.item_id)
+                return props
+            }
+        },
         {
-            path: "/graphics",
+            path: "/graphics/",
             name: "graphics",
             title: "Graphics",
             icon: "mdi-panorama-outline",
             hidden: false,
-            component: Graphics
+            component: Graphics,
+            meta: { transitionName: 'fade' },
+        },
+        {   
+            path: '/graphics/:item_id',
+            name: 'viewgraphicproject',
+            title: "ViewGraphicProject",
+            icon: "",
+            hidden: true,
+            component: ViewProject,
+            props(route) {
+                let props = { ...route.params }
+                props.item_id = parseInt(props.item_id)
+                return props
+            }
         },
         {
             path: "/contact",
@@ -65,7 +93,7 @@ export default new VueRouter({
             icon: "mdi-email",
             hidden: false,
             component: Contact,
-            meta: { transitionName: 'slide' },
+            meta: { transitionName: 'fade' },
         },
         {
             path: "/animations",

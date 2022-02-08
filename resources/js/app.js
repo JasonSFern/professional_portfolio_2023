@@ -13,6 +13,7 @@ import router from './router';
 import App from './layouts/App.vue';
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { store } from "./store/store.js";
 
 import $ from 'jquery';
 import jQuery from 'jquery'
@@ -34,6 +35,7 @@ Vue.component('project-tile', require('./components/ProjectTile.vue').default);
 Vue.component('header-bar', require('./components/HeaderBar.vue').default);
 Vue.component('footer-bar', require('./components/FooterBar.vue').default);
 Vue.component('splash-logo.vue', require('./components/SplashLogo.vue').default) ;
+Vue.component('flying-letters.vue', require('./components/FlyingLetters.vue').default) ;
 
 Vue.mixin({
     created: function () {
@@ -42,6 +44,10 @@ Vue.mixin({
 });
 
 import vuetify from './plugins/vuetify';
+
+import Vue from 'vue'
+import VueParticles from 'vue-particles'
+Vue.use(VueParticles)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -54,6 +60,7 @@ const app = new Vue({
     router,
     el: '#app',
     vuetify,
+    store: store,
     data: {
         rotX: 0,
         rotY: 0
