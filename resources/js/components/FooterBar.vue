@@ -1,5 +1,5 @@
 <template>
-  <v-footer app bottom fixed color="background">
+  <v-footer app bottom fixed color="transparent">
     Developed with&nbsp;
     <v-icon color="red">mdi-laravel</v-icon>&nbsp;and&nbsp;
     <v-icon color="green">mdi-vuejs</v-icon>&nbsp;and&nbsp;
@@ -15,7 +15,7 @@
 </template>
 <script>
 export default {
-  name: "HelloWorld",
+  name: "FooterBar",
   data: () => ({}),
 };
 </script>
