@@ -1,12 +1,13 @@
 <template>
-  <vue-scroll-snap :fullscreen="true">
+  <vue-scroll-snap :isLoaded="isLoaded">
     <project-tile
       v-for="item in items"
       :key="item.id"
       :item="item"
       class="item"
       v-on:click.native="viewProject(item.id)"
-    /> 
+      :isLoaded="isLoaded"
+    />
   </vue-scroll-snap>
 </template>
 
@@ -16,7 +17,7 @@
   crossorigin="anonymous"></script>
 <script>
 import ProjectTile from '../components/ProjectTile.vue';
-import VueScrollSnap from "vue-scroll-snap";
+import VueScrollSnap from '../components/VueScrollSnap.vue';
 import { mapGetters } from 'vuex'
 
 export default {
@@ -24,6 +25,11 @@ export default {
   components: {
     ProjectTile,
     VueScrollSnap
+  },
+  data() {
+    return {
+      isLoaded: false
+    }
   },
   computed: {
     ...mapGetters({
@@ -34,7 +40,9 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch('projects/getAllCodingProjects')
+    this.$store.dispatch('projects/getAllCodingProjects').then(response => {
+      this.isLoaded = true
+    })
   },
   methods: {
     viewProject(item_id) {
