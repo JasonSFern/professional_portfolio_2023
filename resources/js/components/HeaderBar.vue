@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar elevation="0" app color="transparent">
+    <v-app-bar elevation="0" app :color="headerColor">
       <v-toolbar-title class="px-md-4">
         <router-link to="/" class="pr-md-6">
           <span class="font-weight-light text-sm-body-2">Jason</span>
@@ -37,6 +37,13 @@ export default {
   computed: {
     routes: function () {
       return this.allRoutes.filter(i => !i.hidden)
+    },
+    headerColor: function () {
+      if (this.$route.name == 'home') {
+        return 'transparent'
+      } else {
+        return 'background'
+      }
     },
   },
   data() {
