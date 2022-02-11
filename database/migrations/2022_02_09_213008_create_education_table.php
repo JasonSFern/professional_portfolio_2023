@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProjectCategoriesTable extends Migration
+class CreateEducationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreateProjectCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('project_categories', function (Blueprint $table) {
+        Schema::create('education', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('category');
+            $table->string('title');
+            $table->string('institution');
+            $table->string('type');
+            $table->string('grade');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }
@@ -27,6 +32,6 @@ class CreateProjectCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('project_categories');
+        Schema::dropIfExists('education');
     }
 }

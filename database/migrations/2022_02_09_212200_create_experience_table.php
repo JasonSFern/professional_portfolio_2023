@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProjectsTable extends Migration
+class CreateExperienceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreateProjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('projects', function (Blueprint $table) {
+        Schema::create('experience', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('position');
+            $table->string('company');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->json('description');
             $table->unsignedInteger('classification');
-            $table->string('title');
-            $table->string('subtitle');
-            $table->text('description');
-            $table->boolean('is_active');
-            $table->string('display_theme');
-            $table->json('photos');
-            $table->json('skills');
-            $table->string('route')->nullable();
             $table->timestamps();
         });
     }
@@ -35,6 +32,6 @@ class CreateProjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('projects');
+        Schema::dropIfExists('experience');
     }
 }

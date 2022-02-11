@@ -18,7 +18,7 @@ class CreateSkillsTable extends Migration
             $table->string('name');
             $table->string('icon');
             $table->integer('skill_level');
-            $table->unsignedInteger('skill_type');
+            $table->unsignedInteger('classification');
             $table->timestamps();
         });
     }
