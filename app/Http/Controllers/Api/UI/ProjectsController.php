@@ -13,12 +13,12 @@ class ProjectsController extends Controller
     }
 
     public function codingProjects(Request $request) {
-        $coding = Projects::where('classification', 2)->get();
+        $coding = Projects::where('classification', 1)->get();
         return $coding;
     }
 
     public function graphicProjects(Request $request) {
-        $graphics = Projects::where('classification', 1)->get();
+        $graphics = Projects::where('classification', 2)->get();
         return $graphics;
     }
 

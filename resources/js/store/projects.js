@@ -18,6 +18,9 @@ export default {
     getAllGraphicsProjects(context, payload) {
       return Api.getAllGraphicsProjects(payload).then(response => {
         let data = response.data
+        data.forEach(function (item) {
+          item.photos = JSON.parse(item.photos)
+        })
         context.commit('getAllGraphicsProjects', data)
         return data
       })
@@ -25,6 +28,9 @@ export default {
     getAllCodingProjects(context, payload) {
       return Api.getAllCodingProjects(payload).then(response => {
         let data = response.data
+        data.forEach(function (item) {
+          item.photos = JSON.parse(item.photos)
+        })
         context.commit('getAllCodingProjects', data)
         return data
       })

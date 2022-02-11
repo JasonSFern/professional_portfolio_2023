@@ -6,14 +6,8 @@
       <br/>
       <div class="cardFlow">
         <swiper :options="swiperOption" ref="mySwiper">
-          <swiper-slide>
-            <img style="max-width:300px;height:auto;" :src="item.photo2" ref=""/>
-          </swiper-slide>
-          <swiper-slide>
-            <img style="max-width:300px;height:auto;" :src="item.photo3" ref=""/>
-          </swiper-slide>
-          <swiper-slide>
-            <img style="max-width:300px;height:auto;" :src="item.photo4" ref=""/>
+          <swiper-slide v-for="(image, index) in item.photos.showcase" :key="index" >
+            <img style="max-width:300px;height:auto;" :src="image" ref=""/>
           </swiper-slide>
 
           <!-- Optional controls -->
@@ -22,17 +16,13 @@
           <div class="swiper-button-next" slot="button-next"></div>
         </swiper>
       </div>
-      <p>{{ item.contents }}</p>
+      {{ item.description }}
     </v-container>
   </v-main>
 </template>
 
 <script>
 import projectsApi from '../api/projects'
-import { CarouselCard, CarouselCardItem } from 'vue-carousel-card'
-import 'vue-carousel-card/styles/index.css'
-
-import { Carousel3d, Slide } from 'vue-carousel-3d';
 
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
@@ -40,10 +30,6 @@ import 'swiper/css/swiper.css'
 export default {
   name: `ViewProject`,
   components: {
-      CarouselCard,
-      CarouselCardItem,
-      Carousel3d,
-      Slide,
       Swiper,
       SwiperSlide
   },
@@ -90,11 +76,15 @@ export default {
     if (this.$route.name == 'viewgraphicproject') {
       projectsApi.getGraphicProjectById(this.item_id).then(response => {
         this.item = response.data
+        var photos = JSON.parse(this.item.photos)
+        this.item.photos = photos
       })
     }
     if (this.$route.name == 'viewcodingproject') {
       projectsApi.getCodingProjectById(this.item_id).then(response => {
         this.item = response.data
+        var photos = JSON.parse(this.item.photos)
+        this.item.photos = photos
       })
     }
   },

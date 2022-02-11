@@ -2,7 +2,7 @@
   <section v-show="!hidden" class="fullpage" :style="{ paddingTop: '15%', backgroundColor: this.tileColour }" @mousemove="mouseMoved">
     <div class="per-container per-center" :style="rotation">
       <div ref="perholder1" class="per-holder per-image rounded-xl">
-        <img ref="perimage1" class="rounded-xl" width="400px" :src="item.photo">
+        <img ref="perimage1" class="rounded-xl" width="400px" :src="item.photos.titlecard">
       </div>
       <h1 class="per-title">{{ item.title }}</h1>
       <div ref="perholder2"  class="per-holder per-holder-card rounded-xl">
