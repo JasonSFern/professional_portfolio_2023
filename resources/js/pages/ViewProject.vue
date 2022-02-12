@@ -1,22 +1,24 @@
 <template>
   <v-main>
     <v-container>
-      <h2>{{ item.title }}</h2>
-      <p>{{ item.subtitle }}</p>
-      <br/>
-      <div class="cardFlow">
-        <swiper :options="swiperOption" ref="mySwiper">
-          <swiper-slide v-for="(image, index) in item.photos.showcase" :key="index" >
-            <img style="max-width:300px;height:auto;" :src="image" ref=""/>
-          </swiper-slide>
-
-          <!-- Optional controls -->
-          <div class="swiper-pagination" slot="pagination"></div>
-          <div class="swiper-button-prev" slot="button-prev"></div>
-          <div class="swiper-button-next" slot="button-next"></div>
-        </swiper>
+      <div v-show="important">
+        <h2>{{ item.title }}</h2>
       </div>
-      {{ item.description }}
+      <br/>
+      <div class="d-flex">
+        <div class="col-md-5 pl-0 glossy asshole">
+            <img v-for="(image, index) in showcase" :key="index" :src="image" ref="" class="asshole pb-2 image-wrap" style="width:inherit;"/>
+        </div>
+        <div class="col-md-7">
+          <h2>{{ item.title }}</h2>
+          <p>{{ item.subtitle }}</p>
+          <hr/>
+          <p>{{ item.description }}</p>
+          <div v-if="item.route">
+            <v-btn :href="item.route">Launch</v-btn>
+          </div>
+        </div>
+      </div>
     </v-container>
   </v-main>
 </template>
@@ -24,18 +26,8 @@
 <script>
 import projectsApi from '../api/projects'
 
-import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
-import 'swiper/css/swiper.css'
-
 export default {
   name: `ViewProject`,
-  components: {
-      Swiper,
-      SwiperSlide
-  },
-  directives: {
-    swiper: directive
-  },
   props: {
     item_id: { 
       required: true,
@@ -45,57 +37,32 @@ export default {
   data() {
     return {
       item: {},
-      swiperOption: {
-        slidesPerView: 3,
-        centeredSlides: true,
-        spaceBetween: 0,
-        slideToClickedSlide: true,
-        effect: "coverflow",
-        autoHeight: false,
-        setWrapperSize: true,
-        height: 500,
-        coverflowEffect: {
-          rotate: 20,
-          slideShadows: false,
-          stretch: -100,
-          depth: 400
-          //modifier: 5
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          type: "fraction"
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev"
-        },
-      }
+      photos: {},
+      important: false
     }
   },
   created() {
-    if (this.$route.name == 'viewgraphicproject') {
-      projectsApi.getGraphicProjectById(this.item_id).then(response => {
+      projectsApi.getProjectById(this.item_id).then(response => {
         this.item = response.data
+
         var photos = JSON.parse(this.item.photos)
         this.item.photos = photos
+        this.photos = photos.showcase
+
+        this.init()
       })
-    }
-    if (this.$route.name == 'viewcodingproject') {
-      projectsApi.getCodingProjectById(this.item_id).then(response => {
-        this.item = response.data
-        var photos = JSON.parse(this.item.photos)
-        this.item.photos = photos
-      })
-    }
   },
   computed: {
-    swiper() {
-      return this.$refs.mySwiper.$swiper
+    showcase() {
+      return this.photos
     }
   },
   mounted() {
-    console.log('Current Swiper instance object', this.swiper)
-    // this.swiper.slideTo(3, 1000, false)
+  },
+  methods: {
+    init() {
+      this.gsap.fromTo('.asshole',{opacity:0 }, {opacity: 1, duration: 2, delay: 3 });
+    }
   }
 };
 </script>
@@ -108,5 +75,13 @@ export default {
   overflow: hidden;
   height: 500px;
   transform-style: preserve-3d;
+}
+
+.image-wrap {
+	border-radius: 20px;
+}
+
+.asshole {
+  font-weight: 800;
 }
 </style>

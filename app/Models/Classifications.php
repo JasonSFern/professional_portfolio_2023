@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Classification extends Model
+class Classifications extends Model
 {
     public function skill() {
         return $this->hasMany(Skills::class, 'classification', 'id');

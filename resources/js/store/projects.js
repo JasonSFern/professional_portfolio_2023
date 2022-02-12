@@ -3,44 +3,61 @@ import Api from '../api/projects'
 export default {
   namespaced: true,
   state: {
+    projects: [],
     graphics: [],
     coding: []
   },
   mutations: {
-    getAllGraphicsProjects(state, payload) {
+    getAllProjects(state, payload) {
+      state.projects = payload
+    },
+    getGraphicsProjects(state, payload) {
       state.graphics = payload
     },
-    getAllCodingProjects(state, payload) {
+    getCodingProjects(state, payload) {
       state.coding = payload
     }
   },
   actions: {
-    getAllGraphicsProjects(context, payload) {
+    getAllProjects(context, payload) {
+      return Api.getAllProjects(payload).then(response => {
+        let data = response.data
+        data.forEach(function (item) {
+          item.photos = JSON.parse(item.photos)
+        })
+        context.commit('getAllProjects', data)
+        return data
+      })
+    },
+    getGraphicsProjects(context, payload) {
       return Api.getAllGraphicsProjects(payload).then(response => {
         let data = response.data
         data.forEach(function (item) {
           item.photos = JSON.parse(item.photos)
         })
-        context.commit('getAllGraphicsProjects', data)
+        context.commit('getDesignProjects', data)
         return data
       })
     },
-    getAllCodingProjects(context, payload) {
+    getCodingProjects(context, payload) {
       return Api.getAllCodingProjects(payload).then(response => {
         let data = response.data
         data.forEach(function (item) {
           item.photos = JSON.parse(item.photos)
         })
-        context.commit('getAllCodingProjects', data)
+        context.commit('getCodingProjects', data)
         return data
       })
     },
   },
   getters: {
-    getAllGraphicsProjects: state => {
+    getAllProjects: state => {
+      return state.projects
+    },
+    getGraphicsProjects: state => {
       return state.graphics
     },
-    getAllCodingProjects: state => {
+    getCodingProjects: state => {
       return state.coding
     }
   }

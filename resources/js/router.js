@@ -3,15 +3,13 @@ import VueRouter from 'vue-router';
 
 import Home from './pages/Home.vue';
 import AboutMe from './pages/AboutMe.vue';
-// import AboutMore from './pages/AboutMore.vue';
-import Overlay from './pages/Overlay.vue';
 import Experience from './pages/Experience.vue';
-import Coding from './pages/Coding.vue';
-import Graphics from './pages/Graphics.vue';
+import Projects from './pages/Projects.vue';
 import AnimationTest from './pages/AnimationTest.vue';
 import ViewProject from './pages/ViewProject.vue';
 import Contact from './pages/Contact.vue';
 import PageNotFound from './pages/PageNotFound.vue';
+// import Overlay from './pages/Overlay.vue';
 
 Vue.use(VueRouter);
 
@@ -44,39 +42,18 @@ export default new VueRouter({
             component: Experience
         },
         {
-            path: "/coding",
-            name: "coding",
-            title: "Coding",
-            icon: "mdi-code-tags",
+            path: "/projects",
+            name: "projects",
+            title: "Projects",
+            icon: "mdi-keyboard",
+            // icon: "mdi-code-tags",
             hidden: false,
-            component: Coding
+            component: Projects
         },
         {   
-            path: '/coding/:item_id',
-            name: 'viewcodingproject',
-            title: "ViewCodingProject",
-            icon: "",
-            hidden: true,
-            component: ViewProject,
-            props(route) {
-                let props = { ...route.params }
-                props.item_id = parseInt(props.item_id)
-                return props
-            }
-        },
-        {
-            path: "/graphics/",
-            name: "graphics",
-            title: "Graphics",
-            icon: "mdi-panorama-outline",
-            hidden: false,
-            component: Graphics,
-            meta: { transitionName: 'fade' },
-        },
-        {   
-            path: '/graphics/:item_id',
-            name: 'viewgraphicproject',
-            title: "ViewGraphicProject",
+            path: '/projects/:item_id',
+            name: 'viewproject',
+            title: "ViewProject",
             icon: "",
             hidden: true,
             component: ViewProject,
