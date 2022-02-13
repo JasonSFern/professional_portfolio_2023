@@ -7,23 +7,23 @@ use App\Models\Projects;
 
 class ProjectsController extends Controller
 {
-    public function allProjects(Request $request) {
-        $coding = Projects::all();
-        return $coding;
+    public function projects(Request $request) {
+        $data = Projects::orderBy('title', 'ASC')->where('is_active', 1)->get();
+        return $data;
+    }
+    
+    public function projectById($id) {
+        $data = Projects::find($id);
+        return $data;
     }
 
     public function codingProjects(Request $request) {
-        $coding = Projects::where('classification', 2)->get();
-        return $coding;
+        $data = Projects::where('classification', 1)->where('is_active', 1)->orderBy('id', 'ASC')->get();
+        return $data;
     }
 
     public function graphicProjects(Request $request) {
-        $graphics = Projects::where('classification', 1)->get();
-        return $graphics;
-    }
-
-    public function projectById($id) {
-        $coding = Projects::find($id);
-        return $coding;
+        $data = Projects::where('classification', 2)->where('is_active', 1)->orderBy('id', 'ASC')->get();
+        return $data;
     }
 }

@@ -2,12 +2,19 @@
   <section v-show="!hidden" class="fullpage" :style="{ paddingTop: '15%', backgroundColor: this.tileColour }" @mousemove="mouseMoved">
     <div class="per-container per-center" :style="rotation">
       <div ref="perholder1" class="per-holder per-image rounded-xl">
-        <img ref="perimage1" class="rounded-xl" width="400px" :src="item.photo">
+        <img ref="perimage1" class="rounded-xl" width="400px" :src="item.photos.titlecard">
       </div>
-      <h1 class="per-title">{{ item.title }}</h1>
+      <div class="per-title" style="width:650px; word-wrap:normal">
+        <h1>{{ item.title }}</h1>
+      </div>
       <div ref="perholder2"  class="per-holder per-holder-card rounded-xl">
         <div ref="perimage2" class="per-card rounded-xl">
-          <p>{{ item.subtitle }}</p>
+          <div style="height:50%;" >
+            <p>{{ item.subtitle }}</p>
+          </div>
+          <div style="height:50%;" class="d-flex flex-row-reverse align-end">
+            <img class="skill-icon" src="/img/js.jpg" />
+          </div>
         </div>
       </div>
     </div>
@@ -88,6 +95,7 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
 
 .per-holder {
   overflow: hidden;
@@ -113,6 +121,10 @@ export default {
   /* transform: translateZ(100px); */
 }
 
+p {
+  font-family: 'Rubik Mono One', sans-serif;
+}
+
 
 .fullpage {
   height: 100vh;
@@ -134,18 +146,20 @@ export default {
 
 .per-title {
   position: absolute;
-  top: 150px;
-  text-align: center;
-  color: white;
-  font-size: 80px;
-  font-family: Helvetica, Arial, Sans-Serif;
+  top: 115px;
   transform: translateZ(20px);
 }
 
 h1 {
   text-shadow: 2px 2px 8px #000000;
+  text-align: center;
+  color: white;
+  font-size: 80px;
+  font-family: 'Rubik Mono One', sans-serif;
 }
 
-
+.skill-icon {
+  width:30px
+}
 
 </style>
