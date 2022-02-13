@@ -6,7 +6,7 @@
       :particlesNumber="80"
       shapeType="circle"
       :particleSize="4"
-      linesColor="#dedede"
+      :linesColor="linesColor"
       :linesWidth="1"
       :lineLinked="true"
       :lineOpacity="0.4"
@@ -31,6 +31,9 @@ export default {
   computed: {
     starColor: function () {
       return this.$vuetify.theme.currentTheme.secondary
+    },
+    linesColor: function () {
+      return this.$vuetify.theme.currentTheme.accent
     }
   },
   data() {

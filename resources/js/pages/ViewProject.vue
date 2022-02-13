@@ -15,7 +15,7 @@
           <hr/>
           <p>{{ item.description }}</p>
           <div v-if="item.route">
-            <v-btn :href="item.route">Launch</v-btn>
+            <v-btn :href="item.route" class="accent-color-bg">Launch</v-btn>
           </div>
         </div>
       </div>

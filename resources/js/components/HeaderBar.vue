@@ -1,25 +1,25 @@
 <template>
   <div>
     <v-app-bar elevation="0" app :color="headerColor">
-      <v-toolbar-title class="px-md-4">
-        <router-link to="/" class="pr-md-6">
-          <span class="font-weight-light text-sm-body-2">Jason</span>
-          <span class="font-weight-bold text-sm-body-2 blue--text">Fernandes</span>
+      <v-toolbar-title class="px-md-4 nav-link d-flex">
+        <router-link to="/" class="pr-md-6 d-flex">
+          <p class="pt-12 primary-color-c">Jason&nbsp;&nbsp;</p>
+          <strong class="bold pt-12"><p class="accent-color-c">Fernandes</p></strong>
         </router-link>
-        <span> | </span>
+        <p class="pt-12 primary-color-c">&nbsp;|&nbsp;</p>
         <router-link
-          class="pa-md-4 py-md-6"
+          class="pa-md-4 py-md-6 d-flex"
           v-for="route in routes"
           :key="route.path"
           :to="route.path"
         >
-          <v-icon class="pr-md-1" x-small>{{ route.icon }}</v-icon>
-          <span class="font-weight-light text-sm-body-2">{{ route.title }}</span>
+          <v-icon class="pr-md-1 pt-2 primary-color-c" x-small>{{ route.icon }}</v-icon>
+          <p class="pt-6 primary-color-c">{{ route.title }}</p>
         </router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
 
-      <v-btn v-if="$route.name == 'home'" class="px-md-4" @click="changeTheme" icon>
+      <v-btn class="px-md-4" @click="changeTheme" icon>
         <v-icon v-if="!$vuetify.theme.dark">mdi-weather-sunny</v-icon>
         <v-icon v-else>mdi-moon-waxing-crescent</v-icon>
       </v-btn>
@@ -61,4 +61,37 @@ export default {
 </script>
 
 <style >
+@font-face {
+  font-family: "Cerebri-Sans-Book";
+  src: url("/public/fonts/Cerebri-Sans-Book.ttf");
+}
+@font-face {
+  font-family: "Lato-Regular";
+  src: url("/public/fonts/Lato-Regular.ttf");
+}
+@font-face {
+  font-family: "Lato-Bold";
+  src: url("/public/fonts/Lato-Bold.ttf");
+}
+@font-face {
+  font-family: "Lato-Light";
+  src: url("/public/fonts/Lato-Light.ttf");
+}
+.nav-link p {
+  /* font-family: 'Cerebri-Sans-Boo', sans-serif; */
+  font-size: 13px;
+  font-family: 'Lato-Light', sans-serif;
+  /* font-family: 'Lato-Regular', sans-serif; */
+}
+
+.nav-link .bold p{
+  font-family: 'Lato-Bold', sans-serif;
+}
+.nav-font-2 {
+  font-family: 'Cerebri-Sans-Book', sans-serif;
+}
+
+/* .grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.1); } */
+
 </style>
