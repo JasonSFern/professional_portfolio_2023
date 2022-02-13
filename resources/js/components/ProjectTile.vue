@@ -1,5 +1,5 @@
 <template>
-  <section v-show="!hidden" class="fullpage" :style="{ paddingTop: '15%', backgroundColor: this.tileColour }" @mousemove="mouseMoved">
+  <section v-show="!hidden" class="fullpage gradient-color-bg" style="paddingTop: '15%'" @mousemove="mouseMoved">
     <div class="per-container per-center" :style="rotation">
       <div ref="perholder1" class="per-holder per-image rounded-xl">
         <img ref="perimage1" class="rounded-xl" width="400px" :src="item.photos.titlecard">
@@ -150,12 +150,13 @@ p {
   transform: translateZ(20px);
 }
 
+
 h1 {
   text-shadow: 2px 2px 8px #000000;
   text-align: center;
   color: white;
   font-size: 80px;
-  font-family: 'Rubik Mono One', sans-serif;
+  font-family: 'Arial Black', sans-serif;
 }
 
 .skill-icon {

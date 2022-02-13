@@ -27,7 +27,7 @@ import { mapGetters } from 'vuex'
 export default {
   name: `Projects`,
   components: {
-    ClassificationsBar,
+    // ClassificationsBar,
     ProjectTile,
     VueScrollSnap
   },
