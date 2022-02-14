@@ -240,7 +240,8 @@ h1.black {
 .sections-menu .menu-point {
   width: 10px;
   height: 10px;
-  background-color: #FFF;
+  background-color: var(--v-accent-base);
+  border-radius: 5px;
   display: block;
   margin: 1rem 0;
   opacity: .6;
