@@ -6,8 +6,8 @@
       </div>
       <br/>
       <div class="d-flex">
-        <div class="col-md-5 pl-0 glossy asshole">
-            <img v-for="(image, index) in showcase" :key="index" :src="image" ref="" class="asshole pb-2 image-wrap" style="width:inherit;"/>
+        <div class="col-md-5 pl-0 glossy image">
+            <img v-for="(image, index) in showcase" :key="index" :src="image" ref="" class="image pb-2 image-wrap" style="width:inherit;"/>
         </div>
         <div class="col-md-7">
           <h2>{{ item.title }}</h2>
@@ -25,6 +25,7 @@
 
 <script>
 import projectsApi from '../api/projects'
+import CustomThemes from '../plugins/custom_themes';
 
 export default {
   name: `ViewProject`,
@@ -44,6 +45,7 @@ export default {
   created() {
       projectsApi.getProjectById(this.item_id).then(response => {
         this.item = response.data
+        this.setCustomTheme(this.item.display_theme)
 
         var photos = JSON.parse(this.item.photos)
         this.item.photos = photos
@@ -61,7 +63,19 @@ export default {
   },
   methods: {
     init() {
-      this.gsap.fromTo('.asshole',{opacity:0 }, {opacity: 1, duration: 2, delay: 3 });
+      this.gsap.fromTo('.image',{opacity:0 }, {opacity: 1, duration: 2, delay: 3 });
+    },
+    setCustomTheme(themeName) {
+      let selectedTheme = CustomThemes[themeName]
+      let dark = selectedTheme.dark;
+      let light = selectedTheme.light
+
+      Object.keys(dark).forEach(i => {
+        this.$vuetify.theme.themes.dark[i] = dark[i];
+      });
+      Object.keys(light).forEach(i => {
+        this.$vuetify.theme.themes.light[i] = light[i];
+      });
     }
   }
 };
@@ -81,7 +95,7 @@ export default {
 	border-radius: 20px;
 }
 
-.asshole {
+.image {
   font-weight: 800;
 }
 </style>

@@ -94,6 +94,8 @@
             console.log('RAN')
             document.getElementsByTagName('section')[id].scrollIntoView({behavior: 'smooth'});
             
+            this.$emit("setCustomTheme", id);
+            
             setTimeout(() => {
                 this.inMove = false;
             }, 400);
@@ -121,6 +123,7 @@
             },
             init() {
                 this.calculateSectionOffsets();
+                this.$emit("setCustomTheme", 0);
                 document.addEventListener('DOMMouseScroll', this.handleMouseWheelDOM);  // Mozilla Firefox
                 document.addEventListener('mousewheel', this.handleMouseWheel, { passive: false }); // Other browsers
                 // window.addEventListener('scroll', this.handleMouseWheel, { passive: false });

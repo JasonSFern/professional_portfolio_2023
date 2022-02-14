@@ -1,7 +1,7 @@
 <template>
   <v-main>
   <!-- <classifications-bar class="classifications-menu" @filterProjects="filterProjectsList($event)"></classifications-bar> -->
-  <vue-scroll-snap :isLoaded="isLoaded" ref="scrollsnap">
+  <vue-scroll-snap :isLoaded="isLoaded" ref="scrollsnap" @setCustomTheme="setCustomTheme($event)">
     <project-tile
       v-for="item in items"
       :key="item.id"
@@ -22,6 +22,7 @@
 // import ClassificationsBar from '../components/ClassificationsBar.vue';
 import ProjectTile from '../components/ProjectTile.vue';
 import VueScrollSnap from '../components/VueScrollSnap.vue';
+import CustomThemes from '../plugins/custom_themes';
 import { mapGetters } from 'vuex'
 
 export default {
@@ -71,6 +72,19 @@ export default {
       } else {
         this.filteredItems = this.projects
       }
+    },
+    setCustomTheme(item_index) {
+      let themeName = this.items[item_index].display_theme
+      let selectedTheme = CustomThemes[themeName]
+      let dark = selectedTheme.dark;
+      let light = selectedTheme.light
+
+      Object.keys(dark).forEach(i => {
+        this.$vuetify.theme.themes.dark[i] = dark[i];
+      });
+      Object.keys(light).forEach(i => {
+        this.$vuetify.theme.themes.light[i] = light[i];
+      });
     }
   }
 };

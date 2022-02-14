@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar elevation="0" app :color="headerColor">
+    <v-app-bar elevation="0" app :color="color">
       <v-toolbar-title class="px-md-4 nav-link d-flex">
         <router-link to="/" class="pr-md-6 d-flex">
           <p class="pt-12 primary-color-c">Jason&nbsp;&nbsp;</p>
@@ -19,7 +19,7 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
 
-      <v-btn class="px-md-4" @click="changeTheme" icon>
+      <v-btn class="px-md-4" @click="darkMode" icon>
         <v-icon v-if="!$vuetify.theme.dark">mdi-weather-sunny</v-icon>
         <v-icon v-else>mdi-moon-waxing-crescent</v-icon>
       </v-btn>
@@ -38,8 +38,8 @@ export default {
     routes: function () {
       return this.allRoutes.filter(i => !i.hidden)
     },
-    headerColor: function () {
-      if (this.$route.name == 'home') {
+    color: function () {
+      if (this.$route.name == 'home' || this.$route.name == 'projects') {
         return 'transparent'
       } else {
         return 'background'
@@ -53,8 +53,8 @@ export default {
     };
   },
   methods: {
-    changeTheme() {
-      this.$emit("changeTheme", this.goDark);
+    darkMode() {
+      this.$emit("darkMode", this.goDark);
     }
   }
 };

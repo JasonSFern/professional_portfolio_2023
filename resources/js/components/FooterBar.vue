@@ -1,5 +1,5 @@
 <template>
-  <v-footer app bottom fixed :color="footerColor">
+  <v-footer app bottom fixed :color="color">
     Developed with&nbsp;
     <v-icon color="red">mdi-laravel</v-icon>&nbsp;and&nbsp;
     <v-icon color="green">mdi-vuejs</v-icon>&nbsp;and&nbsp;
@@ -18,8 +18,8 @@ export default {
   name: "FooterBar",
   data: () => ({}),
   computed: {
-    footerColor: function () {
-      if (this.$route.name == 'home') {
+    color: function () {
+      if (this.$route.name == 'home' || this.$route.name == 'projects') {
         return 'transparent'
       } else {
         return 'background'

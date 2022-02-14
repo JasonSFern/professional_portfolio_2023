@@ -1,5 +1,5 @@
 <template>
-  <section v-show="!hidden" class="fullpage gradient-color-bg" style="paddingTop: '15%'" @mousemove="mouseMoved">
+  <section v-show="!hidden" class="fullpage gradient-color-bg" style="paddingTop: 15%" @mousemove="mouseMoved">
     <div class="per-container per-center" :style="rotation">
       <div ref="perholder1" class="per-holder per-image rounded-xl">
         <img ref="perimage1" class="rounded-xl" width="400px" :src="item.photos.titlecard">

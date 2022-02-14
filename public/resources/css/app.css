@@ -275,7 +275,7 @@ SPLASH STYLES
 .layer1 {
   pointer-events: none;
   transform: translateZ(0);
-  background-image: url("/img/logo1.png");
+  background-color: var(--v-accent-base);
   background-size: 15%;
   border-radius: 5px;
   width: 25em;
