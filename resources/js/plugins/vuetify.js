@@ -21,7 +21,11 @@ export default new Vuetify({
           background: "#EFEFF4",
           gradient1: "#D3D3E2",
           gradient2: "#F0F0F0",
-          gradient3: "#E8F0FE"
+          gradient3: "#E8F0FE",
+          success: "#68c929",
+          info: "#face33",
+          warning: "#f09333",
+          danger: "#cc362b",
         },
         dark: {
           primary: "#ffffff",
@@ -30,7 +34,11 @@ export default new Vuetify({
           background: "#1E3C96",
           gradient1: "#1E2696",
           gradient2: "#1E3C96",
-          gradient3: "#123560"
+          gradient3: "#123560",
+          success: "#68c929",
+          info: "#face33",
+          warning: "#f09333",
+          danger: "#cc362b",
         }
       }
     },
