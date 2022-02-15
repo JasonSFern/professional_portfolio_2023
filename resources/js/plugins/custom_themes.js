@@ -7,7 +7,11 @@ export default {
       background: "#EFEFF4",
       gradient1: "#D3D3E2",
       gradient2: "#F0F0F0",
-      gradient3: "#E8F0FE"
+      gradient3: "#E8F0FE",
+      success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
     },
     dark: {
       primary: "#ffffff",
@@ -17,7 +21,11 @@ export default {
       background: "#1E3C96",
       gradient1: "#1E2696",
       gradient2: "#1E3C96",
-      gradient3: "#123560"
+      gradient3: "#123560",
+      success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
     },
   },
   industrial: {
@@ -28,7 +36,11 @@ export default {
       background: "#1E3C96",
       gradient1: "#4a5260",
       gradient2: "#5c6470",
-      gradient3: "#4a5260"
+      gradient3: "#4a5260",
+      success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
     },
     dark: {
       primary: "#d3d9e4",
@@ -37,7 +49,11 @@ export default {
       background: "#1E3C96",
       gradient1: "#4a5260",
       gradient2: "#5c6470",
-      gradient3: "#4a5260"
+      gradient3: "#4a5260",
+      success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
     }
   },
   nature: {
@@ -48,7 +64,11 @@ export default {
       background: "#4197CE",
       gradient1: "#4197CE",
       gradient2: "#4B8340",
-      gradient3: "#135634"
+      gradient3: "#135634",
+      success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
     },
     dark: {
       primary: "#FFFFFF",
@@ -57,7 +77,11 @@ export default {
       background: "#4197CE",
       gradient1: "#4197CE",
       gradient2: "#4B8340",
-      gradient3: "#135634"
+      gradient3: "#135634",
+      success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
     }
   },
   olive: {
@@ -68,7 +92,11 @@ export default {
       background: "#787E15",
       gradient1: "#787E15",
       gradient2: "#A1A838",
-      gradient3: "#4F5400"
+      gradient3: "#4F5400",
+      success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
     },
     dark: {
       primary: "#ffffff",
@@ -77,7 +105,11 @@ export default {
       background: "#1E3C96",
       gradient1: "#787E15",
       gradient2: "#A1A838",
-      gradient3: "#4F5400"
+      gradient3: "#4F5400",
+      success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
     },
   },
   royalty: {
@@ -88,7 +120,11 @@ export default {
       background: "#c847b0",
       gradient1: "#c847b0",
       gradient2: "#9240bc",
-      gradient3: "#6f3ec5"
+      gradient3: "#6f3ec5",
+      success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
     },
     light: {
       primary: "#ffffff",
@@ -97,7 +133,11 @@ export default {
       background: "#c847b0",
       gradient1: "#c847b0",
       gradient2: "#9240bc",
-      gradient3: "#6f3ec5"
+      gradient3: "#6f3ec5",
+            success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
     }
   },
   rust: {
@@ -108,7 +148,11 @@ export default {
       background: "#833255",
       gradient1: "#833255",
       gradient2: "#68292A",
-      gradient3: "#3B0F10"
+      gradient3: "#3B0F10",
+      success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
     },
     dark: {
       primary: "#2b0a0a",
@@ -117,7 +161,11 @@ export default {
       background: "#833255",
       gradient1: "#833255",
       gradient2: "#68292A",
-      gradient3: "#3B0F10"
+      gradient3: "#3B0F10",
+      success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
     }
   },
   sky: {
@@ -129,6 +177,10 @@ export default {
       gradient1: "#0487E2",
       gradient2: "#65C2F5",
       gradient3: "#B0D6F5",
+      success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
     },
     dark: {
       primary: "#FFFFFF",
@@ -138,6 +190,10 @@ export default {
       gradient1: "#0487E2",
       gradient2: "#65C2F5",
       gradient3: "#B0D6F5",
+      success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
     }
   },
   slate: {
@@ -148,7 +204,11 @@ export default {
       background: "#16181d",
       gradient1: "#16181d",
       gradient2: "#212224",
-      gradient3: "#434343"
+      gradient3: "#434343",
+      success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
     },
     dark: {
       primary: "#ffffff",
@@ -157,7 +217,11 @@ export default {
       background: "#16181d",
       gradient1: "#16181d",
       gradient2: "#212224",
-      gradient3: "#434343"
+      gradient3: "#434343",
+      success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
     }
   }
 }

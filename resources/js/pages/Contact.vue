@@ -7,7 +7,7 @@
           <v-row>
             <v-col class="col-md-2"></v-col>
             <v-col class="col-md-8">
-              <div class="email-box email-margin">
+              <div class="ma-6 email-box">
                 <div class="d-flex">
                   <div class="col-md-4">
                     <v-icon color="#F93D3D" small>mdi-checkbox-blank-circle</v-icon>
@@ -17,10 +17,10 @@
                   <div class="col-md-4" style="text-align:center">Get in touch</div>
                   <div class="col-md-4"></div>
                 </div>
-                <div class="email-box-padding">
+                <div class="pa-6">
                   <div class="d-flex pa-0">
                     <div class="d-flex col-md-3 pa-0">
-                      <v-icon :color="this.icon.name.color" class="pr-2 pa-0">{{ this.icon.name.icon }}</v-icon><p class="blue-text"><strong>Name:&nbsp;</strong></p>
+                      <v-icon :color="this.icon.name.color" class="pr-2 pa-0">{{ this.icon.name.icon }}</v-icon><p class="blue-text mb-0"><strong>Name:&nbsp;</strong></p>
                     </div>
                     <div class="col-md-9">
                       <input class="contact-input" v-model="name"/>
@@ -28,7 +28,7 @@
                   </div>
                   <div v-if="showBy.name" class="d-flex pa-0">
                     <div class="d-flex col-md-3 pa-0">
-                      <v-icon :color="this.icon.email.color" class="pr-2 pa-0">{{ this.icon.email.icon }}</v-icon><p class="blue-text"><strong>Email:&nbsp;</strong></p>
+                      <v-icon :color="this.icon.email.color" class="pr-2 pa-0">{{ this.icon.email.icon }}</v-icon><p class="blue-text mb-0"><strong>Email:&nbsp;</strong></p>
                     </div>
                     <div class="col-md-9">
                       <input class="contact-input" v-model="email"/>
@@ -36,7 +36,7 @@
                   </div>
                   <div v-if="showBy.name != '' && showBy.email != ''" class="d-flex pa-0">
                     <div class="d-flex col-md-3 pa-0">
-                      <v-icon :color="this.icon.subject.color" class="pr-2 pa-0">{{ this.icon.subject.icon }}</v-icon><p class="blue-text"><strong>Subject:&nbsp;</strong></p>
+                      <v-icon :color="this.icon.subject.color" class="pr-2 pa-0">{{ this.icon.subject.icon }}</v-icon><p class="blue-text mb-0"><strong>Subject:&nbsp;</strong></p>
                     </div>
                     <div class="col-md-9">
                       <input class="contact-input" v-model="subject"/>
@@ -44,7 +44,7 @@
                   </div>
                   <div v-if="showBy.name != '' && showBy.email != '' && showBy.subject != ''" class="d-flex pa-0">
                     <div class="d-flex col-md-3 pa-0">
-                      <v-icon :color="this.icon.message.color" class="pr-2 pa-0 message-icon">{{ this.icon.message.icon }}</v-icon><p class="blue-text"><strong>Message:&nbsp;</strong></p>
+                      <v-icon :color="this.icon.message.color" class="pr-2 pa-0 message-icon">{{ this.icon.message.icon }}</v-icon><p class="blue-text mb-0"><strong>Message:&nbsp;</strong></p>
                     </div>
                     <div class="col-md-9">
                       <textarea rows="5" class="contact-input" style="resize: none !important;" v-model="message"/>
@@ -52,12 +52,12 @@
                   </div>
 
                   <div v-if="showBy.name != '' && showBy.email != '' && showBy.subject != '' && showBy.message != ''" class="d-flex flex-wrap-reverse flex-column-reverse">
-                    <button class="col-2 email-button">Send</button>
+                    <button class="col-2 email-button accent-color-bg" v-on:click="submitForm()">Send</button>
                   </div>
                 </div>
-                <div style="border-top: 1px solid #202637;"></div>
-                <div class="pt-4 px-7">
-                  <p>{{ this.status }}</p>
+                <div v-if="this.status != ''" class="status-section"></div>
+                <div v-if="this.status != ''" class="pt-4 px-7">
+                  <p class="blue-text" :class="{ 'success-color-c': success, 'danger-color-c': !success }">{{ this.status }}</p>
                 </div>
               </div>
             </v-col>
@@ -72,6 +72,7 @@
 <script>
 
 import FlyingLetters from '../components/FlyingLetters.vue';
+import generalApi from '../api/general'
 
 export default {
   name: `Contact`,
@@ -102,7 +103,7 @@ export default {
         icon: this.displayVariables.icons['focus'],
         color: this.displayVariables.colors['focus']
       }
-    },
+    }
   },
   watch: {
     name: function(value) {
@@ -124,27 +125,27 @@ export default {
   },
   data() {
     return {
-      name: 'a',
-      email: 'j@g.com',
-      subject: 'a',
-      message: 'a',
-      status: 'STATUS TEST',
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+      status: '',
       icon: {
         name: {
           icon: 'mdi-arrow-right-bold-circle',
-          color: '#ea4aaa',
+          color: this.$vuetify.theme.currentTheme.accent,
         },
         email: {
           icon: 'mdi-arrow-right-bold-circle',
-          color: '#ea4aaa',
+          color: this.$vuetify.theme.currentTheme.accent,
         },
         subject: {
           icon: 'mdi-arrow-right-bold-circle',
-          color: '#ea4aaa',
+          color: this.$vuetify.theme.currentTheme.accent,
         },
         message: {
           icon: 'mdi-arrow-right-bold-circle',
-          color: '#ea4aaa',
+          color: this.$vuetify.theme.currentTheme.accent,
         },
       },
       showBy: {
@@ -160,11 +161,12 @@ export default {
           danger: 'mdi-alert-circle'
         },
         colors: {
-          focus: '#ea4aaa',
-          success: '#2da44e',
-          danger: '#cf222e'
+          focus: this.$vuetify.theme.currentTheme.accent,
+          success: this.$vuetify.theme.currentTheme.success,
+          danger: this.$vuetify.theme.currentTheme.danger
         }
-      }
+      },
+      success: 0
     }
   },
   methods: {
@@ -205,6 +207,27 @@ export default {
       } else {
         this.setIconFocus(inputName)
       }
+    },
+    submitForm() {
+      let form = {}
+      form.name = this.name
+      form.email = this.email
+      form.subject = this.subject
+      form.message = this.message
+
+      generalApi.storeContactForm(form).then(response => {
+        if (response.data.success) {
+          this.name = ''
+          this.email = ''
+          this.subject = ''
+          this.message = ''
+          this.success = 1
+          this.status = response.data.success
+        } else {
+          this.success = 0
+          this.status = 'Message failed to send. Please try again later'
+        }
+      })
     }
   }
 };
@@ -213,54 +236,29 @@ export default {
 <style scoped>
 
 .email-box {
-  background-color: #0c162d;
-  border: 1px solid #202637;
+  background-color: rgba(12,22,45,.7);
+  border: 1px solid rgba(32,38,55,.2);
   border-radius: 10px !important;
   box-shadow: var(--color-shadow-small) !important;
 }
 
-.email-margin {
-  margin: 24px !important;
-}
-
-.email-box-padding {
-  padding: 24px !important;
-}
-
-.email-head-padding {
-  padding: 15px !important;
+.status-section {
+  border: 1px solid rgba(32,38,55,.2);
 }
 
 .email-button {
   color: white;
   background: none;
-  background-color: #2e333f;
-  border: 1px solid #868f9e;
+  /* background-color: #2e333f; */
+  /* border: 1px solid #868f9e; */
   border-radius: 5px !important;
   padding: 5px;
   margin-right:12px;
 }
 
-.email-status-test {
-  color: #627597 !important;
-}
-
-.pink-input {
-  color: #ea4aaa;
-}
-
 .blue-text {
-  color: #00cfc8;
-  margin-bottom: 0px;
-  margin-top:18px;
-}
-
-.green-text {
-  color: #2da44e;
-}
-
-.red-text {
-  color: #cf222e;
+  color: var(--var-primary-base);
+  margin-top: 18px;
 }
 
 textarea:focus, input:focus{
@@ -272,13 +270,6 @@ textarea, input {
   color: white;
   width:90%;
 }
-/* font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace !important; */
-  /* .canvas{
-    position: absolute;
-    width: 100vh;
-    height: 100vw;
-    z-index:0;
-  } */
 
 .email-section {
   position: absolute;
@@ -291,8 +282,8 @@ textarea, input {
 }
 
 .contact-input {
-  background-color: #122247;
-  border: 1px solid #252c3f;
+  background-color: rgba(9,15,37,.7);
+  border: 1px solid rgba(37,44,63,.2);
   border-radius: 5px !important;
   padding: 5px;
   width:100%;
@@ -308,6 +299,23 @@ textarea, input {
 
 .slide-enter-active,
 .slide-leave-active { transition: all 750ms ease-in-out }
+
+
+.success-color-c {
+  color: var(--v-success-base);
+}
+
+.info-color-c {
+  color: var(--v-info-base);
+}
+
+.warning-color-c {
+  color: var(--v-warning-base);
+}
+
+.danger-color-c {
+  color: var(--v-danger-base);
+}
 
 
 </style>
