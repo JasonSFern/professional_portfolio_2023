@@ -22,7 +22,7 @@ class ProjectsController extends Controller
         return $data;
     }
 
-    public function graphicProjects(Request $request) {
+    public function designProjects(Request $request) {
         $data = Projects::where('classification', 2)->where('is_active', 1)->orderBy('id', 'ASC')->get();
         return $data;
     }

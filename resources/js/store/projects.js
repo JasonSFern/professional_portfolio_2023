@@ -4,15 +4,15 @@ export default {
   namespaced: true,
   state: {
     projects: [],
-    graphics: [],
+    design: [],
     coding: []
   },
   mutations: {
     getAllProjects(state, payload) {
       state.projects = payload
     },
-    getGraphicsProjects(state, payload) {
-      state.graphics = payload
+    getDesignProjects(state, payload) {
+      state.design = payload
     },
     getCodingProjects(state, payload) {
       state.coding = payload
@@ -29,8 +29,8 @@ export default {
         return data
       })
     },
-    getGraphicsProjects(context, payload) {
-      return Api.getAllGraphicsProjects(payload).then(response => {
+    getDesignProjects(context, payload) {
+      return Api.getAllDesignProjects(payload).then(response => {
         let data = response.data
         data.forEach(function (item) {
           item.photos = JSON.parse(item.photos)
@@ -54,8 +54,8 @@ export default {
     getAllProjects: state => {
       return state.projects
     },
-    getGraphicsProjects: state => {
-      return state.graphics
+    getDesignProjects: state => {
+      return state.design
     },
     getCodingProjects: state => {
       return state.coding
