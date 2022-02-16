@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Skills extends Model
 {
+    protected $table = 'skills';
+    
     public function classification()
     {
         return $this->belongsTo(Classification::class, 'id', 'classification');

@@ -156,3 +156,7 @@ PROJECT DETAILS
 .gradient-color-bg {
   background: linear-gradient(to bottom right, var(--v-gradient1-base), var(--v-gradient2-base), var(--v-gradient3-base)) !important;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}

@@ -15,12 +15,13 @@ class CreateExperienceTable extends Migration
     {
         Schema::create('experience', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('position');
-            $table->string('company');
+            $table->string('title');
+            $table->string('institute');
+            $table->string('type');
             $table->date('start_date');
             $table->date('end_date');
+            $table->boolean('is_active');
             $table->json('description');
-            $table->unsignedInteger('classification');
             $table->timestamps();
         });
     }

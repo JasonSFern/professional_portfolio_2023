@@ -36,6 +36,7 @@ Vue.component('header-bar', require('./components/HeaderBar.vue').default);
 Vue.component('footer-bar', require('./components/FooterBar.vue').default);
 Vue.component('splash-logo', require('./components/SplashLogo.vue').default) ;
 Vue.component('flying-letters', require('./components/FlyingLetters.vue').default) ;
+Vue.component('experience-timeline', require('./components/ExperienceTimeline.vue').default) ;
 
 Vue.mixin({
     created: function () {
@@ -306,19 +307,5 @@ $("#n5").click(function() {
 
   });
 })(jQuery);
-
-// GOOGLE MAPS INTEGRATION
-
-$(document).ready(function initMap() {
-  var uluru = {lat: 51.0486, lng: -114.0708};
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 8,
-    center: uluru
-  });
-  var marker = new google.maps.Marker({
-    position: uluru,
-    map: map
-  });
-});
 
 
