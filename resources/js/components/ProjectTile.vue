@@ -150,13 +150,13 @@ p {
   transform: translateZ(20px);
 }
 
-
 h1 {
   text-shadow: 2px 2px 8px #000000;
   text-align: center;
   color: white;
   font-size: 80px;
-  font-family: 'Arial Black', sans-serif;
+  font-family: 'Titillium', sans-serif;
+  text-transform: uppercase;
 }
 
 .skill-icon {

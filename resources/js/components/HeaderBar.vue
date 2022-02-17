@@ -47,7 +47,7 @@ export default {
       return this.allRoutes.filter(i => !i.hidden)
     },
     applyFrosted: function () {
-      if (this.$route.name !== 'home' && this.$route.name !== 'projects') {
+      if (this.$route.name !== 'home' && this.$route.name !== 'projects' && this.$route.name !== 'contact') {
         return true
       } else {
         return false
@@ -69,34 +69,17 @@ export default {
 </script>
 
 <style >
-@font-face {
-  font-family: "Cerebri-Sans-Book";
-  src: url("/public/fonts/Cerebri-Sans-Book.ttf");
-}
-@font-face {
-  font-family: "Lato-Regular";
-  src: url("/public/fonts/Lato-Regular.ttf");
-}
-@font-face {
-  font-family: "Lato-Bold";
-  src: url("/public/fonts/Lato-Bold.ttf");
-}
-@font-face {
-  font-family: "Lato-Light";
-  src: url("/public/fonts/Lato-Light.ttf");
-}
+
 .nav-link p {
-  /* font-family: 'Cerebri-Sans-Boo', sans-serif; */
-  font-size: 13px;
-  font-family: 'Lato-Light', sans-serif;
-  /* font-family: 'Lato-Regular', sans-serif; */
+  font-size: 14px;
+  font-family: 'Avenir-Book', sans-serif;
 }
 
 .nav-link .bold p{
-  font-family: 'Lato-Bold', sans-serif;
+  font-family: 'Avenir-Black', sans-serif;
 }
 .nav-font-2 {
-  font-family: 'Cerebri-Sans-Book', sans-serif;
+  font-family: 'Avenir-Book', sans-serif;
 }
 
 

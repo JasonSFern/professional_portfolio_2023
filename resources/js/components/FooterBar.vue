@@ -22,7 +22,7 @@ export default {
   data: () => ({}),
   computed: {
     applyFrosted: function () {
-      if (this.$route.name !== 'home' && this.$route.name !== 'projects') {
+      if (this.$route.name !== 'home' && this.$route.name !== 'projects' && this.$route.name !== 'contact') {
         return true
       } else {
         return false
@@ -34,15 +34,10 @@ export default {
 
 <style scoped>
 
-@font-face {
-  font-family: "Lato-Light";
-  src: url("/public/fonts/Lato-Light.ttf");
-}
+
 .footer-content p {
-  font-size: 13px;
-  font-family: 'Lato-Light', sans-serif;
-  /* font-family: 'Cerebri-Sans-Boo', sans-serif; */
-  /* font-family: 'Lato-Regular', sans-serif; */
+  font-size: 14px;
+  font-family: 'Avenir-Book', sans-serif;
   text-align: center;
   padding-top: 0px !important;
 }
