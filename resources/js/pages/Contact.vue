@@ -1,6 +1,6 @@
 <template>
   <div>
-    <flying-letters class="canvas"></flying-letters>
+    <noise-abstraction class="canvas"></noise-abstraction>
     <div class="email-section">
       <v-content>
         <v-container>
@@ -71,13 +71,13 @@
 
 <script>
 
-import FlyingLetters from '../components/FlyingLetters.vue';
+import NoiseAbstraction from '../components/NoiseAbstraction.vue';
 import generalApi from '../api/general'
 
 export default {
   name: `Contact`,
   components: {
-    FlyingLetters,
+    NoiseAbstraction
   },
   computed: {
     nameStyle() {
