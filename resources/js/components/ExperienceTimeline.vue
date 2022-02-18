@@ -1,7 +1,7 @@
 <template>
-  <div class="mt-15">
-    <h2>
-      <span>Experience</span>
+  <div class="mt-md-15 pt-md-11 pb-10 pb-md-0">
+    <h2 class="accent-color-c">
+      Timeline
     </h2>
 
     <v-timeline
@@ -77,9 +77,9 @@ export default {
 
 <style scoped>
 
-
 .timeline-head p {
   font-size:12px;
+  font-family: 'Avenir', sans-serif !important;
   margin:0px;
   display:block;
 }

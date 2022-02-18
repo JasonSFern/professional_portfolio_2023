@@ -8,12 +8,12 @@ export default {
     return axios.get(`/api/ui/experience/${id}`)
   },
   async getAllWorkExperience() {
-    return axios.get(`/api/ui/experience/work/`)
+    return axios.get(`/api/ui/experience-work/`)
   },
   async getAllEducationExperience() {
-    return axios.get(`/api/ui/experience/education/`)
+    return axios.get(`/api/ui/experience-education/`)
   },
   async getAllVolunteerExperience() {
-    return axios.get(`/api/ui/experience/volunteer/`)
+    return axios.get(`/api/ui/experience-volunteer/`)
   },
 }
