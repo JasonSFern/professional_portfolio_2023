@@ -1,33 +1,64 @@
 <template>
   <div>
     <v-app-bar
-      elevation="0"
+      :elevation="elevation"
       app
       :class="{
-        'head-frost': (applyFrosted && $vuetify.theme.dark),
-        'head-frost-light': (applyFrosted && !$vuetify.theme.dark),
+        'frost-dark': (applyFrosted && $vuetify.theme.dark),
+        'frost-light': (applyFrosted && !$vuetify.theme.dark),
         'transparent': !applyFrosted
       }"
     >
-      <v-toolbar-title class="px-md-4 nav-link d-flex">
-        <router-link to="/" class="pr-md-6 d-flex">
-          <p class="pt-12 primary-color-c">Jason&nbsp;&nbsp;</p>
-          <strong class="bold pt-12"><p class="accent-color-c">Fernandes</p></strong>
-        </router-link>
-        <p class="pt-12 primary-color-c">&nbsp;|&nbsp;</p>
-        <router-link
-          class="pa-md-4 py-md-6 d-flex"
-          v-for="route in routes"
-          :key="route.path"
-          :to="route.path"
-        >
-          <v-icon class="pr-md-1 pt-2 primary-color-c" x-small>{{ route.icon }}</v-icon>
-          <p class="pt-6 primary-color-c">{{ route.title }}</p>
-        </router-link>
-      </v-toolbar-title>
+      <v-menu offset-y rounded="b-xl nav-link">
+        <template v-slot:activator="{ on, attrs }">
+        <v-app-bar-nav-icon
+          small
+          class="d-flex d-sm-none mx-1"
+          v-bind="attrs"
+          v-on="on"
+        />
+        <p class="d-flex d-sm-none pt-4 primary-color-c">&nbsp;&nbsp;|&nbsp;</p>
+        </template>
+        <v-list>
+          <v-list-item
+            v-for="route in routes"
+            :key="route.path"
+            :to="route.path"
+          >
+            <v-list-item-title>{{ route.title }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+
+      <v-btn
+        to="/"
+        depressed 
+        plain
+        x-small
+        class="nav-link"
+      >
+        <p class="pt-4 primary-color">Jason&nbsp;&nbsp;</p>
+        <strong class="pt-4 bold"><p class="accent-color-c">Fernandes</p></strong>
+      </v-btn>
+
+      <p class="d-none d-sm-flex pt-4 primary-color-c">&nbsp;|&nbsp;</p>
+
+      <v-btn
+        v-for="route in routes"
+        :key="route.path"
+        :to="route.path"
+        depressed 
+        plain
+        x-small
+        class="d-none d-sm-flex nav-link"
+      >
+        <v-icon class="pr-1 pt-0 primary-color-c" small>{{ route.icon }}</v-icon>
+        <p class="pt-4 primary-color-c">{{ route.title }}</p>
+      </v-btn>
+
       <v-spacer></v-spacer>
 
-      <v-btn v-if="$route.name != 'projects' && $route.name != 'viewproject'" class="px-md-4" @click="darkMode" icon>
+      <v-btn v-if="$route.name != 'projects' && $route.name != 'viewproject'" class="mx-1" @click="darkMode" plain icon small>
         <v-icon v-if="!$vuetify.theme.dark">mdi-weather-sunny</v-icon>
         <v-icon v-else>mdi-moon-waxing-crescent</v-icon>
       </v-btn>
@@ -53,6 +84,13 @@ export default {
         return false
       }
     },
+    elevation: function () {
+      if (this.$route.name !== 'home' && this.$route.name !== 'projects' && this.$route.name !== 'contact') {
+        return 4
+      } else {
+        return 0
+      }
+    },
   },
   data() {
     return {
@@ -71,38 +109,26 @@ export default {
 <style >
 
 .nav-link p {
-  font-size: 14px;
+  font-size: 10px;
   font-family: 'Avenir-Book', sans-serif;
 }
 
 .nav-link .bold p{
   font-family: 'Avenir-Black', sans-serif;
 }
-.nav-font-2 {
-  font-family: 'Avenir-Book', sans-serif;
-}
 
-
-.head-frost {
-  filter: drop-shadow(2px 10px 10px black) !important;
+.frost-dark {
   background-color: rgba(152, 151, 151, 0.2) !important; 
-  box-shadow: 1rem 1rem 1rem 1rem rgba(0, 0, 0, .2) !important; 
   backdrop-filter: blur(5px) !important;
 }
 
-.head-frost-light {
-  filter: drop-shadow(2px 2px 10px grey) !important;
+.frost-light {
   background-color: rgba(255, 255, 255, 0.75) !important; 
-  box-shadow: 1rem 1rem 1rem 1rem rgba(0, 0, 0, .2) !important; 
   backdrop-filter: blur(5px) !important;
 }
 
 .transparent {
   background-color: rgba(0, 0, 0, 0) !important;
 }
-
-
-/* .grow { transition: all .2s ease-in-out; }
-.grow:hover { transform: scale(1.1); } */
 
 </style>

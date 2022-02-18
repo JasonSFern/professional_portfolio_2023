@@ -26,8 +26,8 @@ export default {
         // Configs
         var Configs = {
             backgroundColor: 'transparent',
-            particleNum: 2000,
-            step: 5,
+            particleNum: 1000,
+            step: 1,
             base: 1000,
             zInc: 0.001
         };

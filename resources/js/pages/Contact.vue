@@ -1,12 +1,12 @@
 <template>
   <div>
-    <noise-abstraction class="canvas"></noise-abstraction>
+    <noise-abstraction class="d-none d-sm-flex canvas"></noise-abstraction>
     <div class="email-section">
       <v-content>
         <v-container>
           <v-row>
-            <v-col class="col-md-2"></v-col>
-            <v-col class="col-md-8">
+            <v-col class="d-none d-sm-flex col-md-2"></v-col>
+            <v-col class="col-sm-12 col-md-8">
               <div class="ma-6 email-box">
                 <div class="d-flex">
                   <div class="col-md-4">
@@ -19,40 +19,40 @@
                 </div>
                 <div class="pa-6">
                   <div class="d-flex pa-0">
-                    <div class="d-flex col-md-3 pa-0">
-                      <v-icon :color="this.icon.name.color" class="pr-2 pa-0">{{ this.icon.name.icon }}</v-icon><p class="blue-text mb-0"><strong>Name:&nbsp;</strong></p>
+                    <div class="d-none d-sm-flex col-sm-1 pa-0">
+                      <v-icon :color="this.icon.name.color" class="pr-2 pa-0">{{ this.icon.name.icon }}</v-icon>
                     </div>
-                    <div class="col-md-9">
-                      <input class="contact-input" v-model="name"/>
+                    <div class="col-12 col-sm-11">
+                      <input class="contact-input" placeholder="Name" v-model="name"/>
                     </div>
                   </div>
                   <div v-if="showBy.name" class="d-flex pa-0">
-                    <div class="d-flex col-md-3 pa-0">
-                      <v-icon :color="this.icon.email.color" class="pr-2 pa-0">{{ this.icon.email.icon }}</v-icon><p class="blue-text mb-0"><strong>Email:&nbsp;</strong></p>
+                    <div class="d-none d-sm-flex col-sm-1 pa-0">
+                      <v-icon :color="this.icon.email.color" class="pr-2 pa-0">{{ this.icon.email.icon }}</v-icon>
                     </div>
-                    <div class="col-md-9">
-                      <input class="contact-input" v-model="email"/>
+                    <div class="col-12 col-sm-11">
+                      <input class="contact-input" placeholder="Email" v-model="email"/>
                     </div>
                   </div>
                   <div v-if="showBy.name != '' && showBy.email != ''" class="d-flex pa-0">
-                    <div class="d-flex col-md-3 pa-0">
-                      <v-icon :color="this.icon.subject.color" class="pr-2 pa-0">{{ this.icon.subject.icon }}</v-icon><p class="blue-text mb-0"><strong>Subject:&nbsp;</strong></p>
+                    <div class="d-none d-sm-flex col-sm-1 pa-0">
+                      <v-icon :color="this.icon.subject.color" class="pr-2 pa-0">{{ this.icon.subject.icon }}</v-icon>
                     </div>
-                    <div class="col-md-9">
-                      <input class="contact-input" v-model="subject"/>
+                    <div class="col-12 col-sm-11">
+                      <input class="contact-input" placeholder="Subject" v-model="subject"/>
                     </div>
                   </div>
                   <div v-if="showBy.name != '' && showBy.email != '' && showBy.subject != ''" class="d-flex pa-0">
-                    <div class="d-flex col-md-3 pa-0">
-                      <v-icon :color="this.icon.message.color" class="pr-2 pa-0 message-icon">{{ this.icon.message.icon }}</v-icon><p class="blue-text mb-0"><strong>Message:&nbsp;</strong></p>
+                    <div class="d-none d-sm-flex col-sm-1 pa-0">
+                      <v-icon :color="this.icon.message.color" class="pr-2 pa-0 message-icon">{{ this.icon.message.icon }}</v-icon>
                     </div>
-                    <div class="col-md-9">
-                      <textarea rows="5" class="contact-input" style="resize: none !important;" v-model="message"/>
+                    <div class="col-12 col-sm-11">
+                      <textarea rows="5" placeholder="Message" class="contact-input" style="resize: none !important;" v-model="message"/>
                     </div>
                   </div>
 
-                  <div v-if="showBy.name != '' && showBy.email != '' && showBy.subject != '' && showBy.message != ''" class="d-flex flex-wrap-reverse flex-column-reverse">
-                    <button class="col-2 email-button accent-color-bg" v-on:click="submitForm()">Send</button>
+                  <div v-if="showBy.name != '' && showBy.email != '' && showBy.subject != '' && showBy.message != ''" class="d-sm-flex flex-wrap-reverse flex-column-reverse pr-sm-2">
+                    <button class="col-12 col-sm-2 mr-0 mr-sm-1 email-button accent-color-bg" v-on:click="submitForm()">Send</button>
                   </div>
                 </div>
                 <div v-if="this.status != ''" class="status-section"></div>
@@ -61,7 +61,7 @@
                 </div>
               </div>
             </v-col>
-            <v-col class="col-md-2"></v-col>
+            <v-col class="col-md-2 d-none d-sm-flex"></v-col>
           </v-row>
         </v-container>
       </v-content>
@@ -249,10 +249,7 @@ export default {
 .email-button {
   color: white;
   background: none;
-  /* background-color: #2e333f; */
-  /* border: 1px solid #868f9e; */
   border-radius: 5px !important;
-  padding: 5px;
   margin-right:12px;
 }
 
@@ -288,18 +285,6 @@ textarea, input {
   padding: 5px;
   width:100%;
 }
-/* // */
-
-.enter { transform: translateY(100%) }
-.enter-to { transform: translateY(0) }
-.slide-enter-active { position: absolute }
-
-.leave { transform: translateY(0) }
-.leave-to { transform: translateY(-100%) }
-
-.slide-enter-active,
-.slide-leave-active { transition: all 750ms ease-in-out }
-
 
 .success-color-c {
   color: var(--v-success-base);
@@ -316,6 +301,5 @@ textarea, input {
 .danger-color-c {
   color: var(--v-danger-base);
 }
-
 
 </style>

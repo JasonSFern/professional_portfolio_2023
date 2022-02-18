@@ -95,22 +95,27 @@
   bottom: -50px;
 }
 
-a {
+button {
   text-decoration: none;
   color: inherit;
+  outline: none;
 }
-a:hover {
+button:hover {
   text-decoration: none;
   color: inherit;
+  outline: none;
 }
-a:focus {
+button:focus {
   text-decoration: none;
   color: inherit;
+  outline: none;
 }
-a:active {
+button:active {
   text-decoration: none;
   color: inherit;
+  outline: none;
 }
+
 /* ***********************************************
 PROJECT LISTING STYLES
 *********************************************** */
@@ -166,4 +171,20 @@ font-family: 'Gigantic FS', sans-serif;
 
 h2 {
 font-family: 'Gigantic FS', sans-serif;
+}
+
+h6 {
+  font-family: 'Gigantic FS', sans-serif;
+}
+
+.skill-icon {
+  width:40px
+}
+
+.vue-typer .custom.char {
+  color: var(--v-primary-base) !important;
+}
+
+.image-wrap {
+	border-radius: 20px;
 }

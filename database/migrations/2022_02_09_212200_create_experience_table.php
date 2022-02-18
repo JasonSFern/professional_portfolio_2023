@@ -22,6 +22,7 @@ class CreateExperienceTable extends Migration
             $table->date('end_date');
             $table->boolean('is_active');
             $table->json('description');
+            $table->string('icon');
             $table->timestamps();
         });
     }

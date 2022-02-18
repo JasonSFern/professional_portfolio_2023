@@ -24,7 +24,6 @@
         "vue": "^2.6.12",
         "vue-loader": "^15.9.8",
         "vue-particles": "^1.0.9",
-        "vue-radial-bargraph": "^0.3.0",
         "vue-template-compiler": "^2.6.12",
         "vuetifyjs-mix-extension": "^0.0.20"
     },
@@ -39,7 +38,6 @@
         "vue-apexcharts": "^1.6.2",
         "vue-awesome-swiper": "^4.1.1",
         "vue-compare-image": "^0.2.0",
-        "vue-radial-bargraph": "^0.3.0",
         "vue-router": "^3.5.3",
         "vue-scroll-snap": "^0.1.11",
         "vue-typer": "^1.2.0",

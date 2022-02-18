@@ -45,8 +45,7 @@ export default new VueRouter({
             path: "/projects",
             name: "projects",
             title: "Projects",
-            icon: "mdi-keyboard",
-            // icon: "mdi-code-tags",
+            icon: "mdi-code-tags",
             hidden: false,
             component: Projects
         },
@@ -77,7 +76,7 @@ export default new VueRouter({
             name: "animation",
             title: "Animation",
             icon: "mdi-draw-pen",
-            hidden: false,
+            hidden: true,
             component: AnimationTest,
             meta: { transitionName: 'slide' },
         },
