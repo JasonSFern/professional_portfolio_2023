@@ -8,9 +8,9 @@ export default {
     return axios.get(`/api/ui/projects/${id}`)
   },
   async getCodingProjects() {
-    return axios.get(`/api/ui/projects/coding/`)
+    return axios.get(`/api/ui/projects-coding/`)
   },
   async getDesignProjects() {
-    return axios.get(`/api/ui/projects/design/`)
+    return axios.get(`/api/ui/projects-design/`)
   },
 }

@@ -24,6 +24,7 @@ export default {
         let data = response.data
         data.forEach(function (item) {
           item.photos = JSON.parse(item.photos)
+          item.skills = JSON.parse(item.skills)
         })
         context.commit('getAllProjects', data)
         return data
@@ -34,6 +35,7 @@ export default {
         let data = response.data
         data.forEach(function (item) {
           item.photos = JSON.parse(item.photos)
+          item.skills = JSON.parse(item.skills)
         })
         context.commit('getDesignProjects', data)
         return data
@@ -44,6 +46,7 @@ export default {
         let data = response.data
         data.forEach(function (item) {
           item.photos = JSON.parse(item.photos)
+          item.skills = JSON.parse(item.skills)
         })
         context.commit('getCodingProjects', data)
         return data

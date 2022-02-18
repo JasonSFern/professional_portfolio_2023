@@ -5,13 +5,18 @@
         <h2>{{ item.title }}</h2>
       </div>
       <br/>
-      <div class="d-flex">
-        <div class="col-md-5 pl-0 glossy image">
+      <div class="d-block d-md-flex">
+        <div class="col-12 col-md-5 pl-0 glossy image">
             <img v-for="(image, index) in showcase" :key="index" :src="image" ref="" class="image pb-2 image-wrap" style="width:inherit;"/>
         </div>
-        <div class="col-md-7">
+        <div class="col-12 col-md-7">
           <h2>{{ item.title }}</h2>
           <p>{{ item.subtitle }}</p>
+          <div class="d-flex">
+            <div class="d-flex flex-row-reverse">
+              <img v-for="(icon, index) in this.item.skills.icons" :key="index" :src="icon" class="skill-icon px-1"/>
+            </div>
+          </div>
           <hr/>
           <p>{{ item.description }}</p>
           <div v-if="item.route">
@@ -48,7 +53,9 @@ export default {
         this.setCustomTheme(this.item.display_theme)
 
         var photos = JSON.parse(this.item.photos)
+        var skills = JSON.parse(this.item.skills)
         this.item.photos = photos
+        this.item.skills = skills
         this.photos = photos.showcase
 
         this.init()
@@ -63,7 +70,7 @@ export default {
   },
   methods: {
     init() {
-      this.gsap.fromTo('.image',{opacity:0 }, {opacity: 1, duration: 2, delay: 3 });
+      this.gsap.fromTo('.image',{opacity:0 }, {opacity: 1, duration: 2, delay: 1.5 });
     },
     setCustomTheme(themeName) {
       let selectedTheme = CustomThemes[themeName]
@@ -91,11 +98,4 @@ export default {
   transform-style: preserve-3d;
 }
 
-.image-wrap {
-	border-radius: 20px;
-}
-
-.image {
-  font-weight: 800;
-}
 </style>
