@@ -18,7 +18,7 @@
             </div>
           </div>
           <hr/>
-          <p>{{ item.description }}</p>
+          <p style="white-space: pre-wrap;">{{ item.description }}</p>
           <div v-if="item.route">
             <v-btn :href="item.route" class="accent-color-bg">Launch</v-btn>
           </div>

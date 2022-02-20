@@ -13,6 +13,7 @@
         <template v-slot:activator="{ on, attrs }">
         <v-app-bar-nav-icon
           small
+          depressed
           class="d-flex d-sm-none mx-1"
           v-bind="attrs"
           v-on="on"
@@ -63,14 +64,37 @@
         <v-icon v-else>mdi-moon-waxing-crescent</v-icon>
       </v-btn>
 
-      <!-- <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn> -->
+      <!-- <v-menu offset-y rounded="b-xl nav-link">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            icon
+            plain
+            small
+            v-bind="attrs"
+            v-on="on"
+            depressed
+          >
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item
+            v-for="(theme, key) in themes"
+            :key="key"
+            v-on:click="switchTheme(key)"
+          >
+            <v-list-item-title>{{ key }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu> -->
+
     </v-app-bar>
   </div>
 </template>
 
 <script>
+import CustomThemes from '../plugins/custom_themes';
+
 export default {
   name: "HeaderBar",
   computed: {
@@ -95,12 +119,25 @@ export default {
   data() {
     return {
       drawer: null,
-      allRoutes: this.$router.options.routes
+      allRoutes: this.$router.options.routes,
+      themes: CustomThemes
     };
   },
   methods: {
     darkMode() {
       this.$emit("darkMode", this.goDark);
+    },
+    switchTheme(themeName) {
+      let selectedTheme = CustomThemes[themeName]
+      let dark = selectedTheme.dark;
+      let light = selectedTheme.light
+
+      Object.keys(dark).forEach(i => {
+        this.$vuetify.theme.themes.dark[i] = dark[i];
+      });
+      Object.keys(light).forEach(i => {
+        this.$vuetify.theme.themes.light[i] = light[i];
+      });
     }
   }
 };

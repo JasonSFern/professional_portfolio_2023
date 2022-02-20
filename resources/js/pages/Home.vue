@@ -18,7 +18,7 @@
       clickMode="push"
     >
     </vue-particles>
-    <div class="centered-text">
+    <div ref="logo" class="centered-text">
       <splash-logo></splash-logo>
     </div>
   </div>
@@ -35,6 +35,9 @@ export default {
     linesColor: function () {
       return this.$vuetify.theme.currentTheme.accent
     }
+  },
+  mounted() {
+      this.gsap.fromTo(this.$refs.logo, {opacity:0}, {duration: .5, opacity: 1, delay: .5});
   },
   data() {
     return {

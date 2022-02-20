@@ -2,49 +2,49 @@
   <v-container>
     <v-row>
       <v-col class="col-12 col-md-7 col-lg-5 scroll-container">
-        <div class="mt-16 pt-10">
-          <h2>
-            <span>Education</span>
-          </h2>
-          <br>
+        <div ref="educationCont" class="mt-16 pt-10">
+          <div ref="education">
+            <h2>
+              <span>Education</span>
+            </h2>
+            <br>
 
-          <v-row>
-            <v-col>
-              <div class="d-flex flex-wrap">
-                <div v-for="(entry, index) in education" :key="index" class="d-flex justify-space-between">
-                  <div class="pa-2" style="width:55px;padding-right:0px;">
-                    <img :src="entry.icon" style="width:45px;height:auto;"/>
-                  </div>
-                  <div class="pa-2" style="width:410px">
-                    <strong><p class="ma-0">{{ entry.title }}</p></strong>
-                    <div class="d-flex justify-space-between">
-                      <div><p>{{ entry.institute }}</p></div>
-                      <div><p>{{ entry.end_date }}</p></div>
+            <v-row>
+              <v-col>
+                <div class="d-flex flex-wrap">
+                  <div v-for="(entry, index) in education" :key="index" class="d-flex justify-space-between">
+                    <div class="pr-0 pl-2 py-2 edu-icon-col">
+                      <img :src="entry.icon" class="edu-icon" />
+                    </div>
+                    <div class="pa-2 edu-text-col">
+                      <strong><p class="ma-0">{{ entry.title }}</p></strong>
+                      <p class="ma-0">{{ entry.institute }}</p>
+                      <p class="ma-0">{{ entry.end_date }}</p>
                     </div>
                   </div>
                 </div>
-              </div>
-              <br />
-            </v-col>
-          </v-row>
+                <br />
+              </v-col>
+            </v-row>
 
-          <h2>Skills</h2>
-          <br />
+            <h2>Skills</h2>
+            <br />
 
-          <div class="d-flex flex-wrap">
-            <div v-for="(item, index) in skillItems" :key="index" class="d-flex justify-start" style="width:50%;">
-              <div class="pa-2" style="width:40px;padding-right:0px;">
-                <img :src="item.icon" style="width:35px;height:auto;"/>
-              </div>
-              <div class="pa-2" style="width:225px">
-                <strong><p class="ma-0">{{ item.name }}</p></strong>
-                <v-progress-linear v-model="item.skill_level" buffer-value="100" color="accent" height="10"></v-progress-linear>
+            <div class="d-flex flex-wrap">
+              <div v-for="(item, index) in skillItems" :key="index" class="d-flex justify-start skill-entry">
+                <div class="pa-2 skill-icon">
+                  <img :src="item.icon" class="skill-icon-col" />
+                </div>
+                <div class="pa-2 skill-text-col">
+                  <strong><p class="ma-0">{{ item.name }}</p></strong>
+                  <v-progress-linear v-model="item.skill_level" buffer-value="100" color="accent" height="10"></v-progress-linear>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="my-7">
+        <div ref="whitepaper" class="mt-15 mb-6">
           <v-btn
             :href="resumeLink"
             target="_blank"
@@ -114,6 +114,10 @@ export default {
     })
   },
   mounted() {
+    this.gsap.timeline()
+      .fromTo(this.$refs.educationCont, {xPercent:20}, {duration: .5, xPercent:0})
+      .fromTo(this.$refs.education, {xPercent:-20, opacity: 0}, {duration: .5, opacity: 1, xPercent: 0})
+      .fromTo(this.$refs.whitepaper, {opacity: 0}, {duration: .5, opacity: 1}, ">")
   },
   methods: {
   }
@@ -129,6 +133,37 @@ export default {
     overflow-y:scroll;
     height: 95vh;
   }
+}
+
+.edu-icon-col {
+  width:90px; 
+}
+
+.edu-icon {
+  width:70px;
+  height:auto;
+}
+
+.edu-text-col {
+  width:410px;
+}
+
+.skill-icon {
+  width:40px;
+  padding-right:0px;
+}
+
+.skill-icon-col {
+  width:35px;
+  height:auto;
+}
+
+.skill-text-col {
+  width:225px;
+}
+
+.skill-entry {
+  width:50%;
 }
 
 </style>

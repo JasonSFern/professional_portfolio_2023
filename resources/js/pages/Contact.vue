@@ -1,7 +1,7 @@
 <template>
   <div>
     <noise-abstraction class="d-none d-sm-flex canvas"></noise-abstraction>
-    <div class="email-section">
+    <div ref="emailCont" class="email-section">
       <v-content>
         <v-container>
           <v-row>
@@ -169,6 +169,9 @@ export default {
       success: 0
     }
   },
+  mounted() {
+    this.gsap.fromTo(this.$refs.emailCont, {opacity: 0}, {duration: .5, opacity: 1, delay:.2})
+  },
   methods: {
     setIconFocus(key) {
       this.showBy[key] = false
@@ -300,6 +303,10 @@ textarea, input {
 
 .danger-color-c {
   color: var(--v-danger-base);
+}
+
+.canvas {
+  opacity: .3;
 }
 
 </style>

@@ -48,8 +48,6 @@ export default {
   },
   created() {
     this.$store.dispatch('projects/getAllProjects').then(response => {
-      // this.filteredItems = response
-      // this.$refs.scrollsnap.init();
       this.isLoaded = true
     })
   },

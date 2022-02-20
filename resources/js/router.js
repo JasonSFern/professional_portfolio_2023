@@ -23,7 +23,8 @@ export default new VueRouter({
             title: 'Home',
             icon: "mdi-home",
             hidden: true,
-            component: Home
+            component: Home,
+            meta: { transitionName: 'fade' },
         },
         {
             path: "/aboutme",
@@ -31,15 +32,17 @@ export default new VueRouter({
             title: 'About Me',
             icon: "mdi-account",
             hidden: false,
-            component: AboutMe
+            component: AboutMe,
+            meta: { transitionName: 'slide' },
         },
         {
-            path: "/experience",
-            name: "experience",
-            title: "Experience",
+            path: "/resume",
+            name: "resume",
+            title: "Resume",
             icon: "mdi-briefcase-variant",
             hidden: false,
-            component: Experience
+            component: Experience,
+            meta: { transitionName: 'slide' },
         },
         {
             path: "/projects",
@@ -47,7 +50,8 @@ export default new VueRouter({
             title: "Projects",
             icon: "mdi-code-tags",
             hidden: false,
-            component: Projects
+            component: Projects,
+            meta: { transitionName: 'fade' },
         },
         {   
             path: '/projects/:item_id',
@@ -56,6 +60,7 @@ export default new VueRouter({
             icon: "",
             hidden: true,
             component: ViewProject,
+            meta: { transitionName: 'slide' },
             props(route) {
                 let props = { ...route.params }
                 props.item_id = parseInt(props.item_id)
@@ -78,7 +83,7 @@ export default new VueRouter({
             icon: "mdi-draw-pen",
             hidden: true,
             component: AnimationTest,
-            meta: { transitionName: 'slide' },
+            meta: { transitionName: 'fade' },
         },
         {
             path: "/:pathMatch(.*)*",

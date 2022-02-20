@@ -181,10 +181,27 @@ h6 {
   width:40px
 }
 
+.image-wrap {
+	border-radius: 20px;
+}
+
+.vue-typer {
+  font-family: monospace;
+  font-size:20px;
+}
+
 .vue-typer .custom.char {
   color: var(--v-primary-base) !important;
 }
+.vue-typer .custom.char.selected {
+  background-color: var(--v-accent-base) !important;
+}
 
-.image-wrap {
-	border-radius: 20px;
+.vue-typer .custom.caret {
+  width: 1px;
+}
+
+
+body {
+  background-color: var(--v-background-base);
 }

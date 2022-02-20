@@ -17,7 +17,6 @@ export default {
       primary: "#ffffff",
       secondary: "#face33",
       accent: "#3096f3",
-      // accent: "#47ade2",
       background: "#1E3C96",
       gradient1: "#1E2696",
       gradient2: "#1E3C96",
@@ -84,6 +83,34 @@ export default {
       danger: "#cc362b",
     }
   },
+  sunshine: {
+    light: {
+      primary: "#FFFFFF",
+      secondary: "#90caf9",
+      accent: "#385475",
+      background: "#B7BA05",
+      gradient1: "#B7BA05",
+      gradient2: "#86A8E7",
+      gradient3: "#35A8A8",
+      success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
+    },
+    dark: {
+      primary: "#FFFFFF",
+      secondary: "#90caf9",
+      accent: "#385475",
+      background: "#B7BA05",
+      gradient1: "#B7BA05",
+      gradient2: "#86A8E7",
+      gradient3: "#35A8A8",
+      success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
+    }
+  },
   olive: {
     light: {
       primary: "#ffffff",
@@ -112,7 +139,7 @@ export default {
       danger: "#cc362b",
     },
   },
-  royalty: {
+  royal: {
     dark: {
       primary: "#ffffff",
       secondary: "#251749",
