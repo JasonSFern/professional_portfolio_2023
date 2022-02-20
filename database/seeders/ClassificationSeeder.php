@@ -14,7 +14,7 @@ class ClassificationSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('classification')->insert([
+        DB::table('classifications')->insert([
             ['name' => 'Coding'],
             ['name' => 'Design']
         ]);

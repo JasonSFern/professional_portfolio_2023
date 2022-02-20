@@ -1,5 +1,5 @@
 <template>
-  <section v-show="!hidden" class="fullpage gradient-color-bg" @mousemove="mouseMoved">
+  <section v-show="!hidden" class="fullpage fullpage-padding gradient-color-bg" @mousemove="mouseMoved">
     <div class="d-none d-md-flex per-container per-center" :style="rotation">
       <div class="per-holder per-image rounded-xl perholder1">
         <img class="per-image-d rounded-xl perimage1" :src="item.photos.titlecard">
@@ -103,9 +103,7 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
 
-.fullpage {
-  height: 100vh;
-  width: 100%;
+.fullpage-padding {
   padding-top: 18vh;
 }
 

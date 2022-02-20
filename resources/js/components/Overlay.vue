@@ -28,6 +28,7 @@ export default {
 </script>
 
 <style lang="scss">
+
 .overlay {
   position: fixed;
   top: 0;
@@ -57,4 +58,5 @@ export default {
     }
   }
 }
+
 </style>

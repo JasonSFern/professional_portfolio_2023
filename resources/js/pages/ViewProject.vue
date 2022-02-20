@@ -90,12 +90,12 @@ export default {
 
 <style scoped>
 
-.cardFlow {
-  padding: 20px 0;
-  border-radius: 15px;
-  overflow: hidden;
-  height: 500px;
-  transform-style: preserve-3d;
+.skill-icon {
+  width:40px
+}
+
+.image-wrap {
+	border-radius: 20px;
 }
 
 </style>

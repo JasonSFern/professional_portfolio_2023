@@ -164,8 +164,4 @@ export default {
   backdrop-filter: blur(5px) !important;
 }
 
-.transparent {
-  background-color: rgba(0, 0, 0, 0) !important;
-}
-
 </style>

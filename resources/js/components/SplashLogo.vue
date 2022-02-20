@@ -53,7 +53,7 @@ export default {
 </script>
 
 <style scoped>
-/*3D logo*/
+
 .logo-container {
   padding-top: calc(32vh - 130px);
   margin-left: -1%;
@@ -105,7 +105,7 @@ export default {
 .layer2 {
   pointer-events: none;
   transform: translateZ(80px);
-  background-image: url("/img/logo3.png");
+  background-image: url("/img/splash/logo3.png");
   border-radius: 5px;
   width: 25em;
   height: 17em;
@@ -127,7 +127,7 @@ export default {
 .layer3 {
   pointer-events: none;
   transform: translateZ(80px);
-  background-image: url("/img/logo2.png");
+  background-image: url("/img/splash/logo2.png");
   border-radius: 5px;
   width: 25em;
   height: 17em;

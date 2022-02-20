@@ -5,15 +5,16 @@
 }
 
 body {
-  background-image: url('/img/calcb.jpg');
+  background-image: url('/img/calc/calcb.jpg');
 }
 
 .alignc {
   text-align: center;
 }
 
-/*Containers*/
-
+/* ***********************************************
+CONTAINERS
+*********************************************** */
 .calculator {
   font-size: 24px;
   width: 18em;
@@ -31,18 +32,9 @@ body {
     background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
     background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-  background-image: url("/img/metal.jpg");
+  background-image: url("/img/calc/metal.jpg");
   background-size: cover;
 }
-
-/*.calculator::before, .calculator::after {
-  content: " ";
-  display: table;
-}
-
-.calculator::after {
-  clear: both;
-}*/
 
 .calc-body {
   display: flex;
@@ -50,8 +42,9 @@ body {
   padding-bottom: 10%;
 }
 
-/*Elements*/
-
+/* ***********************************************
+ELEMENTS
+*********************************************** */
 .logo img {
   height: 40px;
   padding-top: 10px;
@@ -280,8 +273,9 @@ hsla(0,0%,100%,.1) 0  2px 1px 2px; /* outer HL */
     hsla(335,35%,40%, .25) 0 -5px 6px 4px; /* outer SD */
 }
 
-/*screen/display styles*/
-
+/* ***********************************************
+SCREEN/DISPLAY STYLES
+*********************************************** */
 .top-display {
   margin-bottom: 50px;
   height: 160px;

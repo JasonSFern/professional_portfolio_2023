@@ -5,11 +5,10 @@ import Home from './pages/Home.vue';
 import AboutMe from './pages/AboutMe.vue';
 import Experience from './pages/Experience.vue';
 import Projects from './pages/Projects.vue';
-import AnimationTest from './pages/AnimationTest.vue';
+import BetaTesting from './pages/BetaTesting.vue';
 import ViewProject from './pages/ViewProject.vue';
 import Contact from './pages/Contact.vue';
 import PageNotFound from './pages/PageNotFound.vue';
-// import Overlay from './pages/Overlay.vue';
 
 Vue.use(VueRouter);
 
@@ -77,12 +76,12 @@ export default new VueRouter({
             meta: { transitionName: 'fade' },
         },
         {
-            path: "/animations",
-            name: "animation",
-            title: "Animation",
+            path: "/beta-testing",
+            name: "beta-testing",
+            title: "Beta Testing",
             icon: "mdi-draw-pen",
             hidden: true,
-            component: AnimationTest,
+            component: BetaTesting,
             meta: { transitionName: 'fade' },
         },
         {

@@ -23,7 +23,7 @@
 <!-- HEADER, MOBILE NAVIGATION -->
 <div class="wrapper mobile-nav">
 
-  <a href="./index.html" class="logo floatleft"></a>
+  <a href="/avix/" class="logo floatleft"></a>
 
   <nav role='navigation'>
       <div class="menu-toggle">
@@ -75,21 +75,21 @@
         <div class="team-container">
             <div class="team-card">
                   <h3>Jason Fernandes</h3>
-                  <img class="image-circle" src="../img/sil1.jpg">
+                  <img class="image-circle" src="../img/avix/sil1.jpg">
                   <h4>Founder and CEO</h4>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
 
             <div class="team-card">
              	    <h3>Erika Langdon</h3>
-                  <img class="image-circle" src="../img/sil2.jpg">
+                  <img class="image-circle" src="../img/avix/sil2.jpg">
                   <h4>CMO</h4>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
 
             <div class="team-card">
              	    <h3>Sam Amante</h3>
-                  <img class="image-circle" src="../img/sil3.jpg">
+                  <img class="image-circle" src="../img/avix/sil3.jpg">
                   <h4>CSO</h4>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
@@ -104,21 +104,21 @@
         <div class="team-container">
             <div class= "team-card">
                   <h3>Jason Fernandes</h3>
-                  <img class="team-image-circle" src="../img/sil1.jpg">
+                  <img class="team-image-circle" src="../img/avix/sil1.jpg">
                   <h4>Founder and CEO</h4>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
 
             <div class= "team-card">
                   <h3>James Furgeson</h3>
-                  <img class="team-image-circle" src="../img/sil2.jpg">
+                  <img class="team-image-circle" src="../img/avix/sil2.jpg">
                   <h4>CMO</h4>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
 
             <div class= "team-card">
                  <h3>Sam Amante</h3>
-                 <img class="team-image-circle" src="../img/sil3.jpg">
+                 <img class="team-image-circle" src="../img/avix/sil3.jpg">
                  <h4>CSO</h4>
                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
@@ -136,7 +136,7 @@
                  <br>
                  <br>
                  <br>
-                 <a href="../page3/index.html" class= "button button-big"><i class="fa fa-envelope fa-5x" aria-hidden="true"></i></a>
+                 <a href="/avix/contact" class= "button button-big"><i class="fa fa-envelope fa-5x" aria-hidden="true"></i></a>
             </div>
         </div>
 
@@ -149,22 +149,22 @@
     <div class="desktop-nav row">
 
         <div class="col-12 col-md-2">
-            <a href="../index.html" class="logo floatleft"></a>
+            <a href="/avix/" class="logo floatleft"></a>
         </div>
 
         <div class="col-12 col-md-9">
             <div class=row>
 
                 <div class="col-12 col-md-3">
-                    <li><a href="../page1/index.html"><h1>About Avix</h1></a></li>
+                    <li><a href="/avix/about"><h1>About Avix</h1></a></li>
                 </div>
 
                 <div class="col-12 col-md-3">
-   				          <li><a href="../page2/index.html"><h1>Products</h1></a></li>
+   				          <li><a href="/avix/products"><h1>Products</h1></a></li>
                 </div>
 
                 <div class="col-12 col-md-3">
-                    <li><a href="../page3/index.html"><h1>Contact Us</h1></a></li>
+                    <li><a href="/avix/contact"><h1>Contact Us</h1></a></li>
                 </div>
 
                 <div class="col-12 col-md-3">
@@ -186,7 +186,7 @@
     <div class=mobile-nav>
 
         <section>
-            <a href="../index.html" class="logo floatleft"></a>
+            <a href="/avix/" class="logo floatleft"></a>
         </section>
 
         <br>
@@ -197,15 +197,15 @@
         <div>
 
             <div class="button-spacer">
-                <a href="../page1/index.html" class= "button-footer">ABOUT AVIX</a>
+                <a href="/avix/about" class= "button-footer">ABOUT AVIX</a>
             </div>
 
             <div class="button-spacer">
-                <a href="../page2/index.html" class= "button-footer">PRODUCTS</a>
+                <a href="/avix/products" class= "button-footer">PRODUCTS</a>
             </div>
 
             <div class="button-spacer">
-                <a href="../page3/index.html" class= "button-footer">CONTACT US</a>
+                <a href="/avix/contact" class= "button-footer">CONTACT US</a>
             </div>
 
             <div class="button-spacer">

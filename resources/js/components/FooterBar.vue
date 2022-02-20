@@ -34,7 +34,6 @@ export default {
 
 <style scoped>
 
-
 .footer-content p {
   font-size: 14px;
   font-family: 'Avenir-Book', sans-serif;
@@ -55,10 +54,5 @@ export default {
   box-shadow: 1rem 1rem 1rem 1rem rgba(0, 0, 0, .2) !important; 
   backdrop-filter: blur(5px) !important;
 }
-
-.transparent {
-  background-color: rgba(0, 0, 0, 0) !important;
-}
-
 
 </style>

@@ -140,7 +140,7 @@ body, html {
 }
 
 .logo {
-    background-image: url("/img/icon.png");
+    background-image: url("/img/avix/icon.png");
     width: 50px;
     height: 50px;
     background-repeat: no-repeat;
@@ -232,7 +232,7 @@ BACKGROUND AND IMAGE GENERAL STYLES
 .hero-overlay {
     width: 100%;
     height: 100%;
-    background-image: url("/img/airship.jpg");
+    background-image: url("/img/avix/airship.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -242,7 +242,7 @@ BACKGROUND AND IMAGE GENERAL STYLES
     width: 100%;
     height: 100%;
     max-height: 700px;
-    background-image: url("/img/Kyoto.jpg");
+    background-image: url("/img/avix/Kyoto.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -252,7 +252,7 @@ BACKGROUND AND IMAGE GENERAL STYLES
 .halo-overlay {
     width: 100%;
     height: 100%;
-    background-image: url("/img/halo.jpg");
+    background-image: url("/img/avix/halo.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -494,7 +494,7 @@ HERO STYLES
         180deg,
         rgba(0, 9, 14, 1),
         rgba(0, 0, 0, 0)),
-        url("/img/airship.jpg");
+        url("/img/avix/airship.jpg");
     background-position: center;
 }
 
@@ -506,7 +506,7 @@ HERO STYLES
 QUOTE STYLES
 *********************************************** */
 .quote-container {
-    background-image: url("/img/clouds.jpg");
+    background-image: url("/img/avix/clouds.jpg");
     height: 350px;
     background-position: center
 }
@@ -526,7 +526,7 @@ QUOTE STYLES
 }
 
 .mobile-nav .quote-container {
-    background-image: url("/img/clouds.jpg");
+    background-image: url("/img/avix/clouds.jpg");
     background-position: center;
     height: 600px;
 }
@@ -574,7 +574,7 @@ FLAGSHIP STYLES
         rgba(225, 186, 137, .3),
         rgba(225, 186, 137, .4),
         rgba(225, 186, 137, .6)),
-        url("/img/Kyoto.jpg");
+        url("/img/avix/Kyoto.jpg");
     background-position: left;
 }
 
@@ -620,7 +620,7 @@ FLAGSHIP FROSTED GLASS (DESKTOP) STYLES
 }
 
 .frosted-effect, .frosted-glass::before {
-    background: url("/img/Kyoto.jpg") 0 / cover fixed;
+    background: url("/img/avix/Kyoto.jpg") 0 / cover fixed;
 }
 
 .frosted-effect a, a:visited {
@@ -651,7 +651,7 @@ FLAGSHIP GRADIENT (MOBILE) STYLES
     padding-top: 50px;
 	   padding-bottom: 50px;
     text-align: center;
-    background: url("/img/leather.jpg") 100%;
+    background: url("/img/avix/leather.jpg") 100%;
 }
 
 /* ***********************************************
@@ -703,7 +703,7 @@ HALO STYLES
         rgba(0, 0, 0, 0),
         rgba(0, 9, 14, .1),
         rgba(0, 9, 14, 1)),
-        url("/img/halo.jpg");
+        url("/img/avix/halo.jpg");
     background-position: 75%;
 }
 
@@ -719,7 +719,7 @@ HISTORY STYLES
         180deg,
         rgba(0, 9, 14, 1),
         rgba(0, 0, 0, 0)),
-		url("/img/clouds.jpg");
+		url("/img/avix/clouds.jpg");
     height: 450px;
     background-position: center;
 	  background-repeat: no-repeat;
@@ -789,7 +789,7 @@ TEAM STYLES
 CONTACT CALL TO ACTION STYLES
 *********************************************** */
 .contact-c2a {
-    background-image: url("/img/hangar.jpg");
+    background-image: url("/img/avix/hangar.jpg");
     background-repeat: no-repeat;
     background-size: cover;
   	background-position: center;
@@ -836,7 +836,7 @@ PRODUCT STYLES
         180deg,
         rgba(0, 9, 14, 1),
         rgba(0, 0, 0, 0)),
-		url("/img/hand-sky.jpeg");
+		url("/img/avix/hand-sky.jpg");
     height: 300px;
     background-position: center;
     background-repeat: no-repeat;
@@ -914,7 +914,7 @@ CONTACT STYLES
 
 .contact-overlay {
     width: 100%;
-    background-image: url("/img/contact.jpeg");
+    background-image: url("/img/avix/contact.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }

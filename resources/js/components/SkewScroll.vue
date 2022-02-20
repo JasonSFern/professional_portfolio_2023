@@ -55,13 +55,6 @@ skew-box {
   box-sizing: inherit;
 }
 
-/* html, body {
-} */
-
-/* body {
-  background: #000;
-} */
-
 section {
 	max-width: 600px;
 	width: 100%;

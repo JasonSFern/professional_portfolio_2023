@@ -1,7 +1,7 @@
 <template>
   <v-main>
   <!-- <classifications-bar class="classifications-menu" @filterProjects="filterProjectsList($event)"></classifications-bar> -->
-  <vue-scroll-snap :isLoaded="isLoaded" ref="scrollsnap" @setCustomTheme="setCustomTheme($event)">
+  <scroll-snap :isLoaded="isLoaded" ref="scrollsnap" @setCustomTheme="setCustomTheme($event)">
     <project-tile
       v-for="item in items"
       :key="item.id"
@@ -10,7 +10,7 @@
       v-on:click.native="viewProject(item.id)"
       :isLoaded="isLoaded"
     />
-  </vue-scroll-snap>
+  </scroll-snap>
   </v-main>
 </template>
 
@@ -21,7 +21,7 @@
 <script>
 // import ClassificationsBar from '../components/ClassificationsBar.vue';
 import ProjectTile from '../components/ProjectTile.vue';
-import VueScrollSnap from '../components/VueScrollSnap.vue';
+import ScrollSnap from '../components/ScrollSnap.vue';
 import CustomThemes from '../plugins/custom_themes';
 import { mapGetters } from 'vuex'
 
@@ -30,7 +30,7 @@ export default {
   components: {
     // ClassificationsBar,
     ProjectTile,
-    VueScrollSnap
+    ScrollSnap
   },
   data() {
     return {
@@ -89,10 +89,12 @@ export default {
 </script>
 
 <style scoped>
-.classifications-menu {
+
+/* .classifications-menu {
   position: fixed;
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
-}
+} */
+
 </style>

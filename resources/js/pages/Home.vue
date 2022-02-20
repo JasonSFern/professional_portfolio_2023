@@ -51,6 +51,7 @@ export default {
 </script>
 
 <style scoped>
+
 #particles-js {
   height: 100vh;
 }
@@ -62,7 +63,4 @@ export default {
   width: 100%;
 }
 
-.unified-color {
-  background-color: var(--v-primary-base) !important;
-}
 </style>

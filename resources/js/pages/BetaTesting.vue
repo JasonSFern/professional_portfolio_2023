@@ -34,7 +34,7 @@ import WarpSpeedA from '../components/WarpSpeedA.vue'
 import WarpSpeedB from '../components/WarpSpeedB.vue'
 
 export default {
-  name: `AnimationTest`,
+  name: `BetaTesting`,
   components: {
     ImageParallax,
     SkewScroll,

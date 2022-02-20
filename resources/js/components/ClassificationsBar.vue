@@ -33,12 +33,9 @@ export default {
 </script>
 
 <style >
+
 .classification {
   border-radius: 20px;
 }
 
-.selected {
-  opacity: 0.5;
-  background-color:black;
-}
 </style>

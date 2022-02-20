@@ -16,7 +16,7 @@
 
 <script>
     export default {
-        name: "VueScrollSnap",
+        name: "ScrollSnap",
         props: {
             isLoaded: {
                 type: Boolean,
@@ -167,11 +167,6 @@
 .sections-menu .menu-point.active {
   opacity: 1;
   transform: scale(1.5);
-}
-
-.fullpage {
-  height: 100vh;
-  width: 100%;
 }
 
 </style>
