@@ -19,8 +19,12 @@
           </div>
           <hr/>
           <p style="white-space: pre-wrap;">{{ item.description }}</p>
-          <div v-if="item.route">
-            <v-btn :href="item.route" class="accent-color-bg">Launch</v-btn>
+          <div v-if="item.links">
+            <hr/>
+            <v-btn :href="item.links.route" color="accent">Launch</v-btn>
+            <v-btn :href="item.links.github" color="accent" target="_blank" class="ml-2">
+              <v-icon dark>fab fa-github</v-icon>
+            </v-btn>
           </div>
         </div>
       </div>
@@ -54,8 +58,10 @@ export default {
 
         var photos = JSON.parse(this.item.photos)
         var skills = JSON.parse(this.item.skills)
+        var links = JSON.parse(this.item.links)
         this.item.photos = photos
         this.item.skills = skills
+        this.item.links = links
         this.photos = photos.showcase
 
         this.init()
@@ -87,15 +93,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-
-.skill-icon {
-  width:40px
-}
-
-.image-wrap {
-	border-radius: 20px;
-}
-
-</style>
