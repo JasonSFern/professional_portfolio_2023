@@ -23,7 +23,7 @@ class CreateProjectsTable extends Migration
             $table->string('display_theme');
             $table->json('photos');
             $table->json('skills');
-            $table->string('route')->nullable();
+            $table->json('links')->nullable();
             $table->timestamps();
         });
     }
