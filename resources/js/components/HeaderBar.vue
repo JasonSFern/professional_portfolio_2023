@@ -64,7 +64,7 @@
         <v-icon v-else>mdi-moon-waxing-crescent</v-icon>
       </v-btn>
 
-      <!-- <v-menu offset-y rounded="b-xl nav-link">
+      <v-menu v-if="showThemePicker" offset-y rounded="b-xl nav-link">
         <template v-slot:activator="{ on, attrs }">
           <v-btn
             icon
@@ -86,7 +86,7 @@
             <v-list-item-title>{{ key }}</v-list-item-title>
           </v-list-item>
         </v-list>
-      </v-menu> -->
+      </v-menu>
 
     </v-app-bar>
   </div>
@@ -120,6 +120,7 @@ export default {
     return {
       drawer: null,
       allRoutes: this.$router.options.routes,
+      showThemePicker: false,
       themes: CustomThemes
     };
   },
