@@ -1,4 +1,4 @@
-@extends('coding.avix.avixlayout')
+@extends('coding.avix.avixLayout')
 @section('content')
 
   <title>About Avix</title>
