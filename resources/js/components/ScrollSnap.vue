@@ -1,144 +1,191 @@
 <template>
-  <div>
+  <div id="container">
     <div class="sections-menu">
       <span
-         class="menu-point"
-         v-bind:class="{active: activeSection == index}"
-         v-on:click="scrollToSection(index)"
-         v-for="(offset, index) in offsets"
-         v-bind:key="index">
+        class="menu-point"
+        v-bind:class="{active: activeSection == index}"
+        v-on:click="scrollToSection(index)"
+        v-for="(offset, index) in offsets"
+        v-bind:key="index">
       </span>
     </div>
     <slot></slot>
   </div>
-
 </template>
 
 <script>
-    export default {
-        name: "ScrollSnap",
-        props: {
-            isLoaded: {
-                type: Boolean,
-                default: false
+  export default {
+    name: "ScrollSnap",
+    props: {
+      isLoaded: {
+        type: Boolean,
+        default: false
+      }
+    },
+    watch: {
+      isLoaded: function(vNew, vOld) {
+        if(vNew == true) {
+          this.init()
+        }
+      }
+    },
+    data() {
+      return {
+        inMove: false,
+        activeSection: 0,
+        offsets: [],
+        touchStartY: 0
+      }
+    },
+    methods: {
+      init() {
+        this.calculateSectionOffsets();
+        setTimeout(() => {
+          this.inMove = true
+          this.scrollToSection(0, true);
+        }, 1000);
+
+        let el = document.getElementById('container')
+        this.swipeDetect(el, this.movePage)
+        this.scrollDetect(el, this.movePage)
+      },
+      calculateSectionOffsets() {
+        let sections = document.getElementsByTagName('section');
+        let length = sections.length;
+            
+        for(let i = 0; i < length; i++) {
+          let sectionOffset = sections[i].offsetTop;
+          this.offsets.push(sectionOffset);
+        }
+      },
+      movePage(dir) {
+        this.inMove = true;
+
+        switch(dir) {
+          case 'up':
+            this.activeSection++;
+            break
+          case 'down':
+            this.activeSection--;
+            break
+          default:
+            break
+        }
+
+        if(this.activeSection < 0) {
+          this.activeSection = this.offsets.length - 1;
+        } else if(this.activeSection > this.offsets.length - 1) {
+          this.activeSection = 0;
+        }
+
+        this.scrollToSection(this.activeSection, true);
+      },
+      scrollToSection(id, force = false) {
+        if(this.inMove && !force) return false;
+
+        this.activeSection = id;
+        this.inMove = true;
+
+        document.getElementsByTagName('section')[id].scrollIntoView({behavior: 'smooth'});
+        
+        this.$emit("setCustomTheme", id);
+        
+        setTimeout(() => {
+          this.inMove = false;
+        }, 800);
+      },
+      scrollDetect(el, callback) {
+        var scrollsurface = el,
+            scrolldir,
+            deltaX,
+            deltaY,
+            threshold = 120, //required min distance traveled to be considered scroll
+            restraint = 100, // maximum distance allowed at the same time in perpendicular direction
+            handlescroll = callback || function(scrolldir){}
+
+        if (navigator.userAgent.indexOf("Firefox") != -1) {
+          scrollsurface.addEventListener('DOMMouseScroll', (e) => {
+            deltaY = e.detail
+
+            scrolldir = (deltaY < 0)? 'up' : 'down' // if delta is negative, it indicates up swipe
+
+            if (!this.inMove) handlescroll(scrolldir)
+            if (this.inMove) scrolldir = null
+            e.preventDefault()
+          }, { passive: false })
+        } else {
+          scrollsurface.addEventListener('wheel', (e) => {
+            deltaX = e.wheelDeltaX
+            deltaY = e.wheelDeltaY
+
+            if (Math.abs(deltaX) >= threshold && Math.abs(deltaY) <= restraint){ // 2nd condition for horizontal swipe met
+              scrolldir = (deltaX < 0)? 'left' : 'right' // if delta is negative, it indicates left swipe
+            } else if (Math.abs(deltaY) >= threshold && Math.abs(deltaX) <= restraint){ // 2nd condition for vertical swipe met
+              scrolldir = (deltaY < 0)? 'up' : 'down' // if delta is negative, it indicates up swipe
             }
-        },
-        watch: {
-            isLoaded: function(vNew, vOld) {
-                if(vNew == true) {
-                    this.init()
+
+            if (!this.inMove) handlescroll(scrolldir)
+            if (this.inMove) scrolldir = null
+            e.preventDefault()
+          }, { passive: false })
+        }
+      },
+      swipeDetect(el, callback) {
+        var touchsurface = el,
+            swipedir,
+            startX,
+            startY,
+            distX,
+            distY,
+            threshold = 150, //required min distance traveled to be considered swipe
+            restraint = 100, // maximum distance allowed at the same time in perpendicular direction
+            allowedTime = 300, // maximum time allowed to travel that distance
+            elapsedTime,
+            startTime,
+            handleswipe = callback || function(swipedir){}
+
+        touchsurface.addEventListener('touchstart', (e) => {
+          var touchobj = e.changedTouches[0]
+          var dist = 0
+          swipedir = 'none'
+          startX = touchobj.pageX
+          startY = touchobj.pageY
+          startTime = new Date().getTime() // record time when finger first makes contact with surface
+          e.preventDefault()
+        }, { passive: false })
+  
+        touchsurface.addEventListener('touchmove', (e) => {
+            e.preventDefault() // prevent scrolling when inside DIV
+        }, { passive: false })
+  
+        touchsurface.addEventListener('touchend', (e) => {
+            var touchobj = e.changedTouches[0]
+            distX = touchobj.pageX - startX // get horizontal dist traveled by finger while in contact with surface
+            distY = touchobj.pageY - startY // get vertical dist traveled by finger while in contact with surface
+            elapsedTime = new Date().getTime() - startTime // get time elapsed
+            if (elapsedTime <= allowedTime){ // first condition for awipe met
+                if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint){ // 2nd condition for horizontal swipe met
+                    swipedir = (distX < 0)? 'left' : 'right' // if dist traveled is negative, it indicates left swipe
+                }
+                else if (Math.abs(distY) >= threshold && Math.abs(distX) <= restraint){ // 2nd condition for vertical swipe met
+                    swipedir = (distY < 0)? 'up' : 'down' // if dist traveled is negative, it indicates up swipe
                 }
             }
-        },
-        data() {
-            return {
-                inMove: false,
-                activeSection: 0,
-                offsets: [],
-                touchStartY: 0
-            }
-        },
-        methods: {
-            calculateSectionOffsets() {
-            let sections = document.getElementsByTagName('section');
-            let length = sections.length;
-            
-            for(let i = 0; i < length; i++) {
-                let sectionOffset = sections[i].offsetTop;
-                this.offsets.push(sectionOffset);
-            }
-            },
-            handleMouseWheel: function(e) {
+            if (!this.inMove) handleswipe(swipedir)
+            e.preventDefault()
+        }, { passive: false })
+      },
+    },
+    destroyed() {
+      let el = document.getElementById('container')
 
-            if (e.wheelDelta < 30 && !this.inMove) {
-                this.moveUp();
-            } else if (e.wheelDelta > 30 && !this.inMove) {
-                this.moveDown();
-            }
-                
-            e.preventDefault();
-            return false;
-            },
-            handleMouseWheelDOM: function(e) {
-            
-            if (e.detail > 0 && !this.inMove) {
-                this.moveUp();
-            } else if (e.detail < 0 && !this.inMove) {
-                this.moveDown();
-            }
-            
-            return false;
-            },
-            moveDown() {
-            this.inMove = true;
-            this.activeSection--;
-                
-            if(this.activeSection < 0) this.activeSection = this.offsets.length - 1;
-                
-            this.scrollToSection(this.activeSection, true);
-            },
-            moveUp() {
-            this.inMove = true;
-            this.activeSection++;
-                
-            if(this.activeSection > this.offsets.length - 1) this.activeSection = 0;
-                
-            this.scrollToSection(this.activeSection, true);
-            },
-            scrollToSection(id, force = false) {
-            if(this.inMove && !force) return false;
-            console.log(id)
-
-            this.activeSection = id;
-            this.inMove = true;
-            console.log('RAN')
-            document.getElementsByTagName('section')[id].scrollIntoView({behavior: 'smooth'});
-            
-            this.$emit("setCustomTheme", id);
-            
-            setTimeout(() => {
-                this.inMove = false;
-            }, 400);
-            
-            },
-            touchStart(e) {
-            e.preventDefault();
-            
-            this.touchStartY = e.touches[0].clientY;
-            },
-            touchMove(e) {
-            if(this.inMove) return false;
-            e.preventDefault();
-            
-            const currentY = e.touches[0].clientY;
-            
-            if(this.touchStartY < currentY) {
-                this.moveDown();
-            } else {
-                this.moveUp();
-            }
-            
-            this.touchStartY = 0;
-            return false;
-            },
-            init() {
-                this.calculateSectionOffsets();
-                this.$emit("setCustomTheme", 0);
-                document.addEventListener('DOMMouseScroll', this.handleMouseWheelDOM);  // Mozilla Firefox
-                document.addEventListener('mousewheel', this.handleMouseWheel, { passive: false }); // Other browsers
-
-                document.addEventListener('touchstart', this.touchStart, { passive: false }); // mobile devices
-                document.addEventListener('touchmove', this.touchMove, { passive: false }); // mobile devices
-            }
-        },
-        destroyed() {
-            document.removeEventListener('mousewheel', this.handleMouseWheel, { passive: false });  // Other browsers
-            document.removeEventListener('DOMMouseScroll', this.handleMouseWheelDOM); // Mozilla Firefox
-            
-            document.removeEventListener('touchstart', this.touchStart); // mobile devices
-            document.removeEventListener('touchmove', this.touchMove); // mobile devices
-        }
-    };
+      el.removeEventListener('touchstart', (e) => {});
+      el.removeEventListener('touchmove', (e) => {});
+      el.removeEventListener('touchend', (e) => {});
+      el.removeEventListener('wheel', (e) => {});
+      el.removeEventListener('DOMMouseScroll', (e) => {});
+    }
+  };
 
 </script>
 

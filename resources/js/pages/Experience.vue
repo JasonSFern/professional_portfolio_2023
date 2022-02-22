@@ -132,6 +132,7 @@ export default {
     overflow: hidden;
     overflow-y:scroll;
     height: 95vh;
+    scrollbar-width: none; /* Firefox 64 */
   }
 }
 
