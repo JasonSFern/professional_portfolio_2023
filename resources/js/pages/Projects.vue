@@ -1,7 +1,7 @@
 <template>
   <v-main>
   <!-- <classifications-bar class="classifications-menu" @filterProjects="filterProjectsList($event)"></classifications-bar> -->
-  <scroll-snap :isLoaded="isLoaded" ref="scrollsnap" @setCustomTheme="setCustomTheme($event)">
+  <scroll-snap :isLoaded="isLoaded" ref="scrollsnap" @setCustomTheme="setCustomTheme($event)" @viewProject="getProjectForViewing($event)">
     <project-tile
       v-for="item in items"
       :key="item.id"
@@ -52,6 +52,9 @@ export default {
     })
   },
   methods: {
+    getProjectForViewing(item_index) {
+      this.viewProject(this.items[item_index].id)
+    },
     viewProject(item_id) {
       this.$router.push({
         name: 'viewproject',

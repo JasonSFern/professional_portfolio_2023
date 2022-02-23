@@ -173,6 +173,7 @@
             }
             if (!this.inMove) handleswipe(swipedir)
             e.preventDefault()
+            if (Math.abs(distX) < 1 && Math.abs(distY) < 1) this.$emit("viewProject", this.activeSection);
         }, { passive: false })
       },
     },
