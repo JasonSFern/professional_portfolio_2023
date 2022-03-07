@@ -1,0 +1,125 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https://fonts.googleapis.com/css?family=Material+Icons);
+@import url(https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css);
+
+/* ***********************************************
+GENERAL STYLES
+*********************************************** */
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background-color: var(--v-background-base);
+}
+
+p {
+  font-family: 'Avenir', sans-serif;
+}
+
+h1 {
+font-family: 'Gigantic FS', sans-serif;
+}
+
+h2 {
+font-family: 'Gigantic FS', sans-serif;
+}
+
+h6 {
+  font-family: 'Gigantic FS', sans-serif;
+}
+
+.fullpage {
+  height: 100vh;
+  width: 100%;
+}
+
+.image-wrap {
+	border-radius: 20px;
+}
+
+.skill-icon {
+  width:40px
+}
+
+/* ***********************************************
+NO BUTTON OUTLINE
+*********************************************** */
+button {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+button:hover {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+button:focus {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+button:active {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+
+
+/* ***********************************************
+COLOR STYLES
+*********************************************** */
+.primary-color-c {
+  color: var(--v-primary-base) !important;
+}
+.primary-color-bg {
+  background-color: var(--v-primary-base) !important;
+}
+.secondary-color-c {
+  color: var(--v-secondary-base) !important;
+}
+.secondary-color-bg {
+  background-color: var(--v-secondary-base) !important;
+}
+.accent-color-c {
+  color: var(--v-accent-base) !important;
+}
+.accent-color-bg {
+  background-color: var(--v-accent-base) !important;
+}
+.background-color-c {
+  color: var(--v-background-base) !important;
+}
+.background-color-bg {
+  background-color: var(--v-background-base) !important;
+}
+.gradient-color-c {
+  color: linear-gradient(to bottom right, var(--v-gradient1-base), var(--v-gradient2-base), var(--v-gradient3-base)) !important;
+}
+.gradient-color-bg {
+  background: linear-gradient(to bottom right, var(--v-gradient1-base), var(--v-gradient2-base), var(--v-gradient3-base)) !important;
+}
+.transparent {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
+/* ***********************************************
+VUE TYPER STYLES
+*********************************************** */
+.vue-typer {
+  font-family: monospace;
+  font-size:20px;
+}
+
+.vue-typer .custom.char {
+  color: var(--v-primary-base) !important;
+}
+.vue-typer .custom.char.selected {
+  background-color: var(--v-accent-base) !important;
+}
+
+.vue-typer .custom.caret {
+  width: 1px;
+}

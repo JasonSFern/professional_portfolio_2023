@@ -3,8 +3,6 @@ node_modules/
 npm-debug.log
 yarn-error.log
 docker-compose.override.yml
-/.idea
-/.vscode
 
 # Laravel 4 specific
 bootstrap/compiled.php
@@ -25,3 +23,39 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
+
+# Public folders
+/public/hot
+/public/includes
+/public/pro/docs
+/public/storage
+/public/vendor
+/public/quasar/spa
+public/.htaccess
+/public/pdfjs
+public/js.app.js
+
+# local files
+*.log
+.DS_Store
+._.DS_Store
+.env
+.env.backup
+.env.testing
+.php_cs.cache
+.phpunit.result.cache
+docker-compose.local.yml
+Homestead.json
+Homestead.yaml
+
+# IDEs support
+/.local
+/.vscode
+_ide_helper.php
+_ide_helper_models.php
+.phpstorm.meta.php
+/.idea
+._.vscode
+
+# lock files
+package-lock.json
