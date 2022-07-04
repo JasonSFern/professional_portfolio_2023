@@ -26,6 +26,7 @@ export default {
       warning: "#f09333",
       danger: "#cc362b",
     },
+    icon: "mdi-content-save"
   },
   industrial: {
     light: {
@@ -53,7 +54,8 @@ export default {
       info: "#face33",
       warning: "#f09333",
       danger: "#cc362b",
-    }
+    },
+    icon: "mdi-hammer-wrench"
   },
   nature: {
     light: {
@@ -81,7 +83,8 @@ export default {
       info: "#face33",
       warning: "#f09333",
       danger: "#cc362b",
-    }
+    },
+    icon: "mdi-grass"
   },
   sunshine: {
     light: {
@@ -109,7 +112,8 @@ export default {
       info: "#face33",
       warning: "#f09333",
       danger: "#cc362b",
-    }
+    },
+    icon: "mdi-weather-sunny"
   },
   olive: {
     light: {
@@ -138,6 +142,7 @@ export default {
       warning: "#f09333",
       danger: "#cc362b",
     },
+    icon: "mdi-bottle-wine"
   },
   royal: {
     dark: {
@@ -161,11 +166,12 @@ export default {
       gradient1: "#c847b0",
       gradient2: "#9240bc",
       gradient3: "#6f3ec5",
-            success: "#68c929",
+      success: "#68c929",
       info: "#face33",
       warning: "#f09333",
       danger: "#cc362b",
-    }
+    },
+    icon: "mdi-crown"
   },
   rust: {
     light: {
@@ -193,7 +199,8 @@ export default {
       info: "#face33",
       warning: "#f09333",
       danger: "#cc362b",
-    }
+    },
+    icon: "mdi-hat-fedora"
   },
   sky: {
     light: {
@@ -221,13 +228,14 @@ export default {
       info: "#face33",
       warning: "#f09333",
       danger: "#cc362b",
-    }
+    },
+    icon: "mdi-cloud"
   },
   slate: {
     light: {
       primary: "#ffffff",
       secondary: "#bdbdbd",
-      accent: "#cc362b",
+      accent: "#39B6CE",
       background: "#16181d",
       gradient1: "#16181d",
       gradient2: "#212224",
@@ -240,7 +248,7 @@ export default {
     dark: {
       primary: "#ffffff",
       secondary: "#bdbdbd",
-      accent: "#cc362b",
+      accent: "#39B6CE",
       background: "#16181d",
       gradient1: "#16181d",
       gradient2: "#212224",
@@ -249,6 +257,36 @@ export default {
       info: "#face33",
       warning: "#f09333",
       danger: "#cc362b",
-    }
-  }
+    },
+    icon: "mdi-draw-pen"
+  },
+  galaxy: {
+    light: {
+      primary: "#ffffff",
+      secondary: "#163162",
+      accent: "#4F277C",
+      background: "#45193d",
+      gradient1: "#080918",
+      gradient2: "#050610",
+      gradient3: "#0A0613",
+      success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
+    },
+     dark: {
+      primary: "#ffffff",
+      secondary: "#163162",
+      accent: "#4F277C",
+      background: "#45193d",
+      gradient1: "#080918",
+      gradient2: "#050610",
+      gradient3: "#0A0613",
+      success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
+    },
+    icon: "mdi-space-station"
+  },
 }
