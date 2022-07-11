@@ -43,8 +43,9 @@
                 v-if="
                   (content.type == 'paragraph') | (content.type == 'disclaimer')
                 "
-                :class="{ 'font-italic': content.type == 'disclaimer' }"
+                :class="{ 'disclaimer-text': content.type == 'disclaimer' }"
               >
+                {{ content.type == "disclaimer" ? "Disclaimer: " : "" }}
                 {{ content.content }}
               </span>
 
@@ -66,8 +67,12 @@
               class="mr-2"
               color="accent"
             >
-              <v-icon v-if="link.icon" dark>fab fa-{{ link.icon }}</v-icon>
-              <span v-if="link.label">&nbsp;{{ link.label }}</span>
+              <v-icon class="primary-color-c" v-if="link.icon" dark
+                >fab fa-{{ link.icon }}</v-icon
+              >
+              <span class="primary-color-c" v-if="link.label"
+                >&nbsp;{{ link.label }}</span
+              >
             </v-btn>
           </div>
         </div>
