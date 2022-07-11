@@ -6,8 +6,8 @@
       </div>
       <br />
 
-      <div class="d-md-block d-lg-flex">
-        <div class="col-md-12 col-lg-7 pl-0">
+      <div class="d-block">
+        <div class="col-12">
           <v-carousel class="carousel-wrap pt-0" hide-delimiters>
             <v-carousel-item v-for="(image, index) in showcase" :key="index">
               <img :src="image" ref="" class="image-wrap" />
@@ -15,7 +15,7 @@
           </v-carousel>
         </div>
 
-        <div class="col-md-12 col-lg-5">
+        <div class="col-12">
           <div class="d-flex justify-space-between">
             <div>
               <h2>{{ item.title }}</h2>

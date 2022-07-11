@@ -41,8 +41,21 @@ h6 {
 }
 
 .carousel-wrap {
-  height: auto;
-  width: 100%;
+  height: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+@media (min-width: 992px) {
+  .carousel-wrap {
+    width: 650px !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .carousel-wrap {
+    width: 100% !important;
+  }
 }
 
 .disclaimer-text {
