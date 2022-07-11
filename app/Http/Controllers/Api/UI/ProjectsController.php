@@ -8,7 +8,7 @@ use App\Models\Projects;
 class ProjectsController extends Controller
 {
     public function projects(Request $request) {
-        $data = Projects::orderBy('title', 'ASC')->where('is_active', 1)->get();
+        $data = Projects::where('is_active', 1)->get();
         return $data;
     }
     

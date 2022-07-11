@@ -1,6 +1,6 @@
 <template>
   <div style="padding-top: 8vh">
-    <h1 ref="hello" class="greeting pa-0 ma-0">Hello</h1>
+    <h1 ref="hello" class="greeting pa-0 ma-0 primary-color-c">Hello</h1>
     <div class="layer1">
       <div class="layer2">
         <div class="layer3"></div>
@@ -18,42 +18,62 @@
       erase-style="select-back"
       :erase-on-complete="false"
       caret-animation="smooth"
-      />
+    />
   </div>
 </template>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"
+></script>
 <script>
-
-import $ from 'jquery';
-import { VueTyper } from 'vue-typer';
+import $ from "jquery";
+import { VueTyper } from "vue-typer";
 
 export default {
-    name: "SplashLogo",
-    components: {
-      VueTyper,
-    },
-    data() {
-      return {
-        typerText: ["< code_monkey /> 👨‍💻", "DESIGNER ~ 🎨", "Night Owl * 🌙"]
-      };
-    },
-    mounted() {
-      var logo = $(".layer1");
+  name: "SplashLogo",
+  components: {
+    VueTyper,
+  },
+  data() {
+    return {
+      typerText: ["< code_monkey /> 👨‍💻", "DESIGNER ~ 🎨", "Night Owl * 🌙"],
+    };
+  },
+  mounted() {
+    var logo = $(".layer1");
 
-      $(document).on("mousemove",function(e) {
-          var ax = -($(window).innerWidth()/2- e.pageX)/60;
-          var ay = ($(window).innerHeight()/2- e.pageY)/30;
-          logo.attr("style", "transform: rotateY("+ax+"deg) rotateX("+ay+"deg);-webkit-transform: rotateY("+ax+"deg) rotateX("+ay+"deg);-moz-transform: rotateY("+ax+"deg) rotateX("+ay+"deg)");
-      });
+    $(document).on("mousemove", function (e) {
+      var ax = -($(window).innerWidth() / 2 - e.pageX) / 60;
+      var ay = ($(window).innerHeight() / 2 - e.pageY) / 30;
+      logo.attr(
+        "style",
+        "transform: rotateY(" +
+          ax +
+          "deg) rotateX(" +
+          ay +
+          "deg);-webkit-transform: rotateY(" +
+          ax +
+          "deg) rotateX(" +
+          ay +
+          "deg);-moz-transform: rotateY(" +
+          ax +
+          "deg) rotateX(" +
+          ay +
+          "deg)"
+      );
+    });
 
-      this.gsap.fromTo(this.$refs.hello, {opacity:0}, {duration: .5, opacity: 1, delay:1 });
-    }
-}
-
+    this.gsap.fromTo(
+      this.$refs.hello,
+      { opacity: 0 },
+      { duration: 0.5, opacity: 1, delay: 1 }
+    );
+  },
+};
 </script>
 
 <style scoped>
-
 .logo-container {
   padding-top: calc(32vh - 130px);
   margin-left: -1%;
@@ -150,5 +170,4 @@ export default {
   font-size: 60px;
   text-transform: uppercase;
 }
-
 </style>

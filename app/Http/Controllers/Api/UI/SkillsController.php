@@ -8,7 +8,7 @@ use App\Models\Skills;
 class SkillsController extends Controller
 {
     public function skills(Request $request) {
-        $data = Skills::orderBy('skill_level', 'DESC')->where('is_active', 1)->get();
+        $data = Skills::orderBy('order', 'ASC')->where('is_active', 1)->get();
         return $data;
     }
     

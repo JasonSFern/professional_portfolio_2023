@@ -23,6 +23,7 @@ export default {
       return Api.getAllProjects(payload).then(response => {
         let data = response.data
         data.forEach(function (item) {
+          item.contents = JSON.parse(item.contents)
           item.photos = JSON.parse(item.photos)
           item.skills = JSON.parse(item.skills)
           item.links = JSON.parse(item.links)
@@ -35,6 +36,7 @@ export default {
       return Api.getAllDesignProjects(payload).then(response => {
         let data = response.data
         data.forEach(function (item) {
+          item.contents = JSON.parse(item.contents)
           item.photos = JSON.parse(item.photos)
           item.skills = JSON.parse(item.skills)
           item.links = JSON.parse(item.links)
@@ -47,6 +49,7 @@ export default {
       return Api.getAllCodingProjects(payload).then(response => {
         let data = response.data
         data.forEach(function (item) {
+          item.contents = JSON.parse(item.contents)
           item.photos = JSON.parse(item.photos)
           item.skills = JSON.parse(item.skills)
           item.links = JSON.parse(item.links)

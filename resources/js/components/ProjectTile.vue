@@ -16,7 +16,13 @@
         <h1 class="pertext">{{ item.title }}</h1>
       </div>
       <div class="per-holder per-card-holder rounded-xl perholder2">
-        <div class="per-card per-card-d rounded-xl perimage2">
+        <div
+          class="per-card rounded-xl perimage2"
+          :class="{
+            'per-card-dark': !$vuetify.theme.dark,
+            'per-card-light': $vuetify.theme.dark,
+          }"
+        >
           <div style="height: 40%">
             <p class="persubtext">{{ item.subtitle }}</p>
           </div>
@@ -144,7 +150,7 @@ export default {
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Exo:wght@900&family=Montserrat:wght@900&family=Syncopate:wght@700&display=swap");
 
 .fullpage-padding {
   padding-top: 30vh;
@@ -172,10 +178,13 @@ export default {
 
 .per-image-d {
   width: 400px;
+  border: solid 1px rgba(29, 29, 29, 0.4);
+  filter: brightness(70%);
 }
 
 .per-image-m {
   width: 300px;
+  filter: brightness(70%);
 }
 
 .per-title {
@@ -184,11 +193,12 @@ export default {
 }
 
 .per-title h1 {
-  text-shadow: 2px 2px 8px #000000;
+  text-shadow: 0px 0px 6px var(--v-accent-base);
   text-align: center;
-  color: white;
-  font-size: 50px;
-  font-family: "Titillium", sans-serif;
+  color: #d9ebfe;
+  /* color: var(--v-secondary-base); */
+  font-size: 40px;
+  font-family: "Syncopate", sans-serif;
   text-transform: uppercase;
 }
 
@@ -199,7 +209,7 @@ export default {
 }
 
 .per-title-d h1 {
-  font-size: 80px !important;
+  font-size: 65px !important;
 }
 
 .per-title-m {
@@ -217,15 +227,26 @@ export default {
   padding: 20px;
   width: 300px;
   height: 150px;
-  color: black;
+  backdrop-filter: blur(5px);
 }
 
 .per-card p {
-  font-family: "Rubik Mono One", sans-serif;
+  text-transform: uppercase;
+  font-family: "Exo", sans-serif;
 }
 
-.per-card-d {
-  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
+.per-card-light {
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.7);
+  border: solid 1px rgba(56, 56, 56, 0.1);
+}
+
+.per-card-light p {
+  text-shadow: 0px 0px 3px black;
+}
+
+.per-card-dark {
+  box-shadow: inset 0 0 2000px rgba(56, 56, 56, 0.9);
+  border: solid 1px rgba(255, 255, 255, 0.1);
 }
 
 .per-card-m {

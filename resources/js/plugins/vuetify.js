@@ -16,12 +16,12 @@ export default new Vuetify({
       themes: {
         light: {
           primary: "#2A3556",
-          secondary: "#6c97be",
+          secondary: "#face33",
           accent: "#202F61",
           background: "#EFEFF4",
-          gradient1: "#D3D3E2",
-          gradient2: "#F0F0F0",
-          gradient3: "#E8F0FE",
+          gradient1: "#859feb",
+          gradient2: "#6998e9",
+          gradient3: "#4e6dc1",
           success: "#68c929",
           info: "#face33",
           warning: "#f09333",

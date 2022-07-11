@@ -42,6 +42,8 @@ export default {
         Object.keys(light).forEach((i) => {
           this.$vuetify.theme.themes.light[i] = light[i];
         });
+
+        this.$vuetify.theme.dark = true;
       }
     },
   },

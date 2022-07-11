@@ -3,9 +3,9 @@
     <v-app-bar
       :elevation="elevation"
       app
+      class="transparent"
       :class="{
-        'frost-dark': applyFrosted && $vuetify.theme.dark,
-        'frost-light': applyFrosted && !$vuetify.theme.dark,
+        frosted: applyFrosted,
         transparent: !applyFrosted,
       }"
     >
@@ -34,7 +34,7 @@
       </v-menu>
 
       <v-btn to="/" depressed plain x-small class="nav-link">
-        <p class="pt-4 primary-color">Jason&nbsp;&nbsp;</p>
+        <p class="pt-4 primary-color-c">Jason&nbsp;&nbsp;</p>
         <strong class="pt-4 bold"
           ><p class="accent-color-c">Fernandes</p></strong
         >
@@ -58,10 +58,9 @@
       </v-btn>
 
       <v-spacer></v-spacer>
-
       <v-btn
         v-if="$route.name != 'projects' && $route.name != 'viewproject'"
-        class="mx-1"
+        class="mx-1 primary-color-c"
         @click="darkMode"
         plain
         icon
@@ -78,7 +77,15 @@
         max-width="300px"
       >
         <template v-slot:activator="{ on, attrs }">
-          <v-btn icon plain small v-bind="attrs" v-on="on" depressed>
+          <v-btn
+            class="mx-1 primary-color-c"
+            icon
+            plain
+            small
+            v-bind="attrs"
+            v-on="on"
+            depressed
+          >
             <v-icon>mdi-palette</v-icon>
           </v-btn>
         </template>
@@ -87,7 +94,7 @@
           <v-divider></v-divider>
           <v-card-text style="height: 300px">
             <v-btn
-              :color="theme.dark.background"
+              :color="theme.light.gradient3"
               v-for="(theme, key) in themes"
               :key="key"
               v-on:click="switchTheme(key)"
@@ -182,13 +189,8 @@ export default {
   font-family: "Avenir-Black", sans-serif;
 }
 
-.frost-dark {
+.frosted {
   background-color: rgba(152, 151, 151, 0.2) !important;
-  backdrop-filter: blur(5px) !important;
-}
-
-.frost-light {
-  background-color: rgba(255, 255, 255, 0.75) !important;
   backdrop-filter: blur(5px) !important;
 }
 </style>

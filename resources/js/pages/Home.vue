@@ -12,9 +12,9 @@
       :lineOpacity="0.4"
       :linesDistance="120"
       :moveSpeed="2"
-      :hoverEffect="true"
+      :hoverEffect="false"
       hoverMode="grab"
-      :clickEffect="true"
+      :clickEffect="false"
       clickMode="push"
     >
     </vue-particles>
@@ -25,24 +25,28 @@
 </template>
 
 <script>
-import SplashLogo from '../components/SplashLogo.vue';
+import SplashLogo from "../components/SplashLogo.vue";
 export default {
   name: `Home`,
   computed: {
     starColor: function () {
-      return this.$vuetify.theme.currentTheme.secondary
+      return this.$vuetify.theme.currentTheme.secondary;
     },
     linesColor: function () {
-      return this.$vuetify.theme.currentTheme.accent
-    }
+      return this.$vuetify.theme.currentTheme.accent;
+    },
   },
   mounted() {
-      this.gsap.fromTo(this.$refs.logo, {opacity:0}, {duration: .5, opacity: 1, delay: .5});
+    this.gsap.fromTo(
+      this.$refs.logo,
+      { opacity: 0 },
+      { duration: 0.5, opacity: 1, delay: 0.5 }
+    );
   },
   data() {
     return {
-      test: '' 
-    }
+      test: "",
+    };
   },
   components: {
     SplashLogo,
@@ -51,7 +55,6 @@ export default {
 </script>
 
 <style scoped>
-
 #particles-js {
   height: 100vh;
 }
@@ -62,5 +65,4 @@ export default {
   top: 15%;
   width: 100%;
 }
-
 </style>

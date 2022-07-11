@@ -5,22 +5,23 @@
         <h2>{{ item.title }}</h2>
       </div>
       <br />
-      <div class="d-block d-md-flex">
-        <div class="col-12 col-md-5 pl-0 glossy image">
-          <img
-            v-for="(image, index) in showcase"
-            :key="index"
-            :src="image"
-            ref=""
-            class="image pb-2 image-wrap"
-            style="width: inherit"
-          />
+
+      <div class="d-md-block d-lg-flex">
+        <div class="col-md-12 col-lg-7 pl-0">
+          <v-carousel class="carousel-wrap pt-0" hide-delimiters>
+            <v-carousel-item v-for="(image, index) in showcase" :key="index">
+              <img :src="image" ref="" class="image-wrap" />
+            </v-carousel-item>
+          </v-carousel>
         </div>
-        <div class="col-12 col-md-7">
-          <h2>{{ item.title }}</h2>
-          <p>{{ item.subtitle }}</p>
-          <div class="d-flex">
-            <div class="d-flex flex-row-reverse">
+
+        <div class="col-md-12 col-lg-5">
+          <div class="d-flex justify-space-between">
+            <div>
+              <h2>{{ item.title }}</h2>
+              <p class="mb-0">{{ item.subtitle }}</p>
+            </div>
+            <div class="d-flex flex-row-reverse mt-1">
               <img
                 v-for="(icon, index) in this.item.skills.icons"
                 :key="index"
@@ -29,18 +30,44 @@
               />
             </div>
           </div>
+
           <hr />
-          <p style="white-space: pre-wrap">{{ item.description }}</p>
-          <div v-if="item.links">
-            <hr />
-            <v-btn :href="item.links.route" color="accent">Launch</v-btn>
-            <v-btn
-              :href="item.links.github"
-              color="accent"
-              target="_blank"
-              class="ml-2"
+
+          <div>
+            <div
+              v-for="(content, index) in this.item.contents"
+              :key="index"
+              class="mb-5"
             >
-              <v-icon dark>fab fa-github</v-icon>&nbsp;Front End
+              <span
+                v-if="
+                  (content.type == 'paragraph') | (content.type == 'disclaimer')
+                "
+                :class="{ 'font-italic': content.type == 'disclaimer' }"
+              >
+                {{ content.content }}
+              </span>
+
+              <ul v-if="content.type == 'bullet'">
+                <li v-for="(bullet, indexb) in content.content" :key="indexb">
+                  {{ bullet }}
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <hr />
+          <div v-if="item.links">
+            <v-btn
+              v-for="(link, index) in this.item.links"
+              :key="index"
+              :href="link.path"
+              :target="target(link.type)"
+              class="mr-2"
+              color="accent"
+            >
+              <v-icon v-if="link.icon" dark>fab fa-{{ link.icon }}</v-icon>
+              <span v-if="link.label">&nbsp;{{ link.label }}</span>
             </v-btn>
           </div>
         </div>
@@ -66,16 +93,21 @@ export default {
       item: {},
       photos: {},
       important: false,
+      colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
     };
   },
   created() {
     projectsApi.getProjectById(this.item_id).then((response) => {
       this.item = response.data;
-      this.setCustomTheme(this.item.display_theme);
 
+      let theme = this.item.display_theme.split("--");
+      this.setCustomTheme(theme[0], theme[1]);
+
+      var contents = JSON.parse(this.item.contents);
       var photos = JSON.parse(this.item.photos);
       var skills = JSON.parse(this.item.skills);
       var links = JSON.parse(this.item.links);
+      this.item.contents = contents;
       this.item.photos = photos;
       this.item.skills = skills;
       this.item.links = links;
@@ -98,17 +130,18 @@ export default {
         { opacity: 1, duration: 2, delay: 1.5 }
       );
     },
-    setCustomTheme(themeName) {
-      let selectedTheme = CustomThemes[themeName];
-      let dark = selectedTheme.dark;
-      let light = selectedTheme.light;
+    target(type) {
+      return type == "link" ? "_blank" : "";
+    },
+    setCustomTheme(themeName, themeStyle) {
+      let selectedTheme = CustomThemes[themeName][themeStyle];
 
-      Object.keys(dark).forEach((i) => {
-        this.$vuetify.theme.themes.dark[i] = dark[i];
+      Object.keys(selectedTheme).forEach((i) => {
+        this.$vuetify.theme.themes.dark[i] = selectedTheme[i];
+        this.$vuetify.theme.themes.light[i] = selectedTheme[i];
       });
-      Object.keys(light).forEach((i) => {
-        this.$vuetify.theme.themes.light[i] = light[i];
-      });
+
+      this.$vuetify.theme.dark = themeStyle == "dark";
     },
   },
 };

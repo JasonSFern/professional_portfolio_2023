@@ -81,25 +81,19 @@ export default {
       }
     },
     setCustomTheme(item_index) {
-      let themeName = this.items[item_index].display_theme;
-      let selectedTheme = CustomThemes[themeName];
-      let dark = selectedTheme.dark;
-      let light = selectedTheme.light;
+      let theme = this.items[item_index].display_theme.split("--");
+      let themeName = theme[0];
+      let themeStyle = theme[1];
+      let selectedTheme = CustomThemes[themeName][themeStyle];
 
       let element = document.getElementById("grdclr");
-      console.log(element);
 
-      // element.style.backgroundImage =
-      //   'url("https://img.freepik.com/free-vector/space-background-with-abstract-shape-stars_189033-30.jpg?w=2000") !important';
+      Object.keys(selectedTheme).forEach((i) => {
+        this.$vuetify.theme.themes.dark[i] = selectedTheme[i];
+        this.$vuetify.theme.themes.light[i] = selectedTheme[i];
+      });
 
-      Object.keys(dark).forEach((i) => {
-        this.$vuetify.theme.themes.dark[i] = dark[i];
-      });
-      Object.keys(light).forEach((i) => {
-        this.$vuetify.theme.themes.light[i] = light[i];
-      });
-      element.classList.add("test-class");
-      element.classList.remove("gradient-color-bg");
+      this.$vuetify.theme.dark = themeStyle == "dark";
     },
   },
 };
