@@ -6,7 +6,6 @@
       class="transparent"
       :class="{
         frosted: applyFrosted,
-        transparent: !applyFrosted,
       }"
     >
       <v-menu offset-y rounded="b-xl nav-link">
