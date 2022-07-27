@@ -25,7 +25,7 @@
     />
         <link rel="stylesheet" href="/css/avix.css">
 
-    <title>AVIX AIR</title>
+    <title>AVIX Flight</title>
   </head>
 
   <!-- HEADER / NAVIGATION -->
