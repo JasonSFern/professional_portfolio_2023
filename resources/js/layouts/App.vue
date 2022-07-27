@@ -26,6 +26,7 @@ export default {
   data() {
     return {
       goDark: false,
+      isDark: true,
     };
   },
   watch: {
@@ -42,12 +43,14 @@ export default {
         Object.keys(light).forEach((i) => {
           this.$vuetify.theme.themes.light[i] = light[i];
         });
+
+        this.$vuetify.theme.dark = this.isDark;
       }
     },
   },
   methods: {
     darkMode(updatedTheme) {
-      this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+      this.$vuetify.theme.dark = this.isDark = !this.$vuetify.theme.dark;
     },
   },
 };
