@@ -30,12 +30,15 @@
 
   <!-- HEADER / NAVIGATION -->
   <header id="sectionHeader">
-    <div class="fade-in-nav logo floatleft"></div>
+    <div class="d-flex justify-content-center">
+      <div class="fade-in-nav logo goTop clickable"></div>
+    </div>
+    <!-- <div class="fade-in-nav logo alignright"></div>
 
     <ul class="fade-in-nav desktop-nav">
-      <li class="goAbout">ABOUT US</li>
-      <li class="goProducts">CURRENT PRODUCTS</li>
-      <li class="goUpcoming">UPCOMING PRODUCTS</li>
+      <li class="goAbout clickable">ABOUT US</li>
+      <li class="goProducts clickable">CURRENT PRODUCTS</li>
+      <li class="goUpcoming clickable">UPCOMING PRODUCTS</li>
     </ul>
 
     <div class="fade-in-nav mobile-nav">
@@ -47,12 +50,12 @@
         </input>
       
         <ul class="menu alignleft">
-          <li class="goAbout">ABOUT US</li>
-          <li class="goProducts">CURRENT PRODUCTS</li>
-          <li class="goUpcoming">UPCOMING PRODUCTS</li>
+          <li class="goAbout clickable">ABOUT US</li>
+          <li class="goProducts clickable">CURRENT PRODUCTS</li>
+          <li class="goUpcoming clickable">UPCOMING PRODUCTS</li>
         </ul>
       </div>
-    </div>
+    </div> -->
   </header>
 
   <main>
@@ -76,45 +79,47 @@
 
     <!-- ABOUT -->
     <div id="sectionAbout" class="cloud-overlay">
-      <div class="quote-container aligncenter">
-        <h3>
-          In 2008 we started in a small airplane hangar on the south side of San
-          Fransico. Today we have become to leading innovator in luxury air
-          travel. From our airships to our private jets, we make sure that not
-          only do you travel in style, but luxury as well
-        </h3>
-      </div>
-
-      <div class="statement-container aligncenter">
-        <h2 class="">MEET THE TEAM</h2>
-      </div>
-
-      <div class="d-md-flex justify-content-start">
-        <div class="item-card col-12 col-md-4">
-          <h4>Jason Fernandes</h4>
-          <img class="image-circle" src="../img/avix/sil1.jpg" />
-          <h5>Founder and CEO</h5>
-          <p>
-            As the CEO of Avix, Jason Fernandes is responsible for running all facets of the business. Jason has a proven executive management track record and over 20 years of experience driving sales growth in the aviation industry.
-          </p>
+      <div class="cloud-container">
+        <div class="quote-container aligncenter">
+          <h3>
+            In 2008 we started in a small airplane hangar on the south side of San
+            Francisco. Today we have become to leading innovator in luxury air
+            travel. From our airships to our private jets, we make sure that not
+            only do you travel in style, but luxury as well
+          </h3>
         </div>
-
-        <div class="item-card col-12 col-md-4">
-          <h4>Erika Langdon</h4>
-          <img class="image-circle" src="../img/avix/sil2.jpg" />
-          <h5>CFO</h5>
-          <p>
-            As CFO of Avix, Erika Langdon is responsible for operational and financial strategy, assessment of organic and acquisition expansion opportunities, governance and risk management. Erika has been instrumental in the company's growth initiatives.
-          </p>
+  
+        <div class="statement-container aligncenter">
+          <h2 class="">MEET THE TEAM</h2>
         </div>
-
-        <div class="item-card col-12 col-md-4">
-          <h4>Sam Amante</h4>
-          <img class="image-circle" src="../img/avix/sil3.jpg" />
-          <h5>Lead Engineer</h5>
-          <p>
-            As Lead Engineer of Avix, Sam Amante is responsible for improving our product designs while reducing costs and streamlining manufacturing processes. Sam's 10+ years of experience as a Aeronautical Engineer has proven instrumental to improving the company's output.
-          </p>
+  
+        <div class="d-md-flex justify-content-start">
+          <div class="item-card col-12 col-md-4">
+            <h4>Jason Fernandes</h4>
+            <img class="image-circle" src="../img/avix/sil1.jpg" />
+            <h5>Founder and CEO</h5>
+            <p>
+              As the CEO of Avix, Jason Fernandes is responsible for running all facets of the business. Jason has a proven executive management track record and over 20 years of experience driving sales growth in the aviation industry.
+            </p>
+          </div>
+  
+          <div class="item-card col-12 col-md-4">
+            <h4>Erika Langdon</h4>
+            <img class="image-circle" src="../img/avix/sil2.jpg" />
+            <h5>CFO</h5>
+            <p>
+              As CFO of Avix, Erika Langdon is responsible for operational and financial strategy, assessment of organic and acquisition expansion opportunities, governance and risk management. Erika has been instrumental in the company's growth initiatives.
+            </p>
+          </div>
+  
+          <div class="item-card col-12 col-md-4">
+            <h4>Sam Amante</h4>
+            <img class="image-circle" src="../img/avix/sil3.jpg" />
+            <h5>Lead Engineer</h5>
+            <p>
+              As Lead Engineer of Avix, Sam Amante is responsible for improving our product designs while reducing costs and streamlining manufacturing processes. Sam's 10+ years of experience as a Aeronautical Engineer has proven instrumental to improving the company's output.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -138,22 +143,22 @@
           <div class="d-md-flex justify-content-start">
             <div class="item-card col-12 col-md-4">
               <img class="image-circle" src="../img/avix/ship.jpg" />
-              <h5>Open Space</h5>
-              <p>
+              <h5 class="leather">Open Space</h5>
+              <p class="leather">
                 The Open Space is a mega-yacht in the sky. This king-size airship is beautifully designed and customizable. Open Space, as the name implies, is very spacious throughout with 10 large staterooms, an open concept salon, professionally set-up pilot house, office, laundry room, and a walk around engine room. The latest high-end finishes and features and the latest in modern performance technology is included standard.
               </p>
             </div>
             <div class="item-card col-12 col-md-4">
               <img class="image-circle" src="../img/avix/jet.jpg" />
-              <h5>Private Space</h5>
-              <p>
+              <h5 class="leather">Private Space</h5>
+              <p class="leather">
                 The Private Space is a private jet that is incredibly luxurious with full stand-up cabins and loads of space for up to 18 passengers and their luggage. Standard amenities included are large comfortable chairs, lie-flat beds, enclosed bathrooms, top tier entertainment facilities, and onboard Wi-Fi. The Private Space can travel distances up to 5,700 miles at a cruise speed of about 550mph.
               </p>
             </div>
             <div class="item-card col-12 col-md-4">
               <img class="image-circle" src="../img/avix/personalp.jpg" />
-              <h5>Personal Space</h5>
-              <p>
+              <h5 class="leather">Personal Space</h5>
+              <p class="leather">
                 The Personal Space is a vertical take-off and landing jet and is our first fully electric offering. This eVTOL features electric jet engines that are integrated into the wing flaps. This provides increased payload along with reduced noise. A fixed wing design allows for greater aerodynamics and makes the Personal Space very efficient at cruise speeds. Available cabins offer a 1 or 2 person capacity with luxurious seating for the occupant(s).
               </p>
             </div>
@@ -169,7 +174,7 @@
           <div>
             <h1 class="alignright">PRESENTING:</h1>
             <h1 class="alignright">HALO VR-6</h1>
-            <h2 style="font-size: 28px !important" class="alignright">
+            <h2 class="alignright halo-subhead">
               The most advanced ship in it's class
             </h2>
           </div>
@@ -183,7 +188,7 @@
           </h1>
 
           <div
-            class="d-md-flex justify-content-start form-card col-12 col-md-4"
+            class="d-md-flex justify-content-start form-card col-12 col-md-6"
           >
             <input
               type="text"
@@ -202,7 +207,7 @@
     <div class="row">
       <div class="col-12 aligncenter">
         <ul>
-          <li class="goTop">
+          <li class="goTop clickable">
             <i class="fa fa-arrow-up fa-3x" aria-hidden="true"></i>
           </li>
         </ul>
@@ -215,12 +220,12 @@
   <!-- FOR SCROLLING TO SECTIONS -->
   <script>
 
-    let sectionHero = $('#sectionHero').offset().top,
-        sectionAbout = $('#sectionAbout').offset().top,
-        sectionProducts = $('#sectionProducts').offset().top,
-        sectionUpcoming = $('#sectionUpcoming').offset().top;
+    let sectionHero = $('#sectionHero').offset().top;
+        // sectionAbout = $('#sectionAbout').offset().top,
+        // sectionProducts = $('#sectionProducts').offset().top,
+        // sectionUpcoming = $('#sectionUpcoming').offset().top;
 
-    const scrollTo = (position, offset = 0) => {
+    const scrollTo = (position, offset = 80) => {
       let speed = 800;
 
       $('html, body').animate(
@@ -229,17 +234,17 @@
       );
     }
 
-    $('.goAbout').click(function () {
-      scrollTo(sectionAbout, 80);
-    });
-    $('.goProducts').click(function () {
-      scrollTo(sectionProducts, 130);
-    });
-    $('.goUpcoming').click(function () {
-      scrollTo(sectionUpcoming, 130);
-    });
+    // $('.goAbout').click(function () {
+    //   scrollTo(sectionAbout);
+    // });
+    // $('.goProducts').click(function () {
+    //   scrollTo(sectionProducts, 130);
+    // });
+    // $('.goUpcoming').click(function () {
+    //   scrollTo(sectionUpcoming, 130);
+    // });
     $('.goTop').click(function () { 
-      scrollTo(sectionHero, 80);
+      scrollTo(sectionHero);
     });
 
   </script>

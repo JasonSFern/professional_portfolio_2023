@@ -21,25 +21,6 @@ FONTS
   src: url("/fonts/Savoye-LET.ttc");
 }
 
-/* ***********************************************
-GENERAL
-*********************************************** */
-body,
-html {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  overflow-x: hidden;
-}
-
-main {
-  margin-top: 80px;
-}
-
-main {
-  margin-top: 80px;
-}
-
 h1 {
   font-family: "Orbitron-Medium";
   font-size: 70px;
@@ -91,6 +72,10 @@ p {
   font-size: 18px;
 }
 
+.halo-subhead {
+  font-size: 28px !important;
+}
+
 @media (max-width: 950px) {
   h1 {
     font-size: 50px !important;
@@ -99,6 +84,75 @@ p {
   h2 {
     font-size: 60px !important;
   }
+
+  h3 {
+    font-size: 40px !important;
+  }
+
+  h4 {
+    font-size: 28px !important;
+  }
+
+  h5 {
+    font-size: 20px !important;
+  }
+
+  p {
+    font-size: 16px !important;
+  }
+
+  .leather {
+    color: white;
+  }
+}
+
+@media (max-width: 650px) {
+  h1 {
+    font-size: 30px !important;
+  }
+
+  h2 {
+    font-size: 40px !important;
+  }
+
+  h3 {
+    font-size: 30px !important;
+  }
+
+  h4 {
+    font-size: 28px !important;
+  }
+
+  h5 {
+    font-size: 18px !important;
+  }
+
+  p {
+    font-size: 14px !important;
+  }
+
+  .halo-subhead {
+    font-size: 20px !important;
+  }
+
+  .leather {
+    color: white;
+  }
+}
+
+/* ***********************************************
+GENERAL
+*********************************************** */
+body,
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+main {
+  margin-top: 80px;
 }
 
 input {
@@ -121,19 +175,11 @@ ul {
   padding: 0;
 }
 
-li:hover,
-li:focus,
-li:active {
-  cursor: pointer;
-  transform: scale(1.2);
-}
-
 li {
   list-style: none;
   font-family: "Orbitron-Black";
   text-transform: uppercase;
   color: #ffffff;
-  transition: all 0.2s ease-in-out;
 }
 
 .floatleft {
@@ -160,6 +206,21 @@ li {
   background-size: cover;
 }
 
+.clickable {
+  transition: all 0.2s ease-in-out;
+}
+
+.clickable:hover,
+.clickable:focus {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.clickable:active {
+  cursor: pointer;
+  transform: scale(0.9);
+}
+
 .mobile-nav {
   display: none;
 }
@@ -181,48 +242,47 @@ li {
 /* ***********************************************
 BACKGROUNDS
 *********************************************** */
-.cloud-overlay {
-  width: 100%;
-  background-image: url("/img/avix/clouds.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}
+@media (min-width: 951px) {
+  .hero-overlay {
+    width: 100%;
+    height: 100%;
+    background-image: url("/img/avix/airship.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
 
-.hero-overlay {
-  width: 100%;
-  height: 100%;
-  background-image: url("/img/avix/airship.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}
+  .products-overlay {
+    width: 100%;
+    height: 100%;
+    max-height: 650px;
+    background-image: url("/img/avix/kyoto.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    z-index: -5;
+  }
 
-.products-overlay {
-  width: 100%;
-  height: 100%;
-  max-height: 650px;
-  background-image: url("/img/avix/Kyoto.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  z-index: -5;
-}
+  .halo-overlay {
+    width: 100%;
+    background-image: url("/img/avix/halo.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
 
-.halo-overlay {
-  width: 100%;
-  background-image: url("/img/avix/halo.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+  .cloud-overlay {
+    width: 100%;
+    background-image: url("/img/avix/clouds.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
 }
 
 @media (max-width: 950px) {
   .hero-overlay {
-    background-position: center !important;
-  }
-  .halo-overlay {
-    background-position: 50% !important;
+    height: calc(100vh - 175px);
   }
 }
 
@@ -359,37 +419,88 @@ MOBILE MENU
 /* ***********************************************
 CONTAINERS
 *********************************************** */
-.hero-container {
-  height: calc(100vh - 60px);
-  background-image: linear-gradient(
-    180deg,
-    rgba(0, 9, 14, 1),
-    rgba(0, 0, 0, 0)
-  );
+@media (min-width: 951px) {
+  .hero-container {
+    height: calc(100vh - 60px);
+    background-image: linear-gradient(
+      180deg,
+      rgba(0, 9, 14, 1),
+      rgba(0, 0, 0, 0)
+    );
+  }
+
+  .products-container {
+    padding-top: 20px;
+    background-image: linear-gradient(
+      180deg,
+      rgba(225, 186, 137, 0.3),
+      rgba(225, 186, 137, 0.3),
+      rgba(225, 186, 137, 0.4),
+      rgba(225, 186, 137, 0.6)
+    );
+  }
+
+  .halo-container {
+    height: calc(100vh - 60px);
+    background-image: linear-gradient(
+      180deg,
+      rgba(0, 9, 14, 1),
+      rgba(0, 9, 14, 0.1),
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0),
+      rgba(0, 9, 14, 0.1),
+      rgba(0, 9, 14, 1)
+    );
+  }
 }
 
-.products-container {
-  padding-top: 20px;
-  background-image: linear-gradient(
-    180deg,
-    rgba(225, 186, 137, 0.3),
-    rgba(225, 186, 137, 0.3),
-    rgba(225, 186, 137, 0.4),
-    rgba(225, 186, 137, 0.6)
-  );
-}
+@media (max-width: 950px) {
+  .hero-container {
+    height: 100%;
+    width: auto;
+    background-image: linear-gradient(
+        180deg,
+        rgba(0, 9, 14, 1),
+        rgba(0, 0, 0, 0)
+      ),
+      url("/img/avix/airship.jpg");
+    background-position: center;
+  }
 
-.halo-container {
-  height: 100vh;
-  background-image: linear-gradient(
-    180deg,
-    rgba(0, 9, 14, 1),
-    rgba(0, 9, 14, 0.1),
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0),
-    rgba(0, 9, 14, 0.1),
-    rgba(0, 9, 14, 1)
-  );
+  .products-container {
+    background-image: linear-gradient(
+        180deg,
+        rgba(225, 186, 137, 0.3),
+        rgba(225, 186, 137, 0.3),
+        rgba(225, 186, 137, 0.4),
+        rgba(225, 186, 137, 0.6)
+      ),
+      url("/img/avix/kyoto.jpg");
+    background-position: left;
+  }
+
+  .halo-container {
+    background-image: linear-gradient(
+        180deg,
+        rgba(0, 9, 14, 1),
+        rgba(0, 9, 14, 0.1),
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0),
+        rgba(0, 9, 14, 0.1),
+        rgba(0, 9, 14, 1)
+      ),
+      url("/img/avix/halo.jpg");
+    background-position: 75%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .cloud-container {
+    background-image: url("/img/avix/clouds.jpg");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
 
 /* ***********************************************
@@ -423,34 +534,52 @@ CARDS
 /* ***********************************************
 FROSTED GLASS STYLES
 *********************************************** */
-.frosted-glass {
-  z-index: 1;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 0 0 1px hsla(0, 0%, 100%, 0.3) inset,
-    0 0.5em 1em rgba(0, 0, 0, 0.6);
-  text-shadow: 0 1px 1px hsla(0, 0%, 100%, 0.3);
-  padding-top: 35px;
-  padding-bottom: 100px;
-  text-align: center;
+@media (min-width: 951px) {
+  .frosted-effect,
+  .frosted-glass::before {
+    background: url("/img/avix/kyoto_frost.jpg") 0 / cover fixed;
+  }
+
+  .frosted-glass {
+    z-index: 1;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px hsla(0, 0%, 100%, 0.3) inset,
+      0 0.5em 1em rgba(0, 0, 0, 0.6);
+    text-shadow: 0 1px 1px hsla(0, 0%, 100%, 0.3);
+    padding-top: 35px;
+    padding-bottom: 100px;
+    text-align: center;
+  }
+
+  .frosted-glass::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: -70px;
+    z-index: -1;
+    -webkit-filter: blur(15px);
+    filter: blur(15px);
+  }
 }
 
-.frosted-glass::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: -70px;
-  z-index: -1;
-  -webkit-filter: blur(15px);
-  filter: blur(15px);
-}
-
-.frosted-effect,
-.frosted-glass::before {
-  background: url("/img/avix/Kyoto.jpg") 0 / cover fixed;
+@media (max-width: 950px) {
+  .frosted-glass {
+    height: calc(100vh - 10%);
+    z-index: 4;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 0 1px 1px hsla(0, 0%, 100%, 0.3);
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+    background: url("/img/avix/leather.jpg") 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
 
 /* ***********************************************
@@ -542,7 +671,7 @@ ANIMATIONS
 /* ***********************************************
 MOBILE/DESKTOP MEDIA QUERIES
 *********************************************** */
-@media (max-width: 950px) {
+/* @media (max-width: 950px) {
   .mobile-nav {
     display: block;
   }
@@ -550,4 +679,4 @@ MOBILE/DESKTOP MEDIA QUERIES
   .desktop-nav {
     display: none;
   }
-}
+} */
