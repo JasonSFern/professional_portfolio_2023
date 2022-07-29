@@ -41,7 +41,6 @@ h6 {
 }
 
 .carousel-wrap {
-  height: auto !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
@@ -55,6 +54,16 @@ h6 {
 @media (max-width: 991px) {
   .carousel-wrap {
     width: 100% !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .carousel-wrap {
+    width: 100% !important;
+    height: 380px !important;
+  }
+  .image-wrap {
+    height: 380px !important;
   }
 }
 
