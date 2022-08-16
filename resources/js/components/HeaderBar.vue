@@ -58,6 +58,25 @@
 
       <v-spacer></v-spacer>
       <v-btn
+        class="mx-1"
+        color="secondary"
+        href="https://drive.google.com/file/d/1yaWP4JcBuoBX9ZkcdBM3MkP4SqhpHIBg/view?usp=sharing"
+        target="_blank"
+        style="font-weight: 700"
+        depressed
+        outlined
+        x-small
+      >
+        PDF Resume&nbsp;&nbsp;
+        <v-icon x-small>mdi-download</v-icon>
+      </v-btn>
+      <p
+        v-if="$route.name != 'projects' && $route.name != 'viewproject'"
+        class="d-none d-sm-flex pt-4 primary-color-c"
+      >
+        &nbsp;&nbsp;&nbsp;|&nbsp;
+      </p>
+      <v-btn
         v-if="$route.name != 'projects' && $route.name != 'viewproject'"
         class="mx-1 primary-color-c"
         @click="darkMode"

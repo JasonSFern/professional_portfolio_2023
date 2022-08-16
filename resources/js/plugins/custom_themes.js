@@ -147,7 +147,8 @@ export default {
   park: {
     light: {
       primary: "#0d1803",
-      accent: "#1c3900",
+      accent: "#f7cf46",
+      // accent: "#1c3900",
       secondary: "#f7cf46",
       background: "#1e5277",
       gradient1: "#1e5277",
@@ -160,7 +161,8 @@ export default {
     },
     dark: {
       primary: "#FFFFFF",
-      accent: "#448702",
+      accent: "#face33",
+      // accent: "#448702",
       secondary: "#face33",
       background: "#142d40",
       gradient1: "#19384f",
@@ -176,7 +178,8 @@ export default {
   olive: {
     light: {
       primary: "#272727",
-      secondary: "#674f91",
+      secondary: "#661141",
+      // secondary: "#674f91",
       accent: "#661141",
       background: "#A1A838",
       gradient1: "#A1A838",
@@ -189,7 +192,8 @@ export default {
     },
     dark: {
       primary: "#ffffff",
-      secondary: "#661141",
+      secondary: "#801f56",
+      // secondary: "#661141",
       accent: "#801f56",
       background: "#5e6222",
       gradient1: "#272a07",
@@ -205,7 +209,8 @@ export default {
   rust: {
     light: {
       primary: "#2b0a0a",
-      secondary: "#6e1a44",
+      secondary: "#dca235",
+      // secondary: "#6e1a44",
       accent: "#dca235",
       background: "#b05254",
       gradient1: "#cb6390",
@@ -218,7 +223,8 @@ export default {
     },
     dark: {
       primary: "#ffffff",
-      secondary: "#153f54",
+      secondary: "#dca235",
+      // secondary: "#153f54",
       accent: "#dca235",
       background: "#833255",
       gradient1: "#833255",

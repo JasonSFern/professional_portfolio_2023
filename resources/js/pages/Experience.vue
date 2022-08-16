@@ -65,18 +65,40 @@
           </div>
         </div>
 
-        <div ref="whitepaper" class="mt-15 mb-6">
+        <div ref="whitepaper" class="mt-15 mb-6 d-flex justify-space-between">
           <v-btn
-            :href="resumeLink"
+            :href="externalLinks.resumeLink"
             target="_blank"
             color="accent"
             dark
             large
-            style="width: 100%"
+            style="width: 48%"
           >
-            Whitepaper
-            <v-icon right dark>fas fa-file-download</v-icon>
+            PDF Resume
+            <v-icon right dark>mdi-download</v-icon>
           </v-btn>
+          <v-btn
+            :href="externalLinks.linkedIn"
+            target="_blank"
+            color="accent"
+            dark
+            large
+            style="width: 48%"
+          >
+            LinkedIn
+            <v-icon right dark>mdi-linkedin</v-icon>
+          </v-btn>
+          <!-- <v-btn
+            :href="externalLinks.resumeLinkClassic"
+            target="_blank"
+            color="accent"
+            dark
+            large
+            style="width: 48%"
+          >
+            Classic B&W
+            <v-icon right dark>mdi-file-document-multiple-outline</v-icon>
+          </v-btn> -->
         </div>
       </v-col>
       <v-col class="col-12 col-md-5 col-lg-7 scroll-container">
@@ -122,8 +144,14 @@ export default {
   },
   data() {
     return {
-      resumeLink:
-        "https://drive.google.com/file/d/1WQKMkWxwyjAf5LdRPWyq4FryFRSRV920/view?usp=sharing",
+      icon: "mdi-linkedin",
+      externalLinks: {
+        resumeLink:
+          "https://drive.google.com/file/d/1yaWP4JcBuoBX9ZkcdBM3MkP4SqhpHIBg/view?usp=sharing",
+        resumeLinkClassic:
+          "https://drive.google.com/file/d/1WQKMkWxwyjAf5LdRPWyq4FryFRSRV920/view?usp=sharing",
+        linkedIn: "https://www.linkedin.com/in/jsfernandes83/",
+      },
       series: [],
     };
   },

@@ -5,16 +5,23 @@
       <div class="d-block d-md-flex">
         <div class="col-12 col-md-5 pl-0 glossy image">
           <div ref="imageButton">
-            <v-btn
-              fab
-              dark
-              outline
-              color="accent"
-              v-on:click="getRightPic"
-              class="image-refresh"
-            >
-              <v-icon dark>mdi-eye-refresh</v-icon>
-            </v-btn>
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  fab
+                  dark
+                  outline
+                  color="accent"
+                  v-bind="attrs"
+                  v-on="on"
+                  v-on:click="getRightPic"
+                  class="image-refresh"
+                >
+                  <v-icon dark>mdi-eye-refresh</v-icon>
+                </v-btn>
+              </template>
+              <span>Cycle Image</span>
+            </v-tooltip>
           </div>
           <div ref="imageSliderCont">
             <div ref="imageSlider">
@@ -72,19 +79,24 @@
           </p>
           <hr />
 
-          <v-btn
-            v-for="link in externalLinks"
-            :key="link.icon"
-            fab
-            dark
-            outline
-            color="accent"
-            :href="link.href"
-            target="_blank"
-            class="mr-4"
-          >
-            <v-icon dark>{{ link.icon }}</v-icon>
-          </v-btn>
+          <v-tooltip v-for="link in externalLinks" :key="link.icon" bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                v-bind="attrs"
+                v-on="on"
+                fab
+                dark
+                outline
+                color="accent"
+                :href="link.href"
+                target="_blank"
+                class="mr-4"
+              >
+                <v-icon dark>{{ link.icon }}</v-icon>
+              </v-btn>
+            </template>
+            <span>{{ link.label }}</span>
+          </v-tooltip>
         </div>
       </div>
     </v-container>
@@ -145,12 +157,19 @@ export default {
       ],
       externalLinks: [
         {
+          href: "https://drive.google.com/file/d/1yaWP4JcBuoBX9ZkcdBM3MkP4SqhpHIBg/view?usp=sharing",
+          icon: "mdi-file-pdf-box",
+          label: "Resume",
+        },
+        {
           href: "https://www.linkedin.com/in/jsfernandes83/",
           icon: "mdi-linkedin",
+          label: "LinkedIn",
         },
         {
           href: "https://github.com/JasonSFern",
           icon: "mdi-github",
+          label: "GitHub",
         },
       ],
     };
