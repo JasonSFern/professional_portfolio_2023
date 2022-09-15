@@ -5,7 +5,11 @@
     class="fullpage fullpage-padding gradient-color-bg"
     @mousemove="mouseMoved"
   >
-    <div class="d-none d-md-flex per-container per-center" :style="rotation">
+    <div
+      class="d-flex per-container per-center"
+      v-on:click="viewProject(item.id)"
+      :style="rotation"
+    >
       <div class="per-holder per-image rounded-xl perholder1">
         <img
           class="per-image-d rounded-xl perimage1"
@@ -37,33 +41,6 @@
         </div>
       </div>
     </div>
-
-    <div class="d-flex d-md-none per-container per-center">
-      <div class="per-holder rounded-xl perholder1">
-        <img
-          class="per-image-m rounded-xl perimage1"
-          :src="item.photos.titlecard"
-        />
-      </div>
-      <div class="per-title per-title-m">
-        <h1 class="pertext">{{ item.title }}</h1>
-      </div>
-      <div class="per-holder per-card-holder rounded-xl perholder2">
-        <div class="per-card per-card-m rounded-xl perimage2">
-          <div style="height: 40%">
-            <p class="persubtext">{{ item.subtitle }}</p>
-          </div>
-          <div style="height: 60%" class="d-flex flex-row-reverse align-end">
-            <img
-              v-for="(skill, index) in item.skills.icons"
-              :key="index"
-              class="skill-icon px-1"
-              :src="skill"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
   </section>
 </template>
 
@@ -71,7 +48,7 @@
 const maxRotationDegrees = 20;
 
 export default {
-  name: "ProjectTile",
+  name: "ProjectTileMax",
   props: {
     item: Object,
     isLoaded: {
@@ -135,6 +112,15 @@ export default {
   },
   mounted() {},
   methods: {
+    viewProject(item_id) {
+      this.$router.push({
+        name: "viewproject",
+        params: {
+          item_id: item_id,
+          type: 1,
+        },
+      });
+    },
     mouseMoved(e) {
       // This gives us a number between -1 and 1
       const mousePercX = (e.pageX / document.body.clientWidth) * 2 - 1;
@@ -196,7 +182,6 @@ export default {
   text-shadow: 0px 0px 6px var(--v-accent-base);
   text-align: center;
   color: #d9ebfe;
-  /* color: var(--v-secondary-base); */
   font-size: 40px;
   font-family: "Syncopate", sans-serif;
   text-transform: uppercase;

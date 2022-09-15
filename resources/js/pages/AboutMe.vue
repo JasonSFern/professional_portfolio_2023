@@ -10,7 +10,6 @@
                 <v-btn
                   fab
                   dark
-                  outline
                   color="accent"
                   v-bind="attrs"
                   v-on="on"
@@ -24,11 +23,10 @@
             </v-tooltip>
           </div>
           <div ref="imageSliderCont">
-            <div ref="imageSlider">
+            <div class="compare-image-wrap" ref="imageSlider">
               <vue-compare-image
-                class="image-wrap"
+                class="image-wrap-about"
                 hover
-                :style="{ maxWidth: '500px' }"
                 :sliderLineWidth="sliderLine"
                 :handleSize="handleSize"
                 :leftImage="leftImage"
@@ -86,7 +84,6 @@
                 v-on="on"
                 fab
                 dark
-                outline
                 color="accent"
                 :href="link.href"
                 target="_blank"
@@ -192,7 +189,7 @@ export default {
 @media (min-width: 1263px) {
   .image-refresh {
     position: absolute;
-    right: 86%;
+    right: 72%;
     top: 3%;
     z-index: 4;
   }
@@ -210,7 +207,7 @@ export default {
 @media (max-width: 959px) {
   .image-refresh {
     position: absolute;
-    right: 90%;
+    right: 67%;
     top: 3%;
     z-index: 4;
   }
@@ -219,7 +216,7 @@ export default {
 @media (max-width: 764px) {
   .image-refresh {
     position: absolute;
-    right: 87%;
+    right: 73%;
     top: 3%;
     z-index: 4;
   }

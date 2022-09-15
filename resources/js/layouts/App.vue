@@ -14,7 +14,7 @@
 import HeaderBar from "../components/HeaderBar";
 import FooterBar from "../components/FooterBar";
 import TransitionPage from "../transitions/TransitionPage";
-import CustomThemes from "../plugins/custom_themes";
+import { getThemeData } from "../plugins/custom_themes";
 
 export default {
   name: "App",
@@ -31,17 +31,12 @@ export default {
   },
   watch: {
     $route(to, from) {
-      console.log(to);
       if (to.name !== "projects" && to.name !== "viewproject") {
-        let selectedTheme = CustomThemes["default"];
-        let dark = selectedTheme.dark;
-        let light = selectedTheme.light;
+        let selectedTheme = getThemeData("default");
 
-        Object.keys(dark).forEach((i) => {
-          this.$vuetify.theme.themes.dark[i] = dark[i];
-        });
-        Object.keys(light).forEach((i) => {
-          this.$vuetify.theme.themes.light[i] = light[i];
+        Object.keys(selectedTheme.dark).forEach((i) => {
+          this.$vuetify.theme.themes.dark[i] = selectedTheme.dark[i];
+          this.$vuetify.theme.themes.light[i] = selectedTheme.light[i];
         });
 
         this.$vuetify.theme.dark = this.isDark;
@@ -49,7 +44,7 @@ export default {
     },
   },
   methods: {
-    darkMode(updatedTheme) {
+    darkMode() {
       this.$vuetify.theme.dark = this.isDark = !this.$vuetify.theme.dark;
     },
   },

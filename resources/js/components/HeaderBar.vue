@@ -135,7 +135,7 @@
 </template>
 
 <script>
-import CustomThemes from "../plugins/custom_themes";
+import { CustomThemes, getThemeData } from "../plugins/custom_themes";
 
 export default {
   name: "HeaderBar",
@@ -144,28 +144,27 @@ export default {
       return this.allRoutes.filter((i) => !i.hidden);
     },
     applyFrosted: function () {
-      if (
-        this.$route.name !== "home" &&
-        this.$route.name !== "projects" &&
-        this.$route.name !== "contact" &&
-        this.$route.name !== "page-not-found"
-      ) {
+      if (this.validateRoute()) {
         return true;
       } else {
         return false;
       }
     },
     elevation: function () {
-      if (
-        this.$route.name !== "home" &&
-        this.$route.name !== "projects" &&
-        this.$route.name !== "contact" &&
-        this.$route.name !== "page-not-found"
-      ) {
+      if (this.validateRoute()) {
         return 4;
       } else {
         return 0;
       }
+    },
+    isMobile() {
+      if (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        )
+      )
+        return true;
+      return false;
     },
   },
   data() {
@@ -182,16 +181,25 @@ export default {
       this.$emit("darkMode", this.goDark);
     },
     switchTheme(themeName) {
-      let selectedTheme = CustomThemes[themeName];
-      let dark = selectedTheme.dark;
-      let light = selectedTheme.light;
+      let selectedTheme = getThemeData(themeName);
 
-      Object.keys(dark).forEach((i) => {
-        this.$vuetify.theme.themes.dark[i] = dark[i];
+      Object.keys(selectedTheme.dark).forEach((i) => {
+        this.$vuetify.theme.themes.dark[i] = selectedTheme.dark[i];
+        this.$vuetify.theme.themes.light[i] = selectedTheme.light[i];
       });
-      Object.keys(light).forEach((i) => {
-        this.$vuetify.theme.themes.light[i] = light[i];
-      });
+    },
+    validateRoute() {
+      if (
+        this.$route.name !== "home" &&
+        this.$route.name !== "projects" &&
+        this.$route.name !== "contact" &&
+        this.$route.name !== "page-not-found"
+      ) {
+        return true;
+      } else {
+        if (this.$route.name == "projects" && this.isMobile) return true;
+        return false;
+      }
     },
   },
 };

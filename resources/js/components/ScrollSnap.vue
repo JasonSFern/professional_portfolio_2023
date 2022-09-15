@@ -1,14 +1,13 @@
 <template>
   <div id="container">
     <div class="sections-menu">
-      <span
+      <div
         class="menu-point"
         v-bind:class="{ active: activeSection == index }"
         v-on:click="scrollToSection(index)"
         v-for="(offset, index) in offsets"
         v-bind:key="index"
-      >
-      </span>
+      ></div>
     </div>
     <slot></slot>
   </div>
@@ -91,7 +90,7 @@ export default {
         .getElementsByTagName("section")
         [id].scrollIntoView({ behavior: "smooth" });
 
-      this.$emit("setCustomTheme", id);
+      this.$emit("setProjectTheme", id);
 
       setTimeout(() => {
         this.inMove = false;
@@ -229,10 +228,11 @@ export default {
 <style scoped>
 .sections-menu {
   position: fixed;
-  right: 1rem;
+  right: -3rem;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 1;
+  width: 150px;
+  z-index: 99;
 }
 
 .sections-menu .menu-point {
@@ -241,7 +241,7 @@ export default {
   background-color: var(--v-accent-base);
   border-radius: 5px;
   display: block;
-  margin: 2rem 0;
+  margin: 2rem 60px;
   opacity: 0.6;
   transition: 0.4s ease all;
   cursor: pointer;

@@ -2,7 +2,7 @@
   <div>
     <noise-abstraction class="d-none d-sm-flex canvas"></noise-abstraction>
     <div ref="emailCont" class="email-section">
-      <v-content>
+      <v-main>
         <v-container>
           <v-row>
             <v-col class="d-none d-sm-flex col-md-2"></v-col>
@@ -64,7 +64,7 @@
             <v-col class="col-md-2 d-none d-sm-flex"></v-col>
           </v-row>
         </v-container>
-      </v-content>
+      </v-main>
     </div>
   </div>
 </template>

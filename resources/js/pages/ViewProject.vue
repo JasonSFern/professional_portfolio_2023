@@ -23,7 +23,7 @@
             </div>
             <div class="d-flex flex-row-reverse mt-1">
               <img
-                v-for="(icon, index) in this.item.skills.icons"
+                v-for="(icon, index) in this.icons"
                 :key="index"
                 :src="icon"
                 class="skill-icon px-1"
@@ -83,7 +83,7 @@
 
 <script>
 import projectsApi from "../api/projects";
-import CustomThemes from "../plugins/custom_themes";
+import { getThemeData } from "../plugins/custom_themes";
 
 export default {
   name: `ViewProject`,
@@ -96,27 +96,24 @@ export default {
   data() {
     return {
       item: {},
+      icons: {},
       photos: {},
       important: false,
-      colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
     };
   },
   created() {
     projectsApi.getProjectById(this.item_id).then((response) => {
       this.item = response.data;
 
-      let theme = this.item.display_theme.split("--");
-      this.setCustomTheme(theme[0], theme[1]);
+      this.applyProjectTheme();
 
-      var contents = JSON.parse(this.item.contents);
-      var photos = JSON.parse(this.item.photos);
-      var skills = JSON.parse(this.item.skills);
-      var links = JSON.parse(this.item.links);
-      this.item.contents = contents;
-      this.item.photos = photos;
-      this.item.skills = skills;
-      this.item.links = links;
-      this.photos = photos.showcase;
+      this.item.contents = JSON.parse(this.item.contents);
+      this.item.skills = JSON.parse(this.item.skills);
+      this.item.links = JSON.parse(this.item.links);
+      this.item.photos = JSON.parse(this.item.photos);
+
+      this.photos = this.item.photos.showcase;
+      this.icons = this.item.skills.icons;
 
       this.init();
     });
@@ -138,15 +135,16 @@ export default {
     target(type) {
       return type == "link" ? "_blank" : "";
     },
-    setCustomTheme(themeName, themeStyle) {
-      let selectedTheme = CustomThemes[themeName][themeStyle];
+    applyProjectTheme() {
+      let selectedTheme = getThemeData(this.item.display_theme);
 
       Object.keys(selectedTheme).forEach((i) => {
         this.$vuetify.theme.themes.dark[i] = selectedTheme[i];
         this.$vuetify.theme.themes.light[i] = selectedTheme[i];
       });
 
-      this.$vuetify.theme.dark = themeStyle == "dark";
+      this.$vuetify.theme.dark =
+        this.item.display_theme.split("--")[1] == "dark";
     },
   },
 };

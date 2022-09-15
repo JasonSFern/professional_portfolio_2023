@@ -1,4 +1,4 @@
-export default {
+export const CustomThemes = {
   default: {
     light: {
       primary: "#2A3556",
@@ -324,4 +324,13 @@ export default {
     },
     icon: "mdi-weather-sunny"
   },
+}
+
+export const getThemeData = (themeName) => {
+  if (themeName.includes("--")) {
+    let themeNameSplit = themeName.split("--");
+    return CustomThemes[themeNameSplit[0]][themeNameSplit[1]];
+  } else {
+    return CustomThemes[themeName];
+  }
 }
