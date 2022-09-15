@@ -29,9 +29,23 @@ export default {
       isDark: true,
     };
   },
+  computed: {
+    isMobile() {
+      if (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        )
+      )
+        return true;
+      return false;
+    },
+  },
   watch: {
     $route(to, from) {
-      if (to.name !== "projects" && to.name !== "viewproject") {
+      if (
+        (to.name !== "projects" && to.name !== "viewproject") ||
+        (to.name == "projects" && this.isMobile)
+      ) {
         let selectedTheme = getThemeData("default");
 
         Object.keys(selectedTheme.dark).forEach((i) => {
