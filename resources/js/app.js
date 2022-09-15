@@ -27,7 +27,8 @@ gsap.registerPlugin(ScrollTrigger);
  *
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
-Vue.component('project-tile', require('./components/ProjectTile.vue').default);
+Vue.component('project-tile-max', require('./components/ProjectTileMax.vue').default);
+Vue.component('project-tile-min', require('./components/ProjectTileMin.vue').default);
 Vue.component('header-bar', require('./components/HeaderBar.vue').default);
 Vue.component('footer-bar', require('./components/FooterBar.vue').default);
 Vue.component('splash-logo', require('./components/SplashLogo.vue').default) ;
