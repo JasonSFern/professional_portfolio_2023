@@ -147,7 +147,7 @@ export default {
       handleSize: 0,
       sliderPosition: 0.5,
       effectImages: [
-        "img/about/self_pixel_explosion.png",
+        "img/about/self_nature_exposure.png",
         "img/about/self_glitch.png",
         "img/about/self_triangle_glow.png",
         "img/about/self_dripping.png",
