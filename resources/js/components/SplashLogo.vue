@@ -3,7 +3,9 @@
     <h1 ref="hello" class="greeting pa-0 ma-0 primary-color-c">Hello</h1>
     <div class="logo-layer layer1">
       <div class="logo-layer layer2">
-        <div class="logo-layer layer3"></div>
+        <div class="logo-layer layer3">
+          <div class="logo-layer layer4" />
+        </div>
       </div>
     </div>
     <vue-typer
@@ -77,7 +79,7 @@ export default {
 .logo-layer {
   pointer-events: none;
   height: 17em;
-  width: 25em;
+  width: 24.5em;
   transform-style: preserve-3d;
   display: flex;
   position: relative;
@@ -91,12 +93,17 @@ export default {
 
 .layer2 {
   transform: translateZ(80px);
-  background-image: url("/img/splash/logo3.png");
+  background-image: url("/img/splash/logo_layer_2.png");
 }
 
 .layer3 {
   transform: translateZ(40px);
-  background-image: url("/img/splash/logo2.png");
+  background-image: url("/img/splash/logo_layer_3.png");
+}
+
+.layer4 {
+  transform: translateZ(40px);
+  background-image: url("/img/splash/logo_layer_4.png");
 }
 
 .greeting {
