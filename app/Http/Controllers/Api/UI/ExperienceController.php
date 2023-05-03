@@ -8,7 +8,7 @@ use App\Models\Experience;
 class ExperienceController extends Controller
 {
     public function experience(Request $request) {
-        $data = Experience::orderBy('start_date', 'ASC')->where('is_active', 1)->get();
+        $data = Experience::orderBy('start_date', 'DESC')->where('is_active', 1)->get();
         return $data;
     }
     

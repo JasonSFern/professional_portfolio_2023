@@ -42,17 +42,19 @@
               >
                 <v-hover v-slot="{ hover }">
                   <div class="pa-2 skill-text-col">
-                    <v-progress-circular
-                      v-model="item.skill_level"
-                      :rotate="270"
-                      :size="100"
-                      :width="15"
-                      color="accent"
-                      class="skill-icon"
-                      :class="{ 'on-hover': hover }"
-                    >
-                      <img :src="item.icon" class="skill-icon-col" />
-                    </v-progress-circular>
+                    <div class="d-flex justify-center label-wrap">
+                      <v-progress-circular
+                        v-model="item.skill_level"
+                        :rotate="270"
+                        :size="100"
+                        :width="15"
+                        color="accent"
+                        class="skill-icon"
+                        :class="{ 'on-hover': hover }"
+                      >
+                        <img :src="item.icon" class="skill-icon-col" />
+                      </v-progress-circular>
+                    </div>
                     <div class="d-flex justify-center label-wrap">
                       <strong
                         ><p class="ma-0">{{ item.name }}</p></strong
@@ -88,17 +90,6 @@
             LinkedIn
             <v-icon right dark>mdi-linkedin</v-icon>
           </v-btn>
-          <!-- <v-btn
-            :href="externalLinks.resumeLinkClassic"
-            target="_blank"
-            color="accent"
-            dark
-            large
-            style="width: 48%"
-          >
-            Classic B&W
-            <v-icon right dark>mdi-file-document-multiple-outline</v-icon>
-          </v-btn> -->
         </div>
       </v-col>
       <v-col class="col-12 col-md-5 col-lg-7 scroll-container">

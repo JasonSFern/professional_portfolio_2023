@@ -18,7 +18,7 @@
               <h6>{{ item.title }}</h6>
               <p>{{ item.institute }}</p>
               <p v-if="item.type == 'work' || item.type == 'volunteer'">
-                {{ item.start_date }} - {{ item.end_date }}
+                {{ getDateValue(item) }}
               </p>
               <p v-else>{{ item.end_date }}</p>
             </div>
@@ -79,6 +79,13 @@ export default {
         },
       },
     };
+  },
+  methods: {
+    getDateValue(item) {
+      if (item.start_date == item.end_date)
+        return `${item.start_date} - Present`;
+      return `${item.start_date} - ${item.end_date}`;
+    },
   },
 };
 </script>
