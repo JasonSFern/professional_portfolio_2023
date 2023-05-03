@@ -1,5 +1,5 @@
 <template>
-  <div id="container">
+  <div v-show="isLoaded" id="container">
     <div class="sections-menu">
       <div
         class="menu-point"
@@ -50,13 +50,24 @@ export default {
       this.scrollDetect(el, this.movePage);
     },
     calculateSectionOffsets() {
-      let sections = document.getElementsByTagName("section");
+      this.gsap.set(".sections-menu", { opacity: 0 });
+
+      this.offsets = [];
+      let sections = document.querySelectorAll("section.fullpage");
       let length = sections.length;
 
       for (let i = 0; i < length; i++) {
         let sectionOffset = sections[i].offsetTop;
         this.offsets.push(sectionOffset);
       }
+
+      this.gsap
+        .timeline()
+        .fromTo(
+          ".sections-menu",
+          { opacity: 0 },
+          { duration: 0.5, opacity: 1 }
+        );
     },
     movePage(dir) {
       this.inMove = true;

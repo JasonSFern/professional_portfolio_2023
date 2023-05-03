@@ -3,9 +3,10 @@
     <v-app-bar
       :elevation="elevation"
       app
-      class="transparent"
       :class="{
-        frosted: applyFrosted,
+        frosted: applyFrosted && !isMobile,
+        transparent: !isMobile,
+        solid: isMobile,
       }"
     >
       <v-menu offset-y rounded="b-xl nav-link">
@@ -218,5 +219,10 @@ export default {
 .frosted {
   background-color: rgba(152, 151, 151, 0.2) !important;
   backdrop-filter: blur(5px) !important;
+}
+
+.solid {
+  backdrop-filter: blur(5px) !important;
+  background-color: var(--v-background-base) !important;
 }
 </style>

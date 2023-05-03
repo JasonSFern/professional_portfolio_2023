@@ -1,6 +1,12 @@
 <template>
   <v-main>
-    <!-- <classifications-bar class="classifications-menu" @filterProjects="filterProjectsList($event)"></classifications-bar> -->
+    <classifications-bar
+      class="classifications-menu"
+      :class="{
+        mobile: isMobile,
+      }"
+      @filterProjects="setClassification($event)"
+    ></classifications-bar>
     <scroll-snap
       v-if="!isMobile"
       :isLoaded="isLoaded"
@@ -34,7 +40,7 @@
   crossorigin="anonymous"
 ></script>
 <script>
-// import ClassificationsBar from '../components/ClassificationsBar.vue';
+import ClassificationsBar from "../components/ClassificationsBar.vue";
 import ProjectTileMax from "../components/ProjectTileMax.vue";
 import ProjectTileMin from "../components/ProjectTileMin.vue";
 import ScrollSnap from "../components/ScrollSnap.vue";
@@ -46,7 +52,7 @@ import { mapGetters } from "vuex";
 export default {
   name: `Projects`,
   components: {
-    // ClassificationsBar,
+    ClassificationsBar,
     ProjectTileMax,
     ProjectTileMin,
     ScrollSnap,
@@ -55,7 +61,7 @@ export default {
   data() {
     return {
       isLoaded: false,
-      filteredItems: [],
+      classification: 0,
     };
   },
   computed: {
@@ -63,7 +69,23 @@ export default {
       projects: "projects/getAllProjects",
     }),
     items() {
-      return this.projects;
+      if (this.classification > 0) {
+        let filtered = this.projects.filter(
+          (row) => row.classification == this.classification
+        );
+
+        setTimeout(() => {
+          if (!this.isLoaded) this.isLoaded = true;
+        }, 300);
+
+        return filtered;
+      } else {
+        setTimeout(() => {
+          if (!this.isLoaded) this.isLoaded = true;
+        }, 300);
+
+        return this.projects;
+      }
     },
     isMobile() {
       if (
@@ -78,18 +100,15 @@ export default {
   created() {
     this.$store.dispatch("projects/getAllProjects").then((response) => {
       this.isLoaded = true;
+      this.filteredItems = this.projects;
     });
   },
   methods: {
-    filterProjectsList(e) {
-      if (e > 0) {
-        let filtered = this.projects.filter((row) => row.classification == e);
-
-        this.filteredItems = filtered;
-        this.$refs.scrollsnap.init();
-      } else {
-        this.filteredItems = this.projects;
-      }
+    setClassification(e) {
+      this.isLoaded = false;
+      setTimeout(() => {
+        this.classification = e;
+      }, 300);
     },
     setProjectTheme(item_index) {
       if (!this.isMobile) {
@@ -109,10 +128,20 @@ export default {
 </script>
 
 <style scoped>
-/* .classifications-menu {
+.classifications-menu {
   position: fixed;
-  left: 1rem;
-  top: 50%;
+  width: 100%;
+  height: 98px;
+  top: 105px;
   transform: translateY(-50%);
-} */
+  z-index: 1;
+  background-color: transparent;
+}
+
+.mobile {
+  backdrop-filter: blur(5px) !important;
+  background-color: var(--v-background-base) !important;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+    0 1px 10px 0 rgba(0, 0, 0, 0.12) !important;
+}
 </style>

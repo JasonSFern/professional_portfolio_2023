@@ -39,6 +39,7 @@ section {
   width: auto;
   transition: transform 0.25s;
   will-change: transform;
+  margin-top: 100px;
 }
 
 *,
