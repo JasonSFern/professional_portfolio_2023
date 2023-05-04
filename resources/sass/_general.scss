@@ -160,6 +160,8 @@ COLOR STYLES
     var(--v-gradient1-base),
     var(--v-gradient2-base),
     var(--v-gradient3-base),
+    var(--v-gradient4-base),
+    var(--v-gradient5-base),
     var(--v-gradient6-base),
     var(--v-gradient7-base),
     var(--v-gradient8-base),
@@ -171,11 +173,13 @@ COLOR STYLES
 }
 
 .gradient-color-bg {
-  background: radial-gradient(
+  background-image: radial-gradient(
     circle,
     var(--v-gradient1-base),
     var(--v-gradient2-base),
     var(--v-gradient3-base),
+    var(--v-gradient4-base),
+    var(--v-gradient5-base),
     var(--v-gradient6-base),
     var(--v-gradient7-base),
     var(--v-gradient8-base),

@@ -1,6 +1,7 @@
 <template>
   <div>
     <vue-particles
+      :key="particlesKey"
       :color="starColor"
       :particleOpacity="0.3"
       :particlesNumber="120"
@@ -36,6 +37,11 @@ export default {
       return this.$vuetify.theme.currentTheme.accent;
     },
   },
+  watch: {
+    starColor() {
+      this.particlesKey++;
+    },
+  },
   mounted() {
     this.gsap.fromTo(
       this.$refs.logo,
@@ -45,7 +51,7 @@ export default {
   },
   data() {
     return {
-      test: "",
+      particlesKey: 1,
     };
   },
   components: {
