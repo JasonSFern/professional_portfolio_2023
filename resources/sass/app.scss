@@ -1,15 +1,15 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-@import url('https://fonts.cdnfonts.com/css/titillium?styles=14448');
-@import url('https://fonts.cdnfonts.com/css/futura-std-4?styles=52577');
-@import url('https://fonts.cdnfonts.com/css/avenir');
-@import url('https://fonts.cdnfonts.com/css/gigantic-fs');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+@import url("https://fonts.cdnfonts.com/css/titillium?styles=14448");
+@import url("https://fonts.cdnfonts.com/css/futura-std-4?styles=52577");
+@import url("https://fonts.cdnfonts.com/css/avenir");
+@import url("https://fonts.cdnfonts.com/css/gigantic-fs");
 
 // sass sheets
-@import 'general';
+@import "general";
+@import "perspective_grid";
 
 // @import "~vuetify/dist/vuetify.min.css";
 
-@import url('https://fonts.googleapis.com/css?family=Material+Icons');
-@import url('https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css');
-
+@import url("https://fonts.googleapis.com/css?family=Material+Icons");
+@import url("https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css");

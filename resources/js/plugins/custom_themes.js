@@ -610,6 +610,53 @@ export const CustomThemes = {
     },
     icon: "mdi-chart-line-variant"
   },
+  cyberpunk: {
+    light: {
+      primary: "#ffffff",
+      secondary: "#face33",
+      accent: "#30d6f3",
+      background: "#1E3C96",
+      gradient1: "#c58229",
+      gradient2: "#c26730",
+      gradient3: "#b84e39",
+      gradient4: "#a93742",
+      gradient5: "#942449",
+      gradient6: "#841d4c",
+      gradient7: "#73194d",
+      gradient8: "#61164c",
+      gradient9: "#551648",
+      gradient10: "#4a1544",
+      gradient11: "#3f143f",
+      gradient12: "#35133a",
+      success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
+    },
+    dark: {
+      primary: "#ffffff",
+      secondary: "#face33",
+      accent: "#30d6f3",
+      background: "#1E3C96",
+      gradient1: "#15151b",
+      gradient2: "#181623",
+      gradient3: "#1c172a",
+      gradient4: "#221730",
+      gradient5: "#291635",
+      gradient6: "#2a1637",
+      gradient7: "#2a1539",
+      gradient8: "#2b153b",
+      gradient9: "#24163b",
+      gradient10: "#1c173a",
+      gradient11: "#141739",
+      gradient12: "#0a1737",
+      success: "#68c929",
+      info: "#face33",
+      warning: "#f09333",
+      danger: "#cc362b",
+    },
+    icon: "mdi-quadcopter"
+  }
 }
 
 export const getThemeData = (themeName) => {

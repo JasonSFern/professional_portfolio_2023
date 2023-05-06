@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vue-particles
+    <!-- <vue-particles
       :key="particlesKey"
       :color="starColor"
       :particleOpacity="0.3"
@@ -18,7 +18,8 @@
       :clickEffect="false"
       clickMode="push"
     >
-    </vue-particles>
+    </vue-particles> -->
+    <PerspectiveGrid class="d-none d-sm-flex canvas"></PerspectiveGrid>
     <div ref="logo" class="centered-text">
       <splash-logo></splash-logo>
     </div>
@@ -27,8 +28,14 @@
 
 <script>
 import SplashLogo from "../components/SplashLogo.vue";
+
+import PerspectiveGrid from "../components/PerspectiveGrid.vue";
 export default {
   name: `Home`,
+  components: {
+    PerspectiveGrid,
+    SplashLogo,
+  },
   computed: {
     starColor: function () {
       return this.$vuetify.theme.currentTheme.secondary;
@@ -53,9 +60,6 @@ export default {
     return {
       particlesKey: 1,
     };
-  },
-  components: {
-    SplashLogo,
   },
 };
 </script>
