@@ -186,7 +186,16 @@ export default {
 </script>
 
 <style scoped>
-@media (min-width: 1263px) {
+@media (min-width: 1902px) {
+  .image-refresh {
+    position: absolute;
+    right: 47%;
+    top: 3%;
+    z-index: 4;
+  }
+}
+
+@media (max-width: 1901px) {
   .image-refresh {
     position: absolute;
     right: 72%;
