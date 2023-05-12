@@ -9,15 +9,20 @@
         <v-timeline-item
           v-for="(item, i) in items"
           :key="i"
-          :color="displayVariables[item.type].color"
-          :icon="displayVariables[item.type].icon"
+          :color="displayVariables[item.classification.name].color"
+          :icon="displayVariables[item.classification.name].icon"
           fill-dot
         >
           <v-card class="frost-dark" dark>
             <div class="pa-3 timeline-head">
               <h6>{{ item.title }}</h6>
               <p>{{ item.institute }}</p>
-              <p v-if="item.type == 'work' || item.type == 'volunteer'">
+              <p
+                v-if="
+                  item.classification.name == 'Work' ||
+                  item.classification.name == 'Volunteer'
+                "
+              >
                 {{ getDateValue(item) }}
               </p>
               <p v-else>{{ item.end_date }}</p>
@@ -36,14 +41,14 @@ export default {
   name: `ExperienceTimeline`,
   computed: {
     ...mapGetters({
-      experience: "experience/getAllExperience",
+      experience: "resume/getAllExperience",
     }),
     items() {
       return this.experience;
     },
   },
   created() {
-    this.$store.dispatch("experience/getAllExperience").then((response) => {
+    this.$store.dispatch("resume/getAllExperience").then((response) => {
       this.isLoaded = true;
     });
   },
@@ -65,15 +70,15 @@ export default {
     return {
       isLoaded: false,
       displayVariables: {
-        work: {
+        Work: {
           color: "green",
           icon: "mdi-briefcase-variant",
         },
-        education: {
+        Education: {
           color: "orange",
           icon: "mdi-book-education",
         },
-        volunteer: {
+        Volunteer: {
           color: "red",
           icon: "mdi-hand-coin",
         },

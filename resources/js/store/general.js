@@ -3,30 +3,31 @@ import Api from '../api/general'
 export default {
   namespaced: true,
   state: {
-    classifications: []
+    classifications: [],
   },
   mutations: {
-    getAllClassifications(state, payload) {
+    getClassifications(state, payload) {
       state.classifications = payload
     },
   },
   actions: {
-    getAllClassifications(context, payload) {
-      return Api.getAllClassifications(payload).then(response => {
+    getClassifications(context, payload) {
+      return Api.getClassifications(payload).then(response => {
         let data = response.data
         
         var obj = {}
         obj.id = 0
         obj.name = 'All'
+        obj.type = 'project'
         data.unshift(obj)
 
-        context.commit('getAllClassifications', data)
+        context.commit('getClassifications', data)
         return data
       })
     },
   },
   getters: {
-    getAllClassifications: state => {
+    getClassifications: state => {
       return state.classifications
     },
   }

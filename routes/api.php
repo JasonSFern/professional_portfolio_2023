@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //UI Routes
+require base_path('routes/api/ui/education.php');
 require base_path('routes/api/ui/experience.php');
 require base_path('routes/api/ui/general.php');
 require base_path('routes/api/ui/projects.php');

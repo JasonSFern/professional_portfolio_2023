@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Experience extends Model
 {
     protected $table = 'experience';
+
+    public function classification()
+    {
+        return $this->belongsTo(Classification::class, 'classification', 'id');
+    }
 }

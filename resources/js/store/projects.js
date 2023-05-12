@@ -33,7 +33,7 @@ export default {
       })
     },
     getDesignProjects(context, payload) {
-      return Api.getAllDesignProjects(payload).then(response => {
+      return Api.getDesignProjects(payload).then(response => {
         let data = response.data
         data.forEach(function (item) {
           item.contents = JSON.parse(item.contents)
@@ -46,7 +46,7 @@ export default {
       })
     },
     getCodingProjects(context, payload) {
-      return Api.getAllCodingProjects(payload).then(response => {
+      return Api.getCodingProjects(payload).then(response => {
         let data = response.data
         data.forEach(function (item) {
           item.contents = JSON.parse(item.contents)

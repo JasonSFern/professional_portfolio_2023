@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Projects extends Model
+class Skill extends Model
 {
+    protected $table = 'skills';
+    
     public function classification()
     {
-        return $this->belongsTo(Classification::class, 'id', 'classification');
+        return $this->belongsTo(Classification::class, 'classification', 'id');
     }
 }

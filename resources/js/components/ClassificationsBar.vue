@@ -31,16 +31,22 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "ClassificationsBar",
+  props: {
+    filter: {
+      type: String,
+      default: "project",
+    },
+  },
   computed: {
     ...mapGetters({
-      classifications: "general/getAllClassifications",
+      classifications: "general/getClassifications",
     }),
     items() {
-      return this.classifications;
+      return this.classifications.filter((c) => c.type == this.filter);
     },
   },
   created() {
-    this.$store.dispatch("general/getAllClassifications");
+    this.$store.dispatch("general/getClassifications");
   },
   data() {
     return {

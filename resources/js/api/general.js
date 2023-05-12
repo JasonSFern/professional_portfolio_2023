@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export default {
-  async getAllClassifications() {
+  async getClassifications() {
     return axios.get(`/api/ui/general/classifications`)
   },
   async storeContactForm(payload) {

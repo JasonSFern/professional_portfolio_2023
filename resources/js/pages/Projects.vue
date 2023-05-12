@@ -71,7 +71,7 @@ export default {
     items() {
       if (this.classification > 0) {
         let filtered = this.projects.filter(
-          (row) => row.classification == this.classification
+          (row) => row.classification.id == this.classification
         );
 
         setTimeout(() => {

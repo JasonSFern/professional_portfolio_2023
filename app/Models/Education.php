@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Education extends Model
 {
-    use HasFactory;
+    protected $table = 'education';
+
+    public function classification()
+    {
+        return $this->belongsTo(Classification::class, 'classification', 'id');
+    }
 }

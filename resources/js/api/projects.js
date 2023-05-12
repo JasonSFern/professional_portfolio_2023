@@ -13,4 +13,7 @@ export default {
   async getDesignProjects() {
     return axios.get(`/api/ui/projects-design/`)
   },
+  async getUxProjects() {
+    return axios.get(`/api/ui/projects-ux/`)
+  },
 }

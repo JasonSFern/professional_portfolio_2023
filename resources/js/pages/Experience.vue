@@ -113,7 +113,8 @@ export default {
   computed: {
     ...mapGetters({
       skills: "skills/getAllSkills",
-      education: "experience/getAllEducationExperience",
+      education: "resume/getAllEducation",
+      profile: "resume/getProfile",
     }),
     skillItems() {
       return this.skills;
@@ -147,7 +148,9 @@ export default {
     };
   },
   created() {
-    this.$store.dispatch("experience/getAllEducationExperience");
+    // make multi statement
+    this.$store.dispatch("resume/getAllEducation");
+    this.$store.dispatch("resume/getProfile");
     this.$store.dispatch("skills/getAllSkills").then((response) => {
       this.isLoaded = true;
     });
