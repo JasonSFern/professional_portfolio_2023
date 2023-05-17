@@ -8,7 +8,7 @@ use App\Models\Classification;
 class ClassificationController extends Controller
 {
     public function list(Request $request) {
-        $data = Classification::all();
+        $data = Classification::withCount('project')->get()->where('project_count', '>', 0);
         return $data;
     }
 }

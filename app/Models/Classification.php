@@ -8,18 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Classification extends Model
 {
     public function skill() {
-        return $this->hasMany(Skill::class, 'id', 'classification');
+        return $this->hasMany(Skill::class, 'classification', 'id')->where('is_active', 1);
     }
     
     public function project() {
-        return $this->hasMany(Project::class, 'id', 'classification');
+        return $this->hasMany(Project::class, 'classification', 'id')->where('is_active', 1);
     }
 
     public function experience() {
-        return $this->hasMany(Experience::class, 'id', 'classification');
+        return $this->hasMany(Experience::class, 'classification', 'id')->where('is_active', 1);
     }
 
     public function education() {
-        return $this->hasMany(Education::class, 'id', 'classification');
+        return $this->hasMany(Education::class, 'classification', 'id')->where('is_active', 1);
     }
 }
