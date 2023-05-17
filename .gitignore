@@ -25,9 +25,9 @@ Homestead.json
 .phpunit.result.cache
 
 # Public folders
-/public/css
-/public/js
-/public/resources/css
+public/css
+public/js
+public/resources/css
 /public/hot
 /public/includes
 /public/pro/docs
