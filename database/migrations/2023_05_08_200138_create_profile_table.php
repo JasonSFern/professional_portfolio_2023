@@ -20,6 +20,7 @@ class CreateProfileTable extends Migration
             $table->json('location');
             $table->string('pronouns');
             $table->string('title');
+            $table->string('blurb', 500);
             $table->string('summary', 500);
             $table->json('strengths');
             $table->json('skills');

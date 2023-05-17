@@ -1,177 +1,467 @@
 <template>
-  <v-main>
-    <v-container>
-      <br />
-      <div class="d-block d-md-flex">
-        <div class="col-12 col-md-5 pl-0 glossy image">
-          <div ref="imageButton">
-            <v-tooltip bottom>
-              <template v-slot:activator="{ on, attrs }">
-                <v-btn
-                  fab
-                  dark
-                  color="accent"
-                  v-bind="attrs"
-                  v-on="on"
-                  v-on:click="getRightPic"
-                  class="image-refresh"
-                >
-                  <v-icon dark>mdi-eye-refresh</v-icon>
-                </v-btn>
-              </template>
-              <span>Cycle Image</span>
-            </v-tooltip>
+  <div ref="mainCont">
+    <v-row class="my-sm-15">
+      <v-col class="d-none d-sm-flex col-sm-1" />
+      <v-col class="d-block d-md-flex col-12 col-sm-10">
+        <!-- Profile info -->
+        <div
+          class="d-block mt-16 content-box about-box pa-6"
+          :class="{
+            'box-dark': $vuetify.theme.dark,
+            'box-light': !$vuetify.theme.dark,
+          }"
+        >
+          <!-- Profile image -->
+          <div
+            ref="profileImg"
+            class="d-flex justify-space-around my-4 profile-section"
+          >
+            <img
+              v-if="isMobile"
+              class="profile-image"
+              src="img/about/self_final_square.png"
+            />
+            <vue-compare-image
+              v-else
+              class="profile-image"
+              drag
+              :sliderLineWidth="sliderLine"
+              :handleSize="handleSize"
+              :leftImage="leftImage"
+              :rightImage="rightImage"
+              :sliderPositionPercentage="sliderPosition"
+            />
           </div>
-          <div ref="imageSliderCont">
-            <div class="compare-image-wrap" ref="imageSlider">
-              <vue-compare-image
-                class="image-wrap-about"
-                hover
-                :sliderLineWidth="sliderLine"
-                :handleSize="handleSize"
-                :leftImage="leftImage"
-                :rightImage="rightImage"
-                :sliderPositionPercentage="sliderPosition"
-              />
+          <!-- Profile headers -->
+          <div ref="profileHeaders" class="profile-section">
+            <div v-if="profile">
+              <div class="d-flex">
+                <div
+                  class="secondary-color-bg mr-4 rounded-sm"
+                  style="width: 5px"
+                ></div>
+
+                <div class="d-block pa-0">
+                  <div class="pa-0">
+                    <h2>
+                      <span>{{ profile.first_name }}</span>
+                      <span class="accent-color-c">{{
+                        profile.last_name
+                      }}</span>
+                      <span class="text-caption">{{ profile.pronouns }}</span>
+                    </h2>
+                  </div>
+                  <div class="pa-0">
+                    <h5>{{ profile.title }}</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="my-8 d-block pa-0">
+                <p>{{ profile.blurb }}</p>
+              </div>
+            </div>
+          </div>
+          <!-- Profile contact options -->
+          <div ref="profileContact" class="mt-4 pa-0 profile-section">
+            <div v-if="profile">
+              <v-btn
+                v-for="(c, index) in profile.contact"
+                class="my-2"
+                :key="`contact-btn-${index}`"
+                :href="c.link"
+                target="_blank"
+                color="accent"
+                x-large
+                block
+              >
+                <v-icon class="mr-4 primary-color-c" dark>{{
+                  `mdi-${index}`
+                }}</v-icon>
+                <span class="primary-color-c">{{ c.label }}</span>
+              </v-btn>
+            </div>
+          </div>
+          <!-- Profile vcard -->
+          <div ref="profileQRCode" class="mt-12 profile-section">
+            <div v-if="vcardInfo">
+              <div class="d-flex justify-content-around">
+                <VueVcard
+                  :firstName="vcardInfo.first_name"
+                  :lastName="vcardInfo.last_name"
+                  :homeEmail="vcardInfo.email"
+                  :homePhone="vcardInfo.phone"
+                  :homeCity="vcardInfo.city"
+                  :homeRegion="vcardInfo.region"
+                  :homePost="vcardInfo.postal_code"
+                  :homeCountry="vcardInfo.country"
+                  :size="250"
+                />
+              </div>
+              <p class="font-weight-bold text-center mt-8">
+                Add contact by scanning the QR Code
+              </p>
             </div>
           </div>
         </div>
-
-        <div class="col-12 col-md-7">
-          <h2>
-            <span>About</span>
-            <span class="accent-color-c">Me</span>
-          </h2>
-          <p>Jason Fernandes</p>
-          <hr />
-          <p>
-            I am a Canadian full stack web developer and graphic designer based
-            in Calgary, AB. Coming from a more design oriented background, I
-            have since been captivated by the world of programming when I
-            started to learn web development. I enjoy the creativity that can be
-            realized through coding.
-          </p>
-          <p>
-            I have a passion for front-end development and believe that
-            delivering a great UX is all about understanding what users need and
-            value in order to keep them engaged through rich branding while
-            supporting business objectives. Often times simplicity is of more
-            value to the end user over complexity.
-          </p>
-          <p>
-            If you have any projects you wish to collaborate on or are an
-            employer who wishes to work with me you can contact me by filling
-            out the form
-            <router-link class="accent-color-c" to="/contact"
-              ><strong>here</strong></router-link
-            >, or by connecting with me on LinkedIn.
-          </p>
-          <br />
-          <p class="disclaimer-text">
-            Disclaimer: All of the images, artwork, text and graphics contained
-            in this portfolio, unless otherwise specified and/or credited, are
-            the copyright of Jason Fernandes. All rights reserved. All other
-            materials are the copyright and/or trademark of the respective
-            owners. All materials featured are offered for informative purposes
-            only and as such are offered on a 'as is' basis.
-          </p>
-          <hr />
-
-          <v-tooltip v-for="link in externalLinks" :key="link.icon" bottom>
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn
-                v-bind="attrs"
-                v-on="on"
-                fab
-                dark
-                color="accent"
-                :href="link.href"
-                target="_blank"
-                class="mr-4"
+        <div class="d-flex mt-md-16 resume-box">
+          <!-- Resume section -->
+          <div
+            class="d-block px-5 pb-4 mb-14 mb-md-0 content-box w-100"
+            :class="{
+              'box-dark': $vuetify.theme.dark,
+              'box-light': !$vuetify.theme.dark,
+            }"
+          >
+            <!-- Summary blurb -->
+            <div ref="resumeSummary" class="resume-summary-section">
+              <div v-if="profile" class="d-block d-lg-flex">
+                <div class="col-12 col-lg-6">
+                  <h3 class="mt-5">Summary</h3>
+                  <p>
+                    {{ profile.summary }}
+                  </p>
+                </div>
+                <div class="col-12 col-lg-6">
+                  <h3 class="mt-5">Strengths</h3>
+                  <ul>
+                    <li
+                      v-for="(strength, index) in profile.strengths"
+                      :key="`str-${index}`"
+                    >
+                      {{ strength }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="resume-main-section">
+              <hr class="primary-color-bg divider" />
+            </div>
+            <!-- Sub tabs -->
+            <div class="d-block d-lg-flex resume-main-section">
+              <div
+                v-for="stab in sectionTabs"
+                :key="stab"
+                class="col-12 col-lg-4 classification"
               >
-                <v-icon dark>{{ link.icon }}</v-icon>
-              </v-btn>
-            </template>
-            <span>{{ link.label }}</span>
-          </v-tooltip>
+                <button
+                  class="resume-tab w-100"
+                  :class="{
+                    'button-dark': $vuetify.theme.dark && stab == selectedTab,
+                    'button-light': !$vuetify.theme.dark && stab == selectedTab,
+                    'outline-dark': $vuetify.theme.dark && stab != selectedTab,
+                    'outline-light':
+                      !$vuetify.theme.dark && stab != selectedTab,
+                  }"
+                  v-on:click="selectedTab = stab"
+                >
+                  {{ stab }}
+                </button>
+              </div>
+            </div>
+            <div
+              v-if="selectedTab == 'Education & Skills'"
+              class="my-2 pt-5 resume-main-section"
+            >
+              <div ref="resumeEdSkills" class="d-block d-lg-flex">
+                <div class="col-12 col-lg-6">
+                  <div v-if="education">
+                    <div
+                      v-for="(entry, index) in education"
+                      :key="index"
+                      class="d-flex"
+                    >
+                      <div
+                        class="px-2 pt-1 my-2 mr-4 edu-icon-col d-flex justify-content-around"
+                      >
+                        <img :src="entry.icon" class="edu-icon" />
+                      </div>
+                      <div class="pa-2">
+                        <strong
+                          ><p class="ma-0">{{ entry.title }}</p></strong
+                        >
+                        <p class="ma-0">{{ entry.institute }}</p>
+                        <p class="ma-0">{{ formatDate(entry.end_date) }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                  <div v-if="skillItems">
+                    <v-tooltip
+                      v-for="(item, index) in skillItems"
+                      :key="`skill-icon-${index}`"
+                      bottom
+                    >
+                      <template v-slot:activator="{ on, attrs }">
+                        <img
+                          v-bind="attrs"
+                          v-on="on"
+                          :src="item.icon"
+                          class="skill-icon-col mx-4 my-4"
+                        />
+                      </template>
+                      <div class="d-block">
+                        <div class="d-flex justify-space-around">
+                          <v-progress-circular
+                            v-model="item.skill_level"
+                            :width="12"
+                            color="accent"
+                            class="skill-icon mb-2"
+                            style="opacity: 1 !important"
+                          />
+                        </div>
+                        <p
+                          class="font-weight-bold text-center mb-0 primary-color-c"
+                        >
+                          {{ item.name }}
+                        </p>
+                      </div>
+                    </v-tooltip>
+                  </div>
+                </div>
+              </div>
+              <hr class="primary-color-bg divider" />
+              <div class="d-block d-lg-flex col-12">
+                <div ref="resumeSkillsTech" class="col-12 col-lg-6">
+                  <div v-if="profile" class="mt-2">
+                    <h3>Technical Skills</h3>
+                    <ul>
+                      <li
+                        v-for="(skill_desc, skill) in profile.skills[
+                          'Technical Skills'
+                        ]"
+                        :key="`skill-tech-${skill}`"
+                      >
+                        <strong>{{ skill }}: </strong>{{ skill_desc }}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div ref="resumeSkillsSoft" class="col-12 col-lg-6">
+                  <div v-if="profile" class="mt-2">
+                    <h3>Soft Skills</h3>
+                    <ul>
+                      <li
+                        v-for="(skill_desc, skill) in profile.skills[
+                          'Soft Skills'
+                        ]"
+                        :key="`skill-soft-${skill}`"
+                      >
+                        <strong>{{ skill }}: </strong>{{ skill_desc }}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              v-if="selectedTab == 'Professional Experience'"
+              class="mx-3 my-2 pt-5 resume-section"
+            >
+              <div ref="resumeExperiencePro">
+                <div
+                  v-for="(exp, index) in experienceProfessional"
+                  :key="`exp-${index}`"
+                  class="mt-4"
+                >
+                  <h4 class="text-uppercase secondary-color-c">
+                    {{ exp.company }}
+                  </h4>
+                  <div class="d-flex justify-space-between">
+                    <div>
+                      <h5 class="accent-color-c">
+                        {{ exp.title }}
+                      </h5>
+                    </div>
+                    <div>
+                      <h5 class="text-caption mt-1">
+                        {{ formatDate(exp.start_date) }} -
+                        {{
+                          exp.start_date == exp.end_date
+                            ? "Present"
+                            : formatDate(exp.end_date)
+                        }}
+                      </h5>
+                    </div>
+                  </div>
+                  <ul class="mt-2">
+                    <li
+                      v-for="(description, d_index) in exp.description"
+                      :key="`desc-${d_index}`"
+                    >
+                      {{ description }}
+                    </li>
+                  </ul>
+
+                  <hr class="primary-color-bg divider" />
+                </div>
+              </div>
+            </div>
+            <div
+              v-if="selectedTab == 'Volunteer Experience'"
+              class="mx-3 my-2 pt-5 resume-main-section"
+            >
+              <div ref="resumeExperienceVol">
+                <div
+                  v-for="(exp, index) in experienceVolunteer"
+                  :key="`exp-${index}`"
+                  class="mt-4"
+                >
+                  <h4 class="text-uppercase secondary-color-c">
+                    {{ exp.company }}
+                  </h4>
+                  <div class="d-flex justify-space-between">
+                    <div>
+                      <h5 class="accent-color-c">
+                        {{ exp.title }}
+                      </h5>
+                    </div>
+                    <div>
+                      <h5 class="text-caption mt-1">
+                        {{ formatDate(exp.start_date) }} -
+                        {{
+                          exp.start_date == exp.end_date
+                            ? "Present"
+                            : formatDate(exp.end_date)
+                        }}
+                      </h5>
+                    </div>
+                  </div>
+                  <ul class="mt-2">
+                    <li
+                      v-for="(description, d_index) in exp.description"
+                      :key="`desc-${d_index}`"
+                    >
+                      {{ description }}
+                    </li>
+                  </ul>
+
+                  <hr class="primary-color-bg divider" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </v-container>
-  </v-main>
+      </v-col>
+      <v-col class="d-none d-sm-flex col-sm-1" />
+    </v-row>
+  </div>
 </template>
 
 <script>
 import VueCompareImage from "vue-compare-image";
-import { VueTyper } from "vue-typer";
+import VueVcard from "vue-vcard";
+import { mapGetters } from "vuex";
+import moment from "moment";
 
 export default {
   name: `AboutMe`,
   components: {
     VueCompareImage,
-    VueTyper,
+    VueVcard,
   },
-  mounted() {
-    this.getRightPic();
-
-    this.gsap
-      .timeline()
-      .fromTo(
-        this.$refs.imageSliderCont,
-        { xPercent: -20 },
-        { duration: 1, xPercent: 0 }
+  computed: {
+    ...mapGetters({
+      skills: "skills/getAllSkills",
+      experience: "resume/getAllExperience",
+      education: "resume/getAllEducation",
+      profile: "resume/getProfile",
+    }),
+    skillItems() {
+      return this.skills;
+    },
+    experienceVolunteer() {
+      return this.experience.filter((exp) => exp.type == "volunteer");
+    },
+    experienceProfessional() {
+      return this.experience.filter((exp) => exp.type == "professional");
+    },
+    isMobile() {
+      if (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        )
       )
-      .fromTo(
-        this.$refs.imageSlider,
-        { xPercent: -20, opacity: 0 },
-        { duration: 1, opacity: 1, xPercent: 0 },
-        ">"
-      )
-      .fromTo(
-        this.$refs.imageButton,
-        { opacity: 0 },
-        { duration: 0.5, opacity: 1 }
-      )
-      .fromTo(
-        ".image-refresh",
-        { opacity: 0 },
-        { duration: 0.5, opacity: 1 },
-        ">"
-      );
+        return true;
+      return false;
+    },
+    vcardInfo() {
+      if (this.profile)
+        return {
+          first_name: this.profile.first_name,
+          last_name: this.profile.last_name,
+          email: this.profile.contact.email.label,
+          phone: this.profile.contact.phone.label,
+          city: this.profile.location.city,
+          region: this.profile.location.region,
+          postal_code: this.profile.location.postal_code,
+          country: this.profile.location.country,
+        };
+      return null;
+    },
   },
   data() {
     return {
-      leftImage: "img/about/self_final.png",
+      sectionTabs: [
+        "Education & Skills",
+        "Professional Experience",
+        "Volunteer Experience",
+      ],
+      selectedTab: "Education & Skills",
+      // image comparison params
+      leftImage: "img/about/self_final_square.png",
       rightImage: "",
       rightImageIndex: 0,
-      sliderLine: 2,
+      sliderLine: 1,
       handleSize: 0,
-      sliderPosition: 0.5,
-      effectImages: [
-        "img/about/self_nature_exposure.png",
-        "img/about/self_glitch.png",
-        "img/about/self_triangle_glow.png",
-        "img/about/self_dripping.png",
-      ],
-      externalLinks: [
-        {
-          href: "https://drive.google.com/file/d/1yaWP4JcBuoBX9ZkcdBM3MkP4SqhpHIBg/view?usp=sharing",
-          icon: "mdi-file-pdf-box",
-          label: "Resume",
-        },
-        {
-          href: "https://www.linkedin.com/in/jsfernandes83/",
-          icon: "mdi-linkedin",
-          label: "LinkedIn",
-        },
-        {
-          href: "https://github.com/JasonSFern",
-          icon: "mdi-github",
-          label: "GitHub",
-        },
-      ],
+      sliderPosition: 0.75,
+      effectImages: ["img/about/self_glitch_square.png"],
     };
   },
+  mounted() {
+    this.gsap.set(this.$refs.mainCont, { opacity: 0 });
+    this.getRightPic();
+
+    const promiseProfile = this.$store.dispatch("resume/getProfile");
+    const promiseEducation = this.$store.dispatch("resume/getAllEducation");
+    const promiseExperience = this.$store.dispatch("resume/getAllExperience");
+    const promiseSkills = this.$store.dispatch("skills/getAllSkills");
+
+    Promise.all([
+      promiseProfile,
+      promiseEducation,
+      promiseExperience,
+      promiseSkills,
+    ]).then(() => {
+      this.loadContent();
+    });
+  },
   methods: {
+    loadContent() {
+      this.gsap
+        .timeline()
+        .fromTo(
+          this.$refs.mainCont,
+          { opacity: 0 },
+          { duration: 0.75, opacity: 1, delay: 0.5 }
+        )
+        .fromTo(
+          ".profile-section",
+          { opacity: 0 },
+          { duration: 0.5, opacity: 1 }
+        )
+        .fromTo(
+          ".resume-summary-section",
+          { opacity: 0 },
+          { duration: 0.5, opacity: 1 }
+        )
+        .fromTo(
+          ".resume-main-section",
+          { opacity: 0 },
+          { duration: 0.5, opacity: 1 }
+        );
+    },
     getRightPic() {
       this.rightImageIndex++;
 
@@ -181,53 +471,83 @@ export default {
 
       this.rightImage = this.effectImages[this.rightImageIndex];
     },
+    formatDate(date) {
+      return moment(date).format("MMMM Do, YYYY");
+    },
   },
 };
 </script>
 
 <style scoped>
-@media (min-width: 1902px) {
-  .image-refresh {
-    position: absolute;
-    right: 47%;
-    top: 3%;
-    z-index: 4;
-  }
+.divider {
+  opacity: 0.2;
 }
 
-@media (max-width: 1901px) {
-  .image-refresh {
-    position: absolute;
-    right: 72%;
-    top: 3%;
-    z-index: 4;
-  }
+.edu-icon-col {
+  width: 90px;
+  height: 80px;
+  background-color: white;
+  border-radius: 8px;
 }
 
-@media (max-width: 1262px) {
-  .image-refresh {
-    position: absolute;
-    right: 81%;
-    top: 4%;
-    z-index: 4;
+.edu-icon {
+  width: 70px;
+  height: 70px;
+}
+
+.skill-icon-col {
+  width: 35px;
+  height: auto;
+}
+
+.content-box {
+  border: 1px solid rgba(96, 109, 146, 0.2);
+  border-radius: 10px !important;
+  box-shadow: var(--color-shadow-small) !important;
+}
+
+.content-box hr {
+  background-color: var(--v-primary-darken4) !important;
+}
+
+.box-light {
+  border: 1px solid rgba(33, 38, 53, 0.2);
+  background-color: rgba(146, 207, 252, 0.5);
+}
+
+.box-dark {
+  background-color: rgba(12, 22, 45, 0.7);
+  border: 1px solid rgba(96, 109, 146, 0.2);
+}
+
+.resume-tab {
+  height: auto;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  margin: 10px 0 10px 0;
+}
+
+.profile-image {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+}
+
+@media (min-width: 960px) {
+  .about-box {
+    width: 25%;
+  }
+  .resume-box {
+    width: 75%;
   }
 }
 
 @media (max-width: 959px) {
-  .image-refresh {
-    position: absolute;
-    right: 67%;
-    top: 3%;
-    z-index: 4;
+  .about-box {
+    width: auto;
   }
-}
-
-@media (max-width: 764px) {
-  .image-refresh {
-    position: absolute;
-    right: 73%;
-    top: 3%;
-    z-index: 4;
+  .resume-box {
+    width: auto;
   }
 }
 </style>

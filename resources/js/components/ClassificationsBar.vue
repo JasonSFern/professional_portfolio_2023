@@ -70,23 +70,24 @@ export default {
   backdrop-filter: blur(5px);
   border-radius: 40px;
   text-transform: uppercase;
-  font-family: "Exo", sans-serif;
+  font-family: "Gigantic FS", sans-serif;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
   margin: 25px 0 5px 0;
+  font-size: 0.8rem;
   outline: none;
 }
 
 .classification button:hover {
   text-decoration: none;
   outline: none;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .classification button:active {
   text-decoration: none;
   outline: none;
-  transform: scale(0.8);
+  transform: scale(1);
 }
 
 .button-light {
@@ -95,7 +96,7 @@ export default {
 }
 
 .button-dark {
-  box-shadow: inset 0 0 2000px rgba(56, 56, 56, 0.9);
+  box-shadow: inset 0 0 2000px rgba(56, 56, 56, 0.65);
   border: solid 1px rgba(255, 255, 255, 0.1);
 }
 

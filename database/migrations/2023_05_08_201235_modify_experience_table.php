@@ -16,7 +16,6 @@ class ModifyExperienceTable extends Migration
         Schema::table('experience', function(Blueprint $table) {
             $table->renameColumn('institute', 'company');
             $table->dropColumn('icon');
-            $table->dropColumn('type');
             $table->unsignedInteger('classification')->after('id');
             $table->foreign('classification', 'experience_ibfk_1')->references('id')->on('classifications')->onUpdate('NO ACTION')->onDelete('NO ACTION');
           });
@@ -33,7 +32,7 @@ class ModifyExperienceTable extends Migration
             $table->renameColumn('company', 'institute');
             $table->string('type')->after('company');
             $table->string('icon')->after('description');
-            // $table->dropForeign('experience_ibfk_1');
+            $table->dropForeign('experience_ibfk_1');
             $table->dropColumn('classification');
         });
     }

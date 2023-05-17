@@ -3,11 +3,9 @@ import VueRouter from 'vue-router';
 
 import Home from './pages/Home.vue';
 import AboutMe from './pages/AboutMe.vue';
-import Experience from './pages/Experience.vue';
 import Projects from './pages/Projects.vue';
 import BetaTesting from './pages/BetaTesting.vue';
 import ViewProject from './pages/ViewProject.vue';
-import Contact from './pages/Contact.vue';
 import PageNotFound from './pages/PageNotFound.vue';
 
 Vue.use(VueRouter);
@@ -35,15 +33,6 @@ export default new VueRouter({
             meta: { transitionName: 'slide' },
         },
         {
-            path: "/resume",
-            name: "resume",
-            title: "Resume",
-            icon: "mdi-briefcase-variant",
-            hidden: false,
-            component: Experience,
-            meta: { transitionName: 'slide' },
-        },
-        {
             path: "/projects",
             name: "projects",
             title: "Projects",
@@ -65,15 +54,6 @@ export default new VueRouter({
                 props.item_id = parseInt(props.item_id)
                 return props
             }
-        },
-        {
-            path: "/contact",
-            name: "contact",
-            title: "Contact",
-            icon: "mdi-email",
-            hidden: false,
-            component: Contact,
-            meta: { transitionName: 'fade' },
         },
         {
             path: "/beta-testing",
