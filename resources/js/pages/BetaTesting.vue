@@ -1,18 +1,18 @@
 <template>
   <v-content>
     <!-- <v-container align-center> -->
-      <!-- <image-parallax></image-parallax> -->
-      <!-- <scroll-skew></scroll-skew> -->
-      <!-- <warp-speed-a></warp-speed-a> -->
-      <!-- <warp-speed-b></warp-speed-b> -->
-      <!-- <h1 class="header-section">Animations Test</h1>
+    <!-- <image-parallax></image-parallax> -->
+    <!-- <scroll-skew></scroll-skew> -->
+    <!-- <warp-speed-a></warp-speed-a> -->
+    <!-- <warp-speed-b></warp-speed-b> -->
+    <!-- <h1 class="header-section">Animations Test</h1>
       <div ref="logo" class="logo circle">Clean Juice</div> -->
 
-      <!-- <div class="juice square">
+    <!-- <div class="juice square">
         <img src="img/juice.png" alt="">
       </div> -->
 
-      <!-- <img id="ball1" src="img/fig1.jpg" style="width:100px;" alt="">
+    <!-- <img id="ball1" src="img/fig1.jpg" style="width:100px;" alt="">
       <img id="ball2" src="img/parks1.jpg" style="width:100px;" alt="">
       <img id="ball3" src="img/sage1.jpg" style="width:100px;" alt="">
 
@@ -26,10 +26,10 @@
 </template>
 
 <script>
-import ImageParallax from "../components/ImageParallax.vue";
-import ScrollSkew from "../components/ScrollSkew.vue";
-import WarpSpeedA from "../components/WarpSpeedA.vue";
-import WarpSpeedB from "../components/WarpSpeedB.vue";
+import ImageParallax from "../components/Effects/ImageParallax.vue";
+import ScrollSkew from "../components/Scroll/ScrollSkew.vue";
+import WarpSpeedA from "../components/Effects/WarpSpeedA.vue";
+import WarpSpeedB from "../components/Effects/WarpSpeedB.vue";
 
 export default {
   name: `BetaTesting`,

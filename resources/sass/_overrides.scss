@@ -1,0 +1,33 @@
+/* ***********************************************
+VUETIFY OVERRIDE STYLES
+*********************************************** */
+.v-tooltip__content {
+  opacity: 1 !important;
+  background-color: var(--v-background-base) !important;
+}
+
+.v-sheet {
+  background-color: var(--v-background-base) !important;
+}
+
+/* ***********************************************
+VUE TYPER STYLES
+*********************************************** */
+.vue-typer {
+  font-family: monospace;
+  font-size: 20px;
+
+  .custom {
+    &.char {
+      color: var(--v-primary-base) !important;
+
+      &.selected {
+        background-color: var(--v-accent-base) !important;
+      }
+    }
+
+    &.caret {
+      width: 1px;
+    }
+  }
+}

@@ -1,19 +1,19 @@
 <template>
   <v-app :dark="goDark">
-    <header-bar :goDark="goDark" @darkMode="darkMode($event)" />
+    <HeaderBar :goDark="goDark" @darkMode="darkMode($event)" />
 
-    <transition-page>
+    <TransitionPage>
       <router-view />
-    </transition-page>
+    </TransitionPage>
 
-    <footer-bar />
+    <FooterBar />
   </v-app>
 </template>
 
 <script>
-import HeaderBar from "../components/HeaderBar";
-import FooterBar from "../components/FooterBar";
-import TransitionPage from "../transitions/TransitionPage";
+import HeaderBar from "../components/Layout/Navigation/HeaderBar";
+import FooterBar from "../components/Layout/Navigation/FooterBar";
+import TransitionPage from "../components/Transitions/TransitionPage";
 import { getThemeData } from "../plugins/custom_themes";
 
 export default {

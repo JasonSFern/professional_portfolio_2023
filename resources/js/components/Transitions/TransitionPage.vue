@@ -7,7 +7,7 @@
     @enter="enter"
     @afterEnter="afterEnter"
   >
-    <slot/>
+    <slot />
   </transition>
 </template>
 
@@ -26,7 +26,10 @@ export default {
   },
   created() {
     this.$router.beforeEach((to, from, next) => {
-      let transitionName = to.meta.transitionName || from.meta.transitionName || DEFAULT_TRANSITION;
+      let transitionName =
+        to.meta.transitionName ||
+        from.meta.transitionName ||
+        DEFAULT_TRANSITION;
       if (transitionName === `slide`) {
         const toDepth = to.path.split(`/`).length;
         const fromDepth = from.path.split(`/`).length;
@@ -69,7 +72,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .fade-enter-active,
 .fade-leave-active {
   transition-duration: 0.3s;
@@ -79,7 +82,7 @@ export default {
 }
 .fade-enter,
 .fade-leave-active {
-  opacity: 0
+  opacity: 0;
 }
 .slide-left-enter-active,
 .slide-left-leave-active,

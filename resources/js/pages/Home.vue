@@ -1,17 +1,17 @@
 <template>
   <div>
     <div ref="grid">
-      <PerspectiveGrid class="d-none d-sm-flex"></PerspectiveGrid>
+      <PerspectiveGrid class="d-none d-sm-flex" />
     </div>
-    <div ref="logo" class="centered-text" @click="navigateToAboutMe">
-      <splash-logo></splash-logo>
+    <div ref="logo" class="centered-logo" @click="navigateToAboutMe">
+      <SplashLogo />
     </div>
   </div>
 </template>
 
 <script>
-import SplashLogo from "../components/SplashLogo.vue";
-import PerspectiveGrid from "../components/PerspectiveGrid.vue";
+import SplashLogo from "../components/Effects/SplashLogo.vue";
+import PerspectiveGrid from "../components/Effects/PerspectiveGrid.vue";
 
 export default {
   name: `Home`,
@@ -47,7 +47,7 @@ export default {
 </script>
 
 <style scoped>
-.centered-text {
+.centered-logo {
   position: absolute;
   text-align: center;
   top: 15%;

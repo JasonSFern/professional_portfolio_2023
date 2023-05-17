@@ -1,36 +1,36 @@
 <template>
   <v-main>
-    <classifications-bar
+    <ClassificationsBar
       class="classifications-menu"
       :class="{
         mobile: isMobile,
       }"
       @filterProjects="setClassification($event)"
-    ></classifications-bar>
-    <scroll-snap
+    ></ClassificationsBar>
+    <ScrollSnap
       v-if="!isMobile"
       :isLoaded="isLoaded"
       ref="scrollsnap"
       @setProjectTheme="setProjectTheme($event)"
     >
-      <project-tile-max
+      <ProjectTileMax
         v-for="item in items"
         :key="item.id"
         :item="item"
         class="item"
         :isLoaded="isLoaded"
       />
-    </scroll-snap>
+    </ScrollSnap>
 
-    <scroll-skew v-if="isMobile" :items="items">
-      <project-tile-min
+    <ScrollSkew v-if="isMobile" :items="items">
+      <ProjectTileMin
         v-for="item in items"
         :key="item.id"
         :item="item"
         class="item"
         :isLoaded="isLoaded"
       />
-    </scroll-skew>
+    </ScrollSkew>
   </v-main>
 </template>
 
@@ -40,11 +40,11 @@
   crossorigin="anonymous"
 ></script>
 <script>
-import ClassificationsBar from "../components/ClassificationsBar.vue";
-import ProjectTileMax from "../components/ProjectTileMax.vue";
-import ProjectTileMin from "../components/ProjectTileMin.vue";
-import ScrollSnap from "../components/ScrollSnap.vue";
-import ScrollSkew from "../components/ScrollSkew.vue";
+import ClassificationsBar from "../components/Layout/Navigation/ClassificationsBar.vue";
+import ProjectTileMax from "../components/Project/ProjectTileMax.vue";
+import ProjectTileMin from "../components/Project/ProjectTileMin.vue";
+import ScrollSnap from "../components/Scroll/ScrollSnap.vue";
+import ScrollSkew from "../components/Scroll/ScrollSkew.vue";
 
 import { getThemeData } from "../plugins/custom_themes";
 import { mapGetters } from "vuex";

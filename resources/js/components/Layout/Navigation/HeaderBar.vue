@@ -165,7 +165,7 @@
 </template>
 
 <script>
-import { CustomThemes, getThemeData } from "../plugins/custom_themes";
+import { CustomThemes, getThemeData } from "../../../plugins/custom_themes";
 
 export default {
   name: "HeaderBar",
@@ -239,7 +239,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .nav-link p {
   font-size: 0.8rem !important;
   font-family: "Avenir-Book", sans-serif;

@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { getThemeData } from "../plugins/custom_themes";
+import { getThemeData } from "../../plugins/custom_themes";
 
 export default {
   name: "ProjectTileMin",

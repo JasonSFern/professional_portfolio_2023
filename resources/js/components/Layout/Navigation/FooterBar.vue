@@ -5,7 +5,7 @@
     fixed
     class="transparent"
     :class="{
-      'foot-frosted': applyFrosted,
+      'footer-frosted': applyFrosted,
       transparent: !applyFrosted,
     }"
   >
@@ -46,7 +46,7 @@ export default {
   padding-top: 0px !important;
 }
 
-.foot-frosted {
+.footer-frosted {
   filter: drop-shadow(2px 10px 10px black) !important;
   background-color: rgba(152, 151, 151, 0.2) !important;
   box-shadow: 1rem 1rem 1rem 0.7rem rgba(0, 0, 0, 0.75) !important;
