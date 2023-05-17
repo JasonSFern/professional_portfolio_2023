@@ -4,6 +4,7 @@
     v-show="!hidden"
     class="fullpage fullpage-padding gradient-color-bg"
     @mousemove="mouseMoved"
+    :title="item.title"
   >
     <div
       class="d-flex per-container per-center"

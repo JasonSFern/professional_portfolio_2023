@@ -1,13 +1,20 @@
 <template>
   <div v-show="isLoaded" id="container">
     <div class="sections-menu">
-      <div
-        class="menu-point"
-        v-bind:class="{ active: activeSection == index }"
-        v-on:click="scrollToSection(index)"
-        v-for="(offset, index) in offsets"
-        v-bind:key="index"
-      ></div>
+      <div v-for="(offset, index) in offsets" :key="`menu-point-${index}`">
+        <v-tooltip left>
+          <template v-slot:activator="{ on, attrs }">
+            <div
+              v-bind="attrs"
+              v-on="on"
+              class="menu-point"
+              :class="{ active: activeSection == index }"
+              @click="scrollToSection(index)"
+            />
+          </template>
+          <p class="mb-0">{{ offset.title }}</p>
+        </v-tooltip>
+      </div>
     </div>
     <slot></slot>
   </div>
@@ -57,8 +64,15 @@ export default {
       let length = sections.length;
 
       for (let i = 0; i < length; i++) {
+        let sectionTitle = sections[i].getAttribute("title");
         let sectionOffset = sections[i].offsetTop;
-        this.offsets.push(sectionOffset);
+
+        let sectionOffsetData = {
+          title: sectionTitle,
+          offset: sectionOffset,
+        };
+
+        this.offsets.push(sectionOffsetData);
       }
 
       this.gsap
