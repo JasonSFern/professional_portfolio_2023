@@ -69,7 +69,9 @@
       </v-btn>
 
       <v-spacer></v-spacer>
+
       <v-btn
+        v-if="controlCenter.resumeButton"
         class="mx-1 secondary-color-bg-glow secondary-color-c-glow"
         color="secondary"
         href="https://drive.google.com/file/d/1yaWP4JcBuoBX9ZkcdBM3MkP4SqhpHIBg/view?usp=sharing"
@@ -83,7 +85,7 @@
         <v-icon x-small>mdi-download</v-icon>
       </v-btn>
 
-      <v-tooltip bottom>
+      <v-tooltip v-if="controlCenter.darkModeSwitcher" bottom>
         <template v-slot:activator="{ on, attrs }">
           <v-btn
             v-bind="attrs"
@@ -113,27 +115,33 @@
         </p>
       </v-tooltip>
 
-      <v-dialog
-        v-if="showThemePicker"
-        v-model="dialog"
-        scrollable
-        max-width="300px"
-      >
+      <v-tooltip v-if="controlCenter.themeSwitcher" bottom>
         <template v-slot:activator="{ on, attrs }">
           <v-btn
+            v-show="$route.name != 'projects' && $route.name != 'viewproject'"
             class="mx-1 primary-color-c"
             icon
             plain
             v-bind="attrs"
             v-on="on"
-            depressed
             large
+            @click="showThemePicker = true"
           >
             <v-icon class="rainbow-text">mdi-palette</v-icon>
           </v-btn>
         </template>
+
+        <p class="font-weight-bold text-center mb-0">Switch Theme</p>
+      </v-tooltip>
+
+      <v-dialog
+        v-if="controlCenter.themeSwitcher"
+        v-model="showThemePicker"
+        scrollable
+        max-width="300px"
+      >
         <v-card>
-          <v-card-title>Select Theme</v-card-title>
+          <v-card-title>Switch Theme</v-card-title>
           <v-divider></v-divider>
           <v-card-text style="height: 300px">
             <v-btn
@@ -143,16 +151,13 @@
               v-on:click="switchTheme(key)"
               class="col-12 mb-2"
             >
-              <v-icon>{{ theme.icon }}</v-icon
-              >&nbsp;&nbsp;{{ key }}
+              <v-icon class="white--text">{{ theme.icon }}</v-icon
+              >&nbsp;&nbsp;
+              <p class="mt-4 white--text">{{ key }}</p>
             </v-btn>
           </v-card-text>
-          <v-divider></v-divider>
-          <v-card-actions>
-            <v-btn color="blue darken-1" text @click="dialog = false">
-              Close
-            </v-btn>
-          </v-card-actions>
+          <v-divider />
+          <v-card-actions />
         </v-card>
       </v-dialog>
     </v-app-bar>
@@ -198,7 +203,11 @@ export default {
       allRoutes: this.$router.options.routes,
       showThemePicker: false,
       themes: CustomThemes,
-      dialog: false,
+      controlCenter: {
+        resumeButton: true,
+        darkModeSwitcher: true,
+        themeSwitcher: false,
+      },
     };
   },
   methods: {
