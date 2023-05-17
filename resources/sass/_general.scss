@@ -10,12 +10,41 @@ GENERAL STYLES
   display: none;
 }
 
+.v-application {
+  background-color: transparent !important;
+}
+
+html {
+  background-color: var(--v-gradient12-base);
+}
+
 body {
-  background-color: var(--v-background-base);
+  background-image: radial-gradient(
+    circle,
+    var(--v-gradient1-base),
+    var(--v-gradient2-base),
+    var(--v-gradient3-base),
+    var(--v-gradient4-base),
+    var(--v-gradient5-base),
+    var(--v-gradient6-base),
+    var(--v-gradient7-base),
+    var(--v-gradient8-base),
+    var(--v-gradient9-base),
+    var(--v-gradient10-base),
+    var(--v-gradient11-base),
+    var(--v-gradient12-base)
+  ) !important;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 p {
   font-family: "Avenir", sans-serif;
+}
+
+li {
+  font-family: "Avenir", sans-serif;
+  margin-bottom: 5px;
 }
 
 h1,
@@ -126,24 +155,51 @@ COLOR STYLES
   color: var(--v-primary-base) !important;
 }
 
+.primary-color-c-glow {
+  text-shadow: 0 0 10px var(--v-primary-base), 0 0 21px var(--v-primary-base),
+    0 0 42px var(--v-primary-base);
+}
+
 .primary-color-bg {
   background-color: var(--v-primary-base) !important;
+}
+
+.primary-color-bg-glow {
+  box-shadow: 0 0 8px 0px var(--v-primary-base);
 }
 
 .secondary-color-c {
   color: var(--v-secondary-base) !important;
 }
 
+.secondary-color-c-glow {
+  text-shadow: 0 0 10px var(--v-secondary-base),
+    0 0 21px var(--v-secondary-base), 0 0 42px var(--v-secondary-base);
+}
+
 .secondary-color-bg {
   background-color: var(--v-secondary-base) !important;
+}
+
+.secondary-color-bg-glow {
+  box-shadow: 0 0 8px 0px var(--v-secondary-base);
 }
 
 .accent-color-c {
   color: var(--v-accent-base) !important;
 }
 
+.accent-color-c-glow {
+  text-shadow: 0 0 10px var(--v-accent-base), 0 0 21px var(--v-accent-base),
+    0 0 42px var(--v-accent-base);
+}
+
 .accent-color-bg {
   background-color: var(--v-accent-base) !important;
+}
+
+.accent-color-bg-glow {
+  box-shadow: 0 0 8px 0px var(--v-accent-base);
 }
 
 .background-color-c {
@@ -206,6 +262,11 @@ COLOR STYLES
 
 .transparent {
   background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.v-tooltip__content {
+  opacity: 1 !important;
+  background-color: var(--v-background-base) !important;
 }
 
 /* ***********************************************

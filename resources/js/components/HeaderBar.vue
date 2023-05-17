@@ -9,7 +9,14 @@
         solid: isMobile,
       }"
     >
-      <v-menu offset-y rounded="b-xl nav-link">
+      <v-btn to="/" depressed plain x-small class="d-flex d-sm-none nav-link">
+        <h5 class="pt-2 primary-color-c primary-color-c-glow">J</h5>
+        <strong class="pt-2 bold"
+          ><h5 class="accent-color-c accent-color-c-glow">F</h5></strong
+        >
+      </v-btn>
+
+      <v-menu offset-y class="nav-link">
         <template v-slot:activator="{ on, attrs }">
           <v-app-bar-nav-icon
             small
@@ -33,10 +40,12 @@
         </v-list>
       </v-menu>
 
-      <v-btn to="/" depressed plain x-small class="nav-link">
-        <p class="pt-4 primary-color-c">Jason&nbsp;&nbsp;</p>
+      <v-btn to="/" depressed plain x-small class="d-none d-sm-flex nav-link">
+        <p class="pt-4 primary-color-c primary-color-c-glow">
+          Jason&nbsp;&nbsp;
+        </p>
         <strong class="pt-4 bold"
-          ><p class="accent-color-c">Fernandes</p></strong
+          ><p class="accent-color-c accent-color-c-glow">Fernandes</p></strong
         >
       </v-btn>
 
@@ -48,46 +57,61 @@
         :to="route.path"
         depressed
         plain
-        x-small
+        medium
         class="d-none d-sm-flex nav-link"
       >
         <v-icon class="pr-1 pt-0 primary-color-c" small>{{
           route.icon
         }}</v-icon>
-        <p class="pt-4 primary-color-c">{{ route.title }}</p>
+        <p class="pt-4 primary-color-c">
+          {{ route.title }}
+        </p>
       </v-btn>
 
       <v-spacer></v-spacer>
       <v-btn
-        class="mx-1"
+        class="mx-1 secondary-color-bg-glow secondary-color-c-glow"
         color="secondary"
         href="https://drive.google.com/file/d/1yaWP4JcBuoBX9ZkcdBM3MkP4SqhpHIBg/view?usp=sharing"
         target="_blank"
         style="font-weight: 700"
         depressed
         outlined
-        x-small
+        small
       >
         PDF Resume&nbsp;&nbsp;
         <v-icon x-small>mdi-download</v-icon>
       </v-btn>
-      <p
-        v-if="$route.name != 'projects' && $route.name != 'viewproject'"
-        class="d-none d-sm-flex pt-4 primary-color-c"
-      >
-        &nbsp;&nbsp;&nbsp;|&nbsp;
-      </p>
-      <v-btn
-        v-if="$route.name != 'projects' && $route.name != 'viewproject'"
-        class="mx-1 primary-color-c"
-        @click="darkMode"
-        plain
-        icon
-        small
-      >
-        <v-icon v-if="!$vuetify.theme.dark">mdi-weather-sunny</v-icon>
-        <v-icon v-else>mdi-moon-waxing-crescent</v-icon>
-      </v-btn>
+
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            v-bind="attrs"
+            v-on="on"
+            v-show="$route.name != 'projects' && $route.name != 'viewproject'"
+            class="mx-1 primary-color-c"
+            @click="darkMode"
+            plain
+            icon
+            large
+          >
+            <v-icon v-if="!$vuetify.theme.dark" class="sun-glow"
+              >mdi-weather-sunny</v-icon
+            >
+            <v-icon v-else class="moon-glow">mdi-moon-waxing-crescent</v-icon>
+          </v-btn>
+        </template>
+
+        <p
+          v-if="!$vuetify.theme.dark"
+          class="font-weight-bold text-center mb-0 primary-color-c"
+        >
+          Switch to Dark Mode
+        </p>
+        <p v-else class="font-weight-bold text-center mb-0">
+          Switch to Light Mode
+        </p>
+      </v-tooltip>
 
       <v-dialog
         v-if="showThemePicker"
@@ -100,12 +124,12 @@
             class="mx-1 primary-color-c"
             icon
             plain
-            small
             v-bind="attrs"
             v-on="on"
             depressed
+            large
           >
-            <v-icon>mdi-palette</v-icon>
+            <v-icon class="rainbow-text">mdi-palette</v-icon>
           </v-btn>
         </template>
         <v-card>
@@ -113,7 +137,7 @@
           <v-divider></v-divider>
           <v-card-text style="height: 300px">
             <v-btn
-              :color="theme.light.gradient3"
+              :color="theme.light.gradient12"
               v-for="(theme, key) in themes"
               :key="key"
               v-on:click="switchTheme(key)"
@@ -208,11 +232,12 @@ export default {
 
 <style>
 .nav-link p {
-  font-size: 10px;
+  font-size: 0.8rem !important;
   font-family: "Avenir-Book", sans-serif;
 }
 
 .nav-link .bold p {
+  font-size: 0.9rem !important;
   font-family: "Avenir-Black", sans-serif;
 }
 
@@ -224,5 +249,30 @@ export default {
 .solid {
   backdrop-filter: blur(5px) !important;
   background-color: var(--v-background-base) !important;
+}
+
+.sun-glow {
+  text-shadow: 0 0 10px #face33, 0 0 21px #face33, 0 0 42px #face33;
+  color: #face33 !important;
+}
+
+.moon-glow {
+  text-shadow: 0 0 10px #ffffff, 0 0 21px #ffffff, 0 0 42px #ffffff;
+}
+
+.rainbow-text {
+  background-image: linear-gradient(
+    to top,
+    purple,
+    purple,
+    blue,
+    green,
+    yellow,
+    orange,
+    red,
+    red
+  ) !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
 }
 </style>

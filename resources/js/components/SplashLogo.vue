@@ -86,9 +86,21 @@ export default {
 }
 
 .layer1 {
-  background-color: var(--v-accent-base);
   border-radius: 50px;
   margin: 30px auto 30px auto;
+}
+
+@media (min-width: 500px) {
+  .layer1 {
+    background-color: var(--v-accent-base);
+    box-shadow: 0 0 8px 0px var(--v-accent-base);
+  }
+}
+
+@media (max-width: 499px) {
+  .layer1 {
+    background-color: transparent;
+  }
 }
 
 .layer2 {

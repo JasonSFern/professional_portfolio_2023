@@ -1,5 +1,5 @@
 <template>
-  <v-app class="gradient-color-bg" :dark="goDark">
+  <v-app :dark="goDark">
     <header-bar :goDark="goDark" @darkMode="darkMode($event)" />
 
     <transition-page>

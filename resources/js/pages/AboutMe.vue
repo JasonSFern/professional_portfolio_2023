@@ -24,7 +24,7 @@
             <vue-compare-image
               v-else
               class="profile-image"
-              drag
+              hover
               :sliderLineWidth="sliderLine"
               :handleSize="handleSize"
               :leftImage="leftImage"

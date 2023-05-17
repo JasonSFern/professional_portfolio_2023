@@ -22,7 +22,7 @@
 .line {
   position: absolute;
   background: var(--v-accent-base);
-  box-shadow: 0 0 7px var(--v-accent-base);
+  box-shadow: 0 0 7px 1px var(--v-accent-base);
   -webkit-backface-visibility: hidden;
 }
 
