@@ -20,21 +20,6 @@ import jQuery from 'jquery'
 
 gsap.registerPlugin(ScrollTrigger);
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-Vue.component('project-tile-max', require('./components/ProjectTileMax.vue').default);
-Vue.component('project-tile-min', require('./components/ProjectTileMin.vue').default);
-Vue.component('header-bar', require('./components/HeaderBar.vue').default);
-Vue.component('footer-bar', require('./components/FooterBar.vue').default);
-Vue.component('splash-logo', require('./components/SplashLogo.vue').default) ;
-Vue.component('flying-letters', require('./components/FlyingLetters.vue').default) ;
-Vue.component('experience-timeline', require('./components/ExperienceTimeline.vue').default) ;
-
 Vue.mixin({
     created: function () {
         this.gsap = gsap;
