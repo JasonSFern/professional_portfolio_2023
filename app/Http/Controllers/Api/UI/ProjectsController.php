@@ -14,9 +14,15 @@ class ProjectsController extends Controller
     }
     
     public function single($id) {
-        $data = Project::where('id', $id)->with('classification')->first();
-        
-        return $data;
+        $data = Project::where('id', $id)->where('is_active', 1)->with('classification')->first();
+
+        if($data) {
+            return $data;
+        } else {
+            return response()->json([
+                'message' => 'Project not found'
+            ], 404);
+        }
     }
 
     public function coding(Request $request) {
