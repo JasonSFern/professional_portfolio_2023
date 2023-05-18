@@ -5,10 +5,10 @@
       <v-col class="d-block d-md-flex col-12 col-sm-10">
         <!-- Profile info -->
         <div
-          class="d-block mt-16 content-box about-box pa-6"
+          class="d-block mt-16 content-pane about-pane pa-6"
           :class="{
-            'box-dark': $vuetify.theme.dark,
-            'box-light': !$vuetify.theme.dark,
+            'pane-dark': $vuetify.theme.dark,
+            'pane-light': !$vuetify.theme.dark,
           }"
         >
           <!-- Profile image -->
@@ -103,13 +103,13 @@
             </div>
           </div>
         </div>
-        <div class="d-flex mt-md-16 resume-box">
+        <div class="d-flex mt-md-16 resume-pane">
           <!-- Resume section -->
           <div
-            class="d-block px-5 pb-4 mb-14 mb-md-0 content-box w-100"
+            class="d-block px-5 pb-4 mb-14 mb-md-0 content-pane resume-pane-int w-100"
             :class="{
-              'box-dark': $vuetify.theme.dark,
-              'box-light': !$vuetify.theme.dark,
+              'pane-dark': $vuetify.theme.dark,
+              'pane-light': !$vuetify.theme.dark,
             }"
           >
             <!-- Summary blurb -->
@@ -135,7 +135,7 @@
               </div>
             </div>
             <div class="resume-main-section">
-              <hr class="primary-color-bg divider" />
+              <hr class="primary-color-bg" />
             </div>
             <!-- Sub tabs -->
             <div class="d-block d-lg-flex resume-main-section">
@@ -221,7 +221,7 @@
                   </div>
                 </div>
               </div>
-              <hr class="primary-color-bg divider" />
+              <hr class="primary-color-bg" />
               <div class="d-block d-lg-flex col-12">
                 <div ref="resumeSkillsTech" class="col-12 col-lg-6">
                   <div v-if="profile" class="mt-2">
@@ -294,7 +294,7 @@
                     </li>
                   </ul>
 
-                  <hr class="primary-color-bg divider" />
+                  <hr class="primary-color-bg" />
                 </div>
               </div>
             </div>
@@ -337,7 +337,7 @@
                     </li>
                   </ul>
 
-                  <hr class="primary-color-bg divider" />
+                  <hr class="primary-color-bg" />
                 </div>
               </div>
             </div>
@@ -479,8 +479,17 @@ export default {
 </script>
 
 <style scoped>
-.divider {
-  opacity: 0.2;
+.profile-image {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+}
+
+.resume-tab {
+  height: auto;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  margin: 10px 0 10px 0;
 }
 
 .edu-icon-col {
@@ -500,54 +509,34 @@ export default {
   height: auto;
 }
 
-.content-box {
-  border: 1px solid rgba(96, 109, 146, 0.2);
-  border-radius: 10px !important;
-  box-shadow: var(--color-shadow-small) !important;
-}
-
-.content-box hr {
-  background-color: var(--v-primary-darken4) !important;
-}
-
-.box-light {
-  border: 1px solid rgba(33, 38, 53, 0.2);
-  background-color: rgba(146, 207, 252, 0.5);
-}
-
-.box-dark {
-  background-color: rgba(12, 22, 45, 0.7);
-  border: 1px solid rgba(96, 109, 146, 0.2);
-}
-
-.resume-tab {
-  height: auto;
-  padding-left: 3rem;
-  padding-right: 3rem;
-  margin: 10px 0 10px 0;
-}
-
-.profile-image {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-}
-
 @media (min-width: 960px) {
-  .about-box {
+  .about-pane {
     width: 25%;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
   }
-  .resume-box {
+  .resume-pane {
     width: 75%;
   }
+  .resume-pane-int {
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+  }
 }
 
-@media (max-width: 959px) {
-  .about-box {
+@media (min-width: 600px) and (max-width: 959px) {
+  .about-pane {
+    width: auto;
+    border-top-right-radius: 10px !important;
+    border-top-left-radius: 10px !important;
+  }
+  .resume-pane {
     width: auto;
   }
-  .resume-box {
+  .resume-pane-int {
     width: auto;
+    border-bottom-right-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
   }
 }
 </style>
