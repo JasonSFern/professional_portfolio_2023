@@ -11,17 +11,47 @@
   >
     <v-spacer></v-spacer>
     <div class="d-flex footer-content" style="height: 30px">
-      <p class="pt-12 primary-color-c">
+      <p class="primary-color-c">
         &copy; {{ new Date().getFullYear() }} - Jason S Fernandes
       </p>
+      <v-btn
+        class="primary-color-c px-1 info-button"
+        depressed
+        plain
+        small
+        @click="showDisclaimer = true"
+      >
+        <v-icon small>mdi-information</v-icon>
+      </v-btn>
     </div>
     <v-spacer></v-spacer>
+
+    <v-dialog v-model="showDisclaimer" scrollable max-width="500px">
+      <v-card>
+        <v-card-title>Disclaimer</v-card-title>
+        <v-divider></v-divider>
+        <v-card-text>
+          <p>
+            All of the images, artwork, text and graphics contained in this
+            portfolio, unless otherwise specified and/or credited, are the
+            copyright of Jason Fernandes. All rights reserved. All other
+            materials are the copyright and/or trademark of the respective
+            owners. All materials featured are offered for informative purposes
+            only and as such are offered on a 'as is' basis.
+          </p>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
   </v-footer>
 </template>
 <script>
 export default {
   name: "FooterBar",
-  data: () => ({}),
+  data() {
+    return {
+      showDisclaimer: false,
+    };
+  },
   computed: {
     applyFrosted: function () {
       if (
@@ -43,7 +73,13 @@ export default {
   font-size: 14px;
   font-family: "Avenir-Book", sans-serif;
   text-align: center;
-  padding-top: 0px !important;
+  padding-top: 5px;
+  margin-bottom: 0px;
+}
+
+.info-button {
+  min-width: 5px;
+  width: 5px;
 }
 
 .footer-frosted {

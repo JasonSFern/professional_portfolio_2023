@@ -5,16 +5,49 @@
       <h1>0</h1>
       <h1>4</h1>
     </div>
-    <p class="secondary-glow"><strong>(>'-')>&nbsp;&nbsp;&nbsp;PAGE NOT FOUND</strong></p>
+    <p class="secondary-glow">
+      <strong>{{ chosenText }}&nbsp;&nbsp;&nbsp;PAGE NOT FOUND</strong>
+    </p>
   </v-layout>
 </template>
 
 <script>
-export default {};
+export default {
+  name: `PageNotFound`,
+  data() {
+    return {
+      text: ["(>'-')>", "<('-'<)"],
+      chosenText: "(>'-')>",
+    };
+  },
+  mounted() {
+    this.gsap
+      .timeline()
+      .fromTo(
+        ".main-glow",
+        { opacity: 0 },
+        { duration: 0.75, opacity: 1, delay: 1 }
+      )
+      .fromTo(
+        ".secondary-glow",
+        { opacity: 0 },
+        { duration: 0.5, opacity: 1, delay: 0.25 }
+      );
+
+    setInterval(() => {
+      let chosenIndex = Math.floor(Math.random() * this.text.length);
+      this.chosenText = this.text[chosenIndex];
+    }, 1000);
+  },
+  methods: {
+    navigateToHome() {
+      this.$router.push({ name: "Home" });
+    },
+  },
+};
 </script>
 
 <style scoped>
-
 p {
   position: relative;
   padding-top: 85px;
@@ -36,46 +69,11 @@ p {
 
 .main-glow {
   color: var(--v-primary-base);
-  animation: flicker-main 1.5s infinite alternate;
+  text-shadow: 0 0 3px var(--v-primary-base), 0 0 10px var(--v-primary-base),
+    0 0 18px var(--v-primary-base);
 }
 
 .secondary-glow {
   color: var(--v-primary-base);
-  animation: flicker-secondary 1.5s infinite alternate;
 }
-
-@keyframes flicker-main {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% {
-    text-shadow:
-      0 0 7px var(--v-primary-base),
-      0 0 10px var(--v-primary-base),
-      0 0 21px var(--v-primary-base),
-      0 0 42px var(--v-accent-base),
-      0 0 82px var(--v-accent-base),
-      0 0 92px var(--v-accent-base),
-      0 0 102px var(--v-accent-base),
-      0 0 151px var(--v-accent-base);
-  }
-  20%, 24%, 55% {        
-      text-shadow: none;
-  }    
-}
-
-@keyframes flicker-secondary {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% {
-    text-shadow:
-      0 0 7px var(--v-primary-base),
-      0 0 10px var(--v-primary-base),
-      0 0 21px var(--v-primary-base),
-      0 0 42px var(--v-secondary-base),
-      0 0 82px var(--v-secondary-base),
-      0 0 92px var(--v-secondary-base),
-      0 0 102px var(--v-secondary-base),
-      0 0 151px var(--v-secondary-base);
-  }
-  20%, 24%, 55% {        
-    text-shadow: none;
-  }    
-}
-
 </style>
