@@ -84,6 +84,18 @@
           <!-- Profile vcard -->
           <div ref="profileQRCode" class="mt-12 profile-section">
             <div v-if="vcardInfo">
+              <div class="mb-8">
+                <v-btn
+                  class="my-2"
+                  color="primary"
+                  x-large
+                  block
+                  @click="addContact"
+                >
+                  <span class="accent-color-c">Add contact</span>
+                </v-btn>
+              </div>
+
               <div class="d-flex justify-content-around">
                 <VueVcard
                   :firstName="vcardInfo.first_name"
@@ -473,6 +485,50 @@ export default {
     },
     formatDate(date) {
       return moment(date).format("MMMM Do, YYYY");
+    },
+    addContact() {
+      const nameEl = `${this.vcardInfo.first_name} ${this.vcardInfo.last_name}`;
+      const cardInfoEl = `${this.vcardInfo.last_name};${this.vcardInfo.first_name}`;
+      const addressEl = `${this.vcardInfo.city};${this.vcardInfo.region};${this.vcardInfo.postal_code};${this.vcardInfo.country}`;
+
+      const makeVCardVersion = () => `VERSION:3.0`;
+      const makeVCardInfo = (info) => `N:${info}`;
+      const makeVCardName = (name) => `FN:${name}`;
+      const makeVCardOrg = (org) => `ORG:${org}`;
+      const makeVCardTitle = (title) => `TITLE:${title}`;
+      const makeVCardPhoto = (img) => `PHOTO;TYPE=JPEG;ENCODING=b:[${img}]`;
+      const makeVCardTel = (phone) => `TEL;TYPE=WORK,VOICE:${phone}`;
+      const makeVCardAdr = (address) => `ADR;TYPE=WORK,PREF:;;${address}`;
+      const makeVCardEmail = (email) => `EMAIL:${email}`;
+      const makeVCardTimeStamp = () => `REV:${new Date().toISOString()}`;
+
+      // ${makeVCardOrg(orgEl.value)}
+      // ${makeVCardTitle(titleEl.value)}
+      // ${makeVCardPhoto(previewEl.src)}
+      let vcard = `BEGIN:VCARD
+        ${makeVCardVersion()}
+        ${makeVCardInfo(cardInfoEl)}
+        ${makeVCardName(nameEl)}
+        ${makeVCardTel(this.vcardInfo.phone)}
+        ${makeVCardAdr(addressEl)}
+        ${makeVCardEmail(this.vcardInfo.email)}
+        ${makeVCardTimeStamp()}
+        END:VCARD`;
+      console.log(vcard.replace(/\s/g, ""));
+      // return;
+
+      // const vcard =
+      //   "BEGIN:VCARD%0AVERSION:3.0%0AN:Fernandes;Jason%0AFN:Jason Fernandes%0ATEL;TYPE=home:403-918-8026%0AEMAIL;TYPE=internet,home:jsfernandes83@gmail.com%0AADR;TYPE=home:;;;Calgary;Alberta;T2G 4Z8;Canada%0AEND:VCARD";
+
+      const blob = new Blob([vcard.replace(/\s/g, "")], { type: "text/vcard" });
+      const url = URL.createObjectURL(blob);
+
+      const newLink = document.createElement("a");
+      newLink.download =
+        `${this.vcardInfo.first_name} ${this.vcardInfo.last_name}VV` + ".vcf";
+      newLink.href = url;
+
+      newLink.click();
     },
   },
 };
