@@ -487,40 +487,9 @@ export default {
       return moment(date).format("MMMM Do, YYYY");
     },
     addContact() {
-      const nameEl = `${this.vcardInfo.first_name} ${this.vcardInfo.last_name}`;
-      const cardInfoEl = `${this.vcardInfo.last_name};${this.vcardInfo.first_name}`;
-      const addressEl = `${this.vcardInfo.city};${this.vcardInfo.region};${this.vcardInfo.postal_code};${this.vcardInfo.country}`;
+      const vcard = `BEGIN:VCARD\nVERSION:3.0\nN:${this.vcardInfo.last_name};${this.vcardInfo.last_name}\nFN:${this.vcardInfo.first_name} ${this.vcardInfo.last_name}\nTEL;TYPE=home:${this.vcardInfo.phone}\nEMAIL;TYPE=internet,home:${this.vcardInfo.email}\nADR;TYPE=home:;;;${this.vcardInfo.city};${this.vcardInfo.region};${this.vcardInfo.postal_code};${this.vcardInfo.country}\nEND:VCARD`;
 
-      const makeVCardVersion = () => `VERSION:3.0`;
-      const makeVCardInfo = (info) => `N:${info}`;
-      const makeVCardName = (name) => `FN:${name}`;
-      const makeVCardOrg = (org) => `ORG:${org}`;
-      const makeVCardTitle = (title) => `TITLE:${title}`;
-      const makeVCardPhoto = (img) => `PHOTO;TYPE=JPEG;ENCODING=b:[${img}]`;
-      const makeVCardTel = (phone) => `TEL;TYPE=WORK,VOICE:${phone}`;
-      const makeVCardAdr = (address) => `ADR;TYPE=WORK,PREF:;;${address}`;
-      const makeVCardEmail = (email) => `EMAIL:${email}`;
-      const makeVCardTimeStamp = () => `REV:${new Date().toISOString()}`;
-
-      // ${makeVCardOrg(orgEl.value)}
-      // ${makeVCardTitle(titleEl.value)}
-      // ${makeVCardPhoto(previewEl.src)}
-      let vcard = `BEGIN:VCARD
-        ${makeVCardVersion()}
-        ${makeVCardInfo(cardInfoEl)}
-        ${makeVCardName(nameEl)}
-        ${makeVCardTel(this.vcardInfo.phone)}
-        ${makeVCardAdr(addressEl)}
-        ${makeVCardEmail(this.vcardInfo.email)}
-        ${makeVCardTimeStamp()}
-        END:VCARD`;
-      console.log(vcard.replace(/\s/g, ""));
-      // return;
-
-      // const vcard =
-      //   "BEGIN:VCARD%0AVERSION:3.0%0AN:Fernandes;Jason%0AFN:Jason Fernandes%0ATEL;TYPE=home:403-918-8026%0AEMAIL;TYPE=internet,home:jsfernandes83@gmail.com%0AADR;TYPE=home:;;;Calgary;Alberta;T2G 4Z8;Canada%0AEND:VCARD";
-
-      const blob = new Blob([vcard.replace(/\s/g, "")], { type: "text/vcard" });
+      const blob = new Blob([vcard], { type: "text/vcard" });
       const url = URL.createObjectURL(blob);
 
       const newLink = document.createElement("a");
@@ -567,7 +536,7 @@ export default {
 
 @media (min-width: 960px) {
   .about-pane {
-    width: 25%;
+    min-width: 500px;
     border-top-left-radius: 10px !important;
     border-bottom-left-radius: 10px !important;
   }
