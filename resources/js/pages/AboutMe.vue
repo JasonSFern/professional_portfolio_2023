@@ -536,7 +536,7 @@ export default {
 
 @media (min-width: 960px) {
   .about-pane {
-    min-width: 500px;
+    width: 500px;
     border-top-left-radius: 10px !important;
     border-bottom-left-radius: 10px !important;
   }
