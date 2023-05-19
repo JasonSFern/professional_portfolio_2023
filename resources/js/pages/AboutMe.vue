@@ -494,7 +494,7 @@ export default {
 
       const newLink = document.createElement("a");
       newLink.download =
-        `${this.vcardInfo.first_name} ${this.vcardInfo.last_name}VV` + ".vcf";
+        `${this.vcardInfo.first_name} ${this.vcardInfo.last_name}` + ".vcf";
       newLink.href = url;
 
       newLink.click();
