@@ -84,6 +84,18 @@
           <!-- Profile vcard -->
           <div ref="profileQRCode" class="mt-12 profile-section">
             <div v-if="vcardInfo">
+              <div class="mb-8">
+                <v-btn
+                  class="my-2"
+                  color="primary"
+                  x-large
+                  block
+                  @click="addContact"
+                >
+                  <span class="accent-color-c">Add contact</span>
+                </v-btn>
+              </div>
+
               <div class="d-flex justify-content-around">
                 <VueVcard
                   :firstName="vcardInfo.first_name"
@@ -474,6 +486,19 @@ export default {
     formatDate(date) {
       return moment(date).format("MMMM Do, YYYY");
     },
+    addContact() {
+      const vcard = `BEGIN:VCARD\nVERSION:3.0\nN:${this.vcardInfo.last_name};${this.vcardInfo.last_name}\nFN:${this.vcardInfo.first_name} ${this.vcardInfo.last_name}\nTEL;TYPE=home:${this.vcardInfo.phone}\nEMAIL;TYPE=internet,home:${this.vcardInfo.email}\nADR;TYPE=home:;;;${this.vcardInfo.city};${this.vcardInfo.region};${this.vcardInfo.postal_code};${this.vcardInfo.country}\nEND:VCARD`;
+
+      const blob = new Blob([vcard], { type: "text/vcard" });
+      const url = URL.createObjectURL(blob);
+
+      const newLink = document.createElement("a");
+      newLink.download =
+        `${this.vcardInfo.first_name} ${this.vcardInfo.last_name}` + ".vcf";
+      newLink.href = url;
+
+      newLink.click();
+    },
   },
 };
 </script>
@@ -511,7 +536,7 @@ export default {
 
 @media (min-width: 960px) {
   .about-pane {
-    width: 25%;
+    min-width: 500px;
     border-top-left-radius: 10px !important;
     border-bottom-left-radius: 10px !important;
   }
