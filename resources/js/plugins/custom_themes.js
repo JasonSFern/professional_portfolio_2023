@@ -2,7 +2,7 @@ export const CustomThemes = {
   default: {
     light: {
       primary: "#17334a",
-      secondary: "#0463CA",
+      secondary: "#003a71",
       accent: "#d0e5fc",
       background: "#0487E2",
       gradient1: "#0487e2",
