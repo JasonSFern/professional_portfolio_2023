@@ -4,7 +4,7 @@
       <div
         v-for="item in items"
         :key="item.id"
-        class="px-4 classification"
+        class="px-4 classification primary-color-c"
         v-on:click="filterProjects(item.id)"
       >
         <button

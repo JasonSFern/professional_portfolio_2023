@@ -27,6 +27,7 @@ export default {
     return {
       goDark: false,
       isDark: true,
+      defaultTheme: "cloud",
     };
   },
   computed: {
@@ -46,7 +47,7 @@ export default {
         (to.name !== "projects" && to.name !== "viewproject") ||
         (to.name == "projects" && this.isMobile)
       ) {
-        let selectedTheme = getThemeData("default");
+        let selectedTheme = getThemeData(this.defaultTheme);
 
         Object.keys(selectedTheme.dark).forEach((i) => {
           this.$vuetify.theme.themes.dark[i] = selectedTheme.dark[i];
@@ -57,9 +58,20 @@ export default {
       }
     },
   },
+  created() {
+    const darkMode = this.$cookies.get("isDark");
+
+    if (darkMode == null) {
+      this.$cookies.set("isDark", this.isDark, -1);
+    } else {
+      this.$vuetify.theme.dark = this.isDark =
+        darkMode == "true" ? true : false;
+    }
+  },
   methods: {
     darkMode() {
       this.$vuetify.theme.dark = this.isDark = !this.$vuetify.theme.dark;
+      this.$cookies.set("isDark", this.isDark, -1);
     },
   },
 };

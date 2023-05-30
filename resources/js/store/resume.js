@@ -31,7 +31,6 @@ export default {
     },
     getAllEducation(context, payload) {
       return Api.getAllEducation(payload).then(response => {
-        console.log(response)
         let data = response.data
 
         context.commit('getAllEducation', data)
@@ -41,7 +40,6 @@ export default {
     getProfile(context, payload) {
       return Api.getProfile(payload).then(response => {
         let data = response.data
-        console.log(data)
 
         data.location = JSON.parse(data.location);
         data.contact = JSON.parse(data.contact);

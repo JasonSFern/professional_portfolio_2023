@@ -44,7 +44,9 @@
                 <div class="d-block pa-0">
                   <div class="pa-0">
                     <h2>
-                      <span>{{ profile.first_name }}</span>
+                      <span class="primary-color-c">{{
+                        profile.first_name
+                      }}</span>
                       <span class="accent-color-c">{{
                         profile.last_name
                       }}</span>
@@ -52,12 +54,12 @@
                     </h2>
                   </div>
                   <div class="pa-0">
-                    <h5>{{ profile.title }}</h5>
+                    <h5 class="primary-color-c">{{ profile.title }}</h5>
                   </div>
                 </div>
               </div>
               <div class="my-8 d-block pa-0">
-                <p>{{ profile.blurb }}</p>
+                <p class="primary-color-c">{{ profile.blurb }}</p>
               </div>
             </div>
           </div>
@@ -109,7 +111,7 @@
                   :size="250"
                 />
               </div>
-              <p class="font-weight-bold text-center mt-8">
+              <p class="font-weight-bold text-center mt-8 primary-color-c">
                 Add contact by scanning the QR Code
               </p>
             </div>
@@ -128,15 +130,16 @@
             <div ref="resumeSummary" class="resume-summary-section">
               <div v-if="profile" class="d-block d-lg-flex">
                 <div class="col-12 col-lg-6">
-                  <h3 class="mt-5">Summary</h3>
-                  <p>
+                  <h3 class="mt-5 secondary-color-c">Summary</h3>
+                  <p class="primary-color-c">
                     {{ profile.summary }}
                   </p>
                 </div>
                 <div class="col-12 col-lg-6">
-                  <h3 class="mt-5">Strengths</h3>
+                  <h3 class="mt-5 secondary-color-c">Strengths</h3>
                   <ul>
                     <li
+                      class="primary-color-c"
                       v-for="(strength, index) in profile.strengths"
                       :key="`str-${index}`"
                     >
@@ -157,7 +160,7 @@
                 class="col-12 col-lg-4 classification"
               >
                 <button
-                  class="resume-tab w-100"
+                  class="resume-tab w-100 primary-color-c"
                   :class="{
                     'button-dark': $vuetify.theme.dark && stab == selectedTab,
                     'button-light': !$vuetify.theme.dark && stab == selectedTab,
@@ -190,10 +193,16 @@
                       </div>
                       <div class="pa-2">
                         <strong
-                          ><p class="ma-0">{{ entry.title }}</p></strong
+                          ><h5 class="ma-0 secondary-color-c">
+                            {{ entry.title }}
+                          </h5></strong
                         >
-                        <p class="ma-0">{{ entry.institute }}</p>
-                        <p class="ma-0">{{ formatDate(entry.end_date) }}</p>
+                        <p class="ma-0 primary-color-c">
+                          {{ entry.institute }}
+                        </p>
+                        <p class="ma-0 primary-color-c text-caption mt-1">
+                          {{ formatDate(entry.end_date) }}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -237,30 +246,34 @@
               <div class="d-block d-lg-flex col-12">
                 <div ref="resumeSkillsTech" class="col-12 col-lg-6">
                   <div v-if="profile" class="mt-2">
-                    <h3>Technical Skills</h3>
+                    <h3 class="secondary-color-c">Technical Skills</h3>
                     <ul>
                       <li
+                        class="primary-color-c"
                         v-for="(skill_desc, skill) in profile.skills[
                           'Technical Skills'
                         ]"
                         :key="`skill-tech-${skill}`"
                       >
-                        <strong>{{ skill }}: </strong>{{ skill_desc }}
+                        <strong class="accent-color-c">{{ skill }}: </strong
+                        >{{ skill_desc }}
                       </li>
                     </ul>
                   </div>
                 </div>
                 <div ref="resumeSkillsSoft" class="col-12 col-lg-6">
                   <div v-if="profile" class="mt-2">
-                    <h3>Soft Skills</h3>
+                    <h3 class="secondary-color-c">Soft Skills</h3>
                     <ul>
                       <li
+                        class="primary-color-c"
                         v-for="(skill_desc, skill) in profile.skills[
                           'Soft Skills'
                         ]"
                         :key="`skill-soft-${skill}`"
                       >
-                        <strong>{{ skill }}: </strong>{{ skill_desc }}
+                        <strong class="accent-color-c">{{ skill }}: </strong
+                        >{{ skill_desc }}
                       </li>
                     </ul>
                   </div>
@@ -278,16 +291,16 @@
                   class="mt-4"
                 >
                   <h4 class="text-uppercase secondary-color-c">
-                    {{ exp.company }}
+                    <strong>{{ exp.company }}</strong>
                   </h4>
                   <div class="d-flex justify-space-between">
                     <div>
                       <h5 class="accent-color-c">
-                        {{ exp.title }}
+                        <strong>{{ exp.title }}</strong>
                       </h5>
                     </div>
                     <div>
-                      <h5 class="text-caption mt-1">
+                      <h5 class="text-caption mt-1 primary-color-c">
                         {{ formatDate(exp.start_date) }} -
                         {{
                           exp.start_date == exp.end_date
@@ -299,6 +312,7 @@
                   </div>
                   <ul class="mt-2">
                     <li
+                      class="primary-color-c"
                       v-for="(description, d_index) in exp.description"
                       :key="`desc-${d_index}`"
                     >
@@ -321,16 +335,16 @@
                   class="mt-4"
                 >
                   <h4 class="text-uppercase secondary-color-c">
-                    {{ exp.company }}
+                    <strong>{{ exp.company }}</strong>
                   </h4>
                   <div class="d-flex justify-space-between">
                     <div>
                       <h5 class="accent-color-c">
-                        {{ exp.title }}
+                        <strong>{{ exp.title }}</strong>
                       </h5>
                     </div>
                     <div>
-                      <h5 class="text-caption mt-1">
+                      <h5 class="text-caption mt-1 primary-color-c">
                         {{ formatDate(exp.start_date) }} -
                         {{
                           exp.start_date == exp.end_date
@@ -342,6 +356,7 @@
                   </div>
                   <ul class="mt-2">
                     <li
+                      class="primary-color-c"
                       v-for="(description, d_index) in exp.description"
                       :key="`desc-${d_index}`"
                     >

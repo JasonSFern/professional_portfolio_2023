@@ -29,7 +29,9 @@ Vue.mixin({
 import Vue from 'vue'
 import vuetify from './plugins/vuetify';
 import VueParticles from 'vue-particles'
+import VueCookies from 'vue-cookies'
 Vue.use(VueParticles)
+Vue.use(VueCookies, { expires: -1})
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
