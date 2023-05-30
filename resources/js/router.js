@@ -51,7 +51,7 @@ export default new VueRouter({
             meta: { transitionName: 'slide' },
             props(route) {
                 let props = { ...route.params }
-                props.item_id = parseInt(props.item_id)
+                props.item_id = props.item_id
                 return props
             }
         },

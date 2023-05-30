@@ -4,7 +4,7 @@
     <section v-show="!hidden" class="d-flex justify-content-center">
       <div
         class="project-wrap rounded-xl d-block"
-        v-on:click="viewProject(item.id)"
+        v-on:click="viewProject(item.project_code)"
         :style="mainCardStyle"
       >
         <div class="per-title per-title-m">

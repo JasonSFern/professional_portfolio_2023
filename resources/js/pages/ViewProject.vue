@@ -33,8 +33,8 @@
             >
               <div class="project-headers-section">
                 <div class="my-2 pt-5">
-                  <h2>{{ item.title }}</h2>
-                  <p class="mb-0">{{ item.subtitle }}</p>
+                  <h2 class="primary-color-c">{{ item.title }}</h2>
+                  <p class="mb-0 primary-color-c">{{ item.subtitle }}</p>
                 </div>
                 <div>
                   <hr class="primary-color-bg" />
@@ -89,33 +89,56 @@
                   :key="index"
                   class="mb-5"
                 >
-                  <div
-                    v-if="content.type == 'disclaimer'"
-                    class="resume-main-section"
-                  >
-                    <hr class="primary-color-bg" />
+                  <!-- Content - header -->
+                  <div v-if="content.type == 'header'">
+                    <h3>
+                      <span
+                        v-for="(c, indexr) in content.content"
+                        :key="indexr"
+                        :class="c.class"
+                        class="text-uppercase"
+                        >{{ c.text }}
+                      </span>
+                    </h3>
                   </div>
-                  <span
+
+                  <!-- Content - paragraph -->
+                  <div
                     v-if="
                       (content.type == 'paragraph') |
                         (content.type == 'disclaimer')
                     "
-                    :class="{
-                      'disclaimer-text': content.type == 'disclaimer',
-                    }"
                   >
-                    {{ content.type == "disclaimer" ? "Disclaimer: " : "" }}
-                    {{ content.content }}
-                  </span>
-
-                  <ul v-if="content.type == 'bullet'">
-                    <li
-                      v-for="(bullet, indexb) in content.content"
-                      :key="indexb"
+                    <div
+                      v-if="content.type == 'disclaimer'"
+                      class="resume-main-section"
                     >
-                      {{ bullet }}
-                    </li>
-                  </ul>
+                      <hr class="primary-color-bg" />
+                    </div>
+
+                    <p class="primary-color-c">
+                      <span
+                        :class="{
+                          'disclaimer-text': content.type == 'disclaimer',
+                        }"
+                      >
+                        {{ content.type == "disclaimer" ? "Disclaimer: " : "" }}
+                        {{ content.content }}
+                      </span>
+                    </p>
+                  </div>
+
+                  <!-- Content - bullets -->
+                  <div v-if="content.type == 'bullet'">
+                    <ul>
+                      <li
+                        v-for="(bullet, indexb) in content.content"
+                        :key="indexb"
+                      >
+                        {{ bullet }}
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -136,7 +159,7 @@ export default {
   props: {
     item_id: {
       required: true,
-      type: Number,
+      type: String,
     },
   },
   data() {

@@ -2,13 +2,13 @@
   <!-- Add :class="theme" for future theme addtions for backgrounds -->
   <section
     v-show="!hidden"
-    class="fullpage fullpage-padding gradient-color-bg"
+    class="fullpage"
     @mousemove="mouseMoved"
     :title="item.title"
   >
     <div
       class="d-flex per-container per-center"
-      v-on:click="viewProject(item.id)"
+      v-on:click="viewProject(item.project_code)"
       :style="rotation"
     >
       <div class="per-holder per-image rounded-xl perholder1">
@@ -29,7 +29,7 @@
           }"
         >
           <div style="height: 40%">
-            <p class="persubtext">{{ item.subtitle }}</p>
+            <p class="persubtext primary-color-c">{{ item.subtitle }}</p>
           </div>
           <div style="height: 60%" class="d-flex flex-row-reverse align-end">
             <img
@@ -139,8 +139,9 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Exo:wght@900&family=Montserrat:wght@900&family=Syncopate:wght@700&display=swap");
 
-.fullpage-padding {
+.fullpage {
   padding-top: 30vh;
+  background-color: transparent;
 }
 
 .per-container {

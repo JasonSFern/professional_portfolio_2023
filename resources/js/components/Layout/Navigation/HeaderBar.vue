@@ -90,7 +90,7 @@
           <v-btn
             v-bind="attrs"
             v-on="on"
-            v-show="$route.name != 'projects' && $route.name != 'viewproject'"
+            v-show="isNotProjectRoute"
             class="mx-1 primary-color-c"
             @click="darkMode"
             plain
@@ -118,7 +118,7 @@
       <v-tooltip v-if="controlCenter.themeSwitcher" bottom>
         <template v-slot:activator="{ on, attrs }">
           <v-btn
-            v-show="$route.name != 'projects' && $route.name != 'viewproject'"
+            v-show="isNotProjectRoute"
             class="mx-1 primary-color-c"
             icon
             plain
@@ -186,6 +186,11 @@ export default {
       } else {
         return 0;
       }
+    },
+    isNotProjectRoute() {
+      if (this.$route.name == "projects" || this.$route.name == "viewproject")
+        return false;
+      return true;
     },
     isMobile() {
       if (

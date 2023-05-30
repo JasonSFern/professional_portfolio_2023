@@ -15,6 +15,7 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('project_code')->unique();
             $table->unsignedInteger('classification');
             $table->string('title');
             $table->string('subtitle');

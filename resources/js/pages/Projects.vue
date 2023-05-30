@@ -15,7 +15,7 @@
     >
       <ProjectTileMax
         v-for="item in items"
-        :key="item.id"
+        :key="`project-${item.project_code}`"
         :item="item"
         class="item"
         :isLoaded="isLoaded"
@@ -25,7 +25,7 @@
     <ScrollSkew v-if="isMobile" :items="items">
       <ProjectTileMin
         v-for="item in items"
-        :key="item.id"
+        :key="`project-${item.project_code}`"
         :item="item"
         class="item"
         :isLoaded="isLoaded"

@@ -9,12 +9,12 @@ use App\Models\Project;
 class ProjectsController extends Controller
 {
     public function list(Request $request) {
-        $data = Project::where('is_active', 1)->with('classification')->get();
+        $data = Project::where('is_active', 1)->with('classification')->orderBy('id', 'ASC')->get();
         return $data;
     }
     
-    public function single($id) {
-        $data = Project::where('id', $id)->where('is_active', 1)->with('classification')->first();
+    public function single($project_code) {
+        $data = Project::where('project_code', $project_code)->where('is_active', 1)->with('classification')->first();
 
         if($data) {
             return $data;
