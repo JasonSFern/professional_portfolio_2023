@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="d-flex justify-content-center">
+    <div class="d-flex" :class="cssClasses">
       <div
         v-for="item in items"
         :key="item.id"
-        class="px-4 classification primary-color-c"
+        class="px-2 px-sm-4 classification primary-color-c"
         v-on:click="filterProjects(item.id)"
       >
         <button
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { isMobile } from "../../../plugins/helpers";
 import { mapGetters } from "vuex";
 
 export default {
@@ -45,18 +46,35 @@ export default {
       return this.classifications.filter((c) => c.type == this.filter);
     },
   },
-  created() {
-    this.$store.dispatch("general/getClassifications");
-  },
   data() {
     return {
       selectedClassification: 0,
+      cssClasses: "justify-content-center",
     };
+  },
+  created() {
+    this.$store.dispatch("general/getClassifications");
+    this.onWindowResize();
+  },
+  mounted() {
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.onWindowResize);
+    });
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onWindowResize);
   },
   methods: {
     filterProjects(id) {
       this.selectedClassification = id;
       this.$emit("filterProjects", id);
+    },
+    onWindowResize() {
+      if (isMobile && window.innerWidth < 500) {
+        this.cssClasses = "px-4 overflow-x-auto";
+      } else {
+        this.cssClasses = "justify-content-center";
+      }
     },
   },
 };

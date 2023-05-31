@@ -144,6 +144,8 @@
   </v-footer>
 </template>
 <script>
+import { isMobile } from "../../../plugins/helpers";
+
 export default {
   name: "FooterBar",
   data() {
@@ -153,15 +155,22 @@ export default {
   },
   computed: {
     applyFrosted: function () {
-      if (
-        this.$route.name !== "home" &&
-        this.$route.name !== "projects" &&
-        this.$route.name !== "contact"
-      ) {
-        return true;
+      if (this.mobileDevice) {
+        if (this.$route.name !== "home") {
+          return true;
+        } else {
+          return false;
+        }
       } else {
-        return false;
+        if (this.$route.name !== "home" && this.$route.name !== "projects") {
+          return true;
+        } else {
+          return false;
+        }
       }
+    },
+    mobileDevice() {
+      return isMobile();
     },
   },
 };

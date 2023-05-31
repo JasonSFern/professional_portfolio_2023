@@ -4,9 +4,9 @@
       :elevation="elevation"
       app
       :class="{
-        frosted: applyFrosted && !isMobile,
-        transparent: !isMobile,
-        solid: isMobile,
+        frosted: applyFrosted && !mobileDevice,
+        transparent: !mobileDevice,
+        solid: mobileDevice,
       }"
     >
       <v-btn to="/" depressed plain x-small class="d-flex d-sm-none nav-link">
@@ -165,6 +165,7 @@
 </template>
 
 <script>
+import { isMobile } from "../../../plugins/helpers";
 import { CustomThemes, getThemeData } from "../../../plugins/custom_themes";
 
 export default {
@@ -192,14 +193,8 @@ export default {
         return false;
       return true;
     },
-    isMobile() {
-      if (
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        )
-      )
-        return true;
-      return false;
+    mobileDevice() {
+      return isMobile();
     },
   },
   data() {
@@ -236,7 +231,7 @@ export default {
       ) {
         return true;
       } else {
-        if (this.$route.name == "projects" && this.isMobile) return true;
+        if (this.$route.name == "projects" && this.mobileDevice) return true;
         return false;
       }
     },

@@ -14,6 +14,7 @@
 import HeaderBar from "../components/Layout/Navigation/HeaderBar";
 import FooterBar from "../components/Layout/Navigation/FooterBar";
 import TransitionPage from "../components/Transitions/TransitionPage";
+import { isMobile } from "../plugins/helpers";
 import { getThemeData } from "../plugins/custom_themes";
 
 export default {
@@ -31,21 +32,15 @@ export default {
     };
   },
   computed: {
-    isMobile() {
-      if (
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        )
-      )
-        return true;
-      return false;
+    mobileDevice() {
+      return isMobile();
     },
   },
   watch: {
     $route(to, from) {
       if (
         (to.name !== "projects" && to.name !== "viewproject") ||
-        (to.name == "projects" && this.isMobile)
+        (to.name == "projects" && this.mobileDevice)
       ) {
         let selectedTheme = getThemeData(this.defaultTheme);
 

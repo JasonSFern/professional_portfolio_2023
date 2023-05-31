@@ -3,12 +3,12 @@
     <ClassificationsBar
       class="classifications-menu"
       :class="{
-        mobile: isMobile,
+        mobile: mobileDevice,
       }"
       @filterProjects="setClassification($event)"
     ></ClassificationsBar>
     <ScrollSnap
-      v-if="!isMobile"
+      v-if="!mobileDevice"
       :isLoaded="isLoaded"
       ref="scrollsnap"
       @setProjectTheme="setProjectTheme($event)"
@@ -22,7 +22,7 @@
       />
     </ScrollSnap>
 
-    <ScrollSkew v-if="isMobile" :items="items">
+    <ScrollSkew v-if="mobileDevice" :items="items">
       <ProjectTileMin
         v-for="item in items"
         :key="`project-${item.project_code}`"
@@ -47,6 +47,7 @@ import ScrollSnap from "../components/Scroll/ScrollSnap.vue";
 import ScrollSkew from "../components/Scroll/ScrollSkew.vue";
 
 import { getThemeData } from "../plugins/custom_themes";
+import { isMobile } from "../plugins/helpers";
 import { mapGetters } from "vuex";
 
 export default {
@@ -87,14 +88,8 @@ export default {
         return this.projects;
       }
     },
-    isMobile() {
-      if (
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        )
-      )
-        return true;
-      return false;
+    mobileDevice() {
+      return isMobile();
     },
   },
   created() {
@@ -111,7 +106,7 @@ export default {
       }, 300);
     },
     setProjectTheme(item_index) {
-      if (!this.isMobile) {
+      if (!this.mobileDevice) {
         let selectedTheme = getThemeData(this.items[item_index].display_theme);
 
         Object.keys(selectedTheme).forEach((i) => {

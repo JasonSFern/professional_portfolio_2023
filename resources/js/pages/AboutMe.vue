@@ -17,7 +17,7 @@
             class="d-flex justify-space-around my-4 profile-section"
           >
             <img
-              v-if="isMobile"
+              v-if="mobileDevice"
               class="profile-image"
               src="img/about/self_final_square.png"
             />
@@ -379,6 +379,7 @@
 <script>
 import VueCompareImage from "vue-compare-image";
 import VueVcard from "vue-vcard";
+import { isMobile } from "../plugins/helpers";
 import { mapGetters } from "vuex";
 import moment from "moment";
 
@@ -404,14 +405,8 @@ export default {
     experienceProfessional() {
       return this.experience.filter((exp) => exp.type == "professional");
     },
-    isMobile() {
-      if (
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        )
-      )
-        return true;
-      return false;
+    mobileDevice() {
+      return isMobile();
     },
     vcardInfo() {
       if (this.profile)
