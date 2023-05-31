@@ -13,7 +13,7 @@
 
       <div id="calculator" class="gloss calculator">
 
-<div class="logo"><img src="img/calc/abi.png"></div>
+        <!-- <div class="logo"><img src="img/calc/abi.png"></div> -->
 
         <!--Calculator display  -->
         <div class="top-display">
