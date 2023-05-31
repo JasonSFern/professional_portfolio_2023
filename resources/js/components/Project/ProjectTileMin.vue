@@ -2,47 +2,43 @@
   <div v-show="isLoaded">
     <!-- Add :class="theme" for future theme addtions for backgrounds -->
     <section v-show="!hidden" class="d-flex justify-content-center">
-      <div
-        class="project-wrap rounded-xl d-block"
-        v-on:click="viewProject(item.project_code)"
-        :style="mainCardStyle"
-      >
-        <div class="per-title per-title-m">
-          <h1 class="pertext" :style="headTextStyle">{{ item.title }}</h1>
-        </div>
+      <div class="d-flex justify-content-around">
         <div
-          class="per-holder rounded-xl d-flex justify-content-center perholder1 mb-1"
+          class="project-wrap mx-6 mx-sm-0 rounded-xl d-block"
+          v-on:click="viewProject(item.project_code)"
+          :style="{ background: themeCssStyles.linear_gradient }"
         >
-          <img
-            class="per-image-m rounded-lg perimage1"
-            :src="item.photos.titlecard"
-          />
-        </div>
-        <div
-          class="per-holder per-card-holder rounded-lg d-flex justify-content-center perholder2"
-        >
-          <div class="per-card rounded-lg perimage2">
-            <div style="height: 40%" class="d-flex justify-content-center">
-              <p
-                class="persubtext"
-                :class="{
-                  'text-dark': themeType !== 'dark',
-                  'text-white': themeType == 'dark',
-                }"
-              >
-                {{ item.subtitle }}
-              </p>
-            </div>
-            <div
-              style="height: 60%"
-              class="d-flex justify-content-center align-end"
+          <div class="per-title">
+            <h1
+              class="pertext"
+              :style="{
+                'text-shadow': themeCssStyles.text_shadow,
+                color: themeCssStyles.color,
+              }"
             >
-              <img
-                v-for="(skill, index) in item.skills.icons"
-                :key="index"
-                class="skill-icon px-1"
-                :src="skill"
-              />
+              {{ item.title }}
+            </h1>
+          </div>
+          <div class="per-holder d-flex justify-content-center perholder1 mb-1">
+            <img class="per-image perimage1" :src="item.photos.titlecard" />
+          </div>
+          <div
+            class="per-holder per-card-holder rounded-lg d-flex justify-content-center perholder2"
+          >
+            <div class="per-card rounded-lg perimage2">
+              <div class="d-flex justify-content-center">
+                <p class="persubtext" :style="{ color: themeCssStyles.color }">
+                  {{ item.subtitle }}
+                </p>
+              </div>
+              <div class="d-flex justify-content-center align-end">
+                <img
+                  v-for="(skill, index) in item.skills.icons"
+                  :key="index"
+                  class="skill-icon px-1"
+                  :src="skill"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -110,16 +106,14 @@ export default {
     };
   },
   computed: {
-    mainCardStyle() {
-      let string = `linear-gradient(to bottom right,  ${this.themeColors.gradient1}, ${this.themeColors.gradient2},  ${this.themeColors.gradient3})`;
+    themeCssStyles() {
+      let linearGradient = `linear-gradient(to bottom right,  ${this.themeColors.gradient1}, ${this.themeColors.gradient6},  ${this.themeColors.gradient12})`;
+      let textShadow = `-1px 1px 1px ${this.themeColors.accent}, 1px 1px 1px ${this.themeColors.accent}, 1px -1px 0 ${this.themeColors.accent}, -1px -1px 0 ${this.themeColors.accent}`;
+      let color = this.themeColors.primary;
       return {
-        background: string,
-      };
-    },
-    headTextStyle() {
-      let string = `0px 0px 6px ${this.themeColors.accent}`;
-      return {
-        "text-shadow": string,
+        text_shadow: textShadow,
+        linear_gradient: linearGradient,
+        color: color,
       };
     },
     themeType() {
@@ -149,23 +143,21 @@ export default {
 section {
   margin-top: 10px !important;
 }
+
 .project-wrap {
-  width: 80%;
-  margin: 40px 10%;
+  max-width: 350px;
+  max-height: 550px;
   padding: 25px 0;
-  height: 500px;
-  display: flex;
-  justify-content: center;
-  -webkit-box-shadow: 3px 4px 37px -7px rgba(0, 0, 0, 0.41);
-  box-shadow: 3px 4px 37px -7px rgba(0, 0, 0, 0.41);
+  margin: 40px 0;
 }
 
 .per-holder {
   overflow: hidden;
 }
 
-.per-image-m {
-  width: 300px;
+.per-image {
+  width: 100%;
+  max-width: 350px;
   filter: brightness(70%);
 }
 
@@ -174,24 +166,21 @@ section {
 }
 
 .per-title h1 {
-  text-shadow: 0px 0px 6px var(--v-accent-base);
   text-align: center;
-  color: #d9ebfe;
-  font-size: 22px;
-  font-family: "Syncopate", sans-serif;
+  font-size: 25px;
+  font-family: "Josefin Sans", sans-serif;
   text-transform: uppercase;
 }
 
 .per-card {
   padding: 20px;
-  width: 300px;
   height: 110px;
-  backdrop-filter: blur(5px);
 }
 
 .per-card p {
+  text-align: center;
   text-transform: uppercase;
-  font-family: "Exo", sans-serif;
+  font-family: "Wix Madefor Display", sans-serif;
   font-size: 15px;
 }
 </style>

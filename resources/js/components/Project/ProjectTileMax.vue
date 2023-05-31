@@ -7,46 +7,80 @@
     :title="item.title"
   >
     <div
-      class="d-flex per-container per-center"
+      class="d-flex per-container"
       v-on:click="viewProject(item.project_code)"
       :style="rotation"
     >
       <div class="per-holder per-image rounded-xl perholder1">
-        <img
-          class="per-image-d rounded-xl perimage1"
-          :src="item.photos.titlecard"
-        />
+        <img class="rounded-xl perimage1" :src="item.photos.titlecard" />
       </div>
-      <div class="per-title per-title-d">
+      <div
+        class="per-title per-title-front"
+        :class="{
+          'per-title-single': item.title.split(' ').length == 1,
+          'per-title-double': item.title.split(' ').length >= 2,
+        }"
+      >
         <h1 class="pertext">{{ item.title }}</h1>
       </div>
-      <div class="per-holder per-card-holder rounded-xl perholder2">
+      <div
+        class="per-title per-title-back"
+        :class="{
+          'per-title-single': item.title.split(' ').length == 1,
+          'per-title-double': item.title.split(' ').length >= 2,
+        }"
+      >
+        <h1 class="pertext">{{ item.title }}</h1>
+      </div>
+      <div class="per-holder per-card-holder-front rounded-lg perholder2">
         <div
-          class="per-card rounded-xl perimage2"
+          class="per-card rounded-lg perimage2"
           :class="{
             'per-card-dark': !$vuetify.theme.dark,
             'per-card-light': $vuetify.theme.dark,
           }"
         >
           <div style="height: 40%">
-            <p class="persubtext primary-color-c">{{ item.subtitle }}</p>
+            <p
+              class="text-center persubtext accent-color-bg rounded-lg px-3 py-1"
+            >
+              {{ item.subtitle }}
+            </p>
           </div>
-          <div style="height: 60%" class="d-flex flex-row-reverse align-end">
+          <div style="height: 60%" class="d-flex justify-content-center">
             <img
               v-for="(skill, index) in item.skills.icons"
               :key="index"
-              class="skill-icon px-1"
+              class="mt-6 skill-icon px-1"
               :src="skill"
             />
           </div>
         </div>
+      </div>
+      <div class="per-holder per-card-holder-middle rounded-lg perholder2">
+        <div
+          class="per-card rounded-lg perimage2"
+          :class="{
+            'per-card-dark': !$vuetify.theme.dark,
+            'per-card-light': $vuetify.theme.dark,
+          }"
+        ></div>
+      </div>
+      <div class="per-holder per-card-holder-back rounded-lg perholder2">
+        <div
+          class="per-card rounded-lg perimage2"
+          :class="{
+            'per-card-dark': !$vuetify.theme.dark,
+            'per-card-light': $vuetify.theme.dark,
+          }"
+        ></div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-const maxRotationDegrees = 20;
+const maxRotationDegrees = 40;
 
 export default {
   name: "ProjectTileMax",
@@ -137,7 +171,7 @@ export default {
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Exo:wght@900&family=Montserrat:wght@900&family=Syncopate:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Wix+Madefor+Display:wght@800");
 
 .fullpage {
   padding-top: 30vh;
@@ -148,9 +182,6 @@ export default {
   position: relative;
   transform-origin: 50%;
   transform-style: preserve-3d;
-}
-
-.per-center {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -164,79 +195,106 @@ export default {
   transform: translateZ(-100px);
 }
 
-.per-image-d {
-  width: 400px;
-  border: solid 1px rgba(29, 29, 29, 0.4);
-  filter: brightness(70%);
-}
-
-.per-image-m {
-  width: 300px;
-  filter: brightness(70%);
-}
-
 .per-title {
   position: absolute;
   word-wrap: normal;
 }
 
+.per-title-front {
+  transform: translateZ(50px);
+}
+.per-title-back {
+  transform: translateZ(45px);
+}
+
 .per-title h1 {
-  text-shadow: 0px 0px 6px var(--v-accent-base);
+  text-shadow: -1px 1px 2px var(--v-accent-base),
+    1px 1px 2px var(--v-accent-base), 1px -1px 0 var(--v-accent-base),
+    -1px -1px 0 var(--v-accent-base);
   text-align: center;
-  color: #d9ebfe;
-  font-size: 40px;
-  font-family: "Syncopate", sans-serif;
+  color: var(--v-primary-base);
+  font-family: "Josefin Sans", sans-serif;
   text-transform: uppercase;
 }
 
-.per-title-d {
-  transform: translateZ(20px);
+.per-title-double {
+  top: 50px;
+}
+
+.per-title-single {
   top: 115px;
-  width: 650px;
 }
 
-.per-title-d h1 {
-  font-size: 65px !important;
+.per-card-holder-front {
+  transform: translateZ(80px);
+  position: absolute;
+  bottom: -40px;
 }
-
-.per-title-m {
-  top: 60px;
-  width: 450px;
+.per-card-holder-middle {
+  transform: translateZ(60px);
+  position: absolute;
+  bottom: -40px;
 }
-
-.per-card-holder {
-  transform: translateZ(100px);
+.per-card-holder-back {
+  transform: translateZ(40px);
   position: absolute;
   bottom: -40px;
 }
 
 .per-card {
   padding: 20px;
-  width: 300px;
   height: 150px;
   backdrop-filter: blur(5px);
 }
 
 .per-card p {
   text-transform: uppercase;
-  font-family: "Exo", sans-serif;
+  font-family: "Wix Madefor Display", sans-serif;
 }
 
 .per-card-light {
-  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.3);
   border: solid 1px rgba(56, 56, 56, 0.1);
 }
 
-.per-card-light p {
-  text-shadow: 0px 0px 3px black;
-}
-
 .per-card-dark {
-  box-shadow: inset 0 0 2000px rgba(56, 56, 56, 0.9);
+  box-shadow: inset 0 0 2000px rgba(56, 56, 56, 0.3);
   border: solid 1px rgba(255, 255, 255, 0.1);
 }
 
-.per-card-m {
-  background-color: var(--v-accent-base);
+@media (min-width: 950px) {
+  .per-title {
+    width: 700px;
+  }
+  .per-title h1 {
+    font-size: 100px;
+  }
+  .per-card {
+    width: 300px;
+  }
+
+  .per-image img {
+    width: 400px;
+    border: solid 1px rgba(29, 29, 29, 0.4);
+    filter: brightness(70%);
+  }
+}
+
+@media (max-width: 949px) {
+  .per-title {
+    width: 380px;
+  }
+  .per-title h1 {
+    font-size: 50px;
+  }
+
+  .per-card {
+    width: 250px;
+  }
+
+  .per-image img {
+    width: 335px;
+    filter: brightness(70%);
+  }
 }
 </style>

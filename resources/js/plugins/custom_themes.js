@@ -236,8 +236,8 @@ export const CustomThemes = {
   },
   olive: {
     light: {
-      primary: "#12182C",
-      secondary: "#661141",
+      primary: "#250617",
+      secondary: "#292645",
       accent: "#661141",
       background: "#A1A838",
       gradient1: "#a1a838",
