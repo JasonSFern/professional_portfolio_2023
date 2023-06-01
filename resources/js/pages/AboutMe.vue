@@ -175,7 +175,7 @@
               </div>
             </div>
             <div
-              v-if="selectedTab == 'Education & Skills'"
+              v-if="selectedTab == 'Education and Skills'"
               class="my-2 pt-5 resume-main-section"
             >
               <div ref="resumeEdSkills" class="d-block d-lg-flex">
@@ -430,7 +430,7 @@ export default {
         "Professional Experience",
         "Volunteer Experience",
       ],
-      selectedTab: "Education & Skills",
+      selectedTab: "Education and Skills",
       // image comparison params
       leftImage: "img/about/self_final_square.png",
       rightImage: "",
