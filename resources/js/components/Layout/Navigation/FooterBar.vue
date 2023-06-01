@@ -30,7 +30,7 @@
       <v-card>
         <v-card-title>
           <div class="w-100 d-flex justify-space-between">
-            <div>About this site</div>
+            <div>About This Site</div>
             <div class="d-flex">
               <img
                 src="/img/icons/vuejs.png"
@@ -139,6 +139,14 @@
             </p>
           </div>
         </v-card-text>
+        <v-card-actions>
+          <v-btn
+            class="mr-2 w-100"
+            color="accent"
+            @click="showDisclaimer = false"
+            >Close</v-btn
+          >
+        </v-card-actions>
       </v-card>
     </v-dialog>
   </v-footer>
