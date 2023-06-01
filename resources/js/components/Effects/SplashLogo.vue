@@ -1,7 +1,10 @@
 <template>
   <div style="padding-top: 8vh">
     <h1 ref="hello" class="greeting pa-0 ma-0 primary-color-c">Hello</h1>
-    <div class="logo-layer layer1">
+    <div v-if="mobileDevice" class="logo-static">
+      <img src="/img/splash/logo_layer_1.png" alt="logo" />
+    </div>
+    <div v-else class="logo-layer layer1">
       <div class="logo-layer layer2">
         <div class="logo-layer layer3">
           <div class="logo-layer layer4" />
@@ -30,6 +33,7 @@
 ></script>
 <script>
 import $ from "jquery";
+import { isMobile } from "../../plugins/helpers";
 import { VueTyper } from "vue-typer";
 
 export default {
@@ -37,45 +41,59 @@ export default {
   components: {
     VueTyper,
   },
+  computed: {
+    mobileDevice() {
+      return isMobile();
+    },
+  },
   data() {
     return {
       typerText: ["< code_monkey /> 👨‍💻", "DESIGNER ~ 🎨", "Night Owl * 🌙"],
     };
   },
   mounted() {
-    var logo = $(".layer1");
+    if (!this.mobileDevice) {
+      var logo = $(".layer1");
 
-    $(document).on("mousemove", function (e) {
-      var ax = -($(window).innerWidth() / 2 - e.pageX) / 60;
-      var ay = ($(window).innerHeight() / 2 - e.pageY) / 30;
-      logo.attr(
-        "style",
-        "transform: rotateY(" +
-          ax +
-          "deg) rotateX(" +
-          ay +
-          "deg);-webkit-transform: rotateY(" +
-          ax +
-          "deg) rotateX(" +
-          ay +
-          "deg);-moz-transform: rotateY(" +
-          ax +
-          "deg) rotateX(" +
-          ay +
-          "deg)"
+      $(document).on("mousemove", function (e) {
+        var ax = -($(window).innerWidth() / 2 - e.pageX) / 60;
+        var ay = ($(window).innerHeight() / 2 - e.pageY) / 30;
+        logo.attr(
+          "style",
+          "transform: rotateY(" +
+            ax +
+            "deg) rotateX(" +
+            ay +
+            "deg);-webkit-transform: rotateY(" +
+            ax +
+            "deg) rotateX(" +
+            ay +
+            "deg);-moz-transform: rotateY(" +
+            ax +
+            "deg) rotateX(" +
+            ay +
+            "deg)"
+        );
+      });
+
+      this.gsap.fromTo(
+        this.$refs.hello,
+        { opacity: 0 },
+        { duration: 0.5, opacity: 1, delay: 1 }
       );
-    });
-
-    this.gsap.fromTo(
-      this.$refs.hello,
-      { opacity: 0 },
-      { duration: 0.5, opacity: 1, delay: 1 }
-    );
+    }
   },
 };
 </script>
 
 <style scoped>
+.logo-static {
+  height: 17em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .logo-layer {
   pointer-events: none;
   height: 17em;
