@@ -54,7 +54,7 @@
                     </h2>
                   </div>
                   <div class="pa-0">
-                    <h5 class="primary-color-c">{{ profile.title }}</h5>
+                    <h4 class="primary-color-c">{{ profile.title }}</h4>
                   </div>
                 </div>
               </div>
@@ -290,13 +290,13 @@
                   :key="`exp-${index}`"
                   class="mt-4"
                 >
-                  <h4 class="text-uppercase secondary-color-c">
-                    <strong>{{ exp.company }}</strong>
-                  </h4>
+                  <h3 class="text-uppercase secondary-color-c">
+                    {{ exp.company }}
+                  </h3>
                   <div class="d-flex justify-space-between">
                     <div>
                       <h5 class="accent-color-c">
-                        <strong>{{ exp.title }}</strong>
+                        {{ exp.title }}
                       </h5>
                     </div>
                     <div>
@@ -334,13 +334,13 @@
                   :key="`exp-${index}`"
                   class="mt-4"
                 >
-                  <h4 class="text-uppercase secondary-color-c">
-                    <strong>{{ exp.company }}</strong>
-                  </h4>
+                  <h3 class="text-uppercase secondary-color-c">
+                    {{ exp.company }}
+                  </h3>
                   <div class="d-flex justify-space-between">
                     <div>
                       <h5 class="accent-color-c">
-                        <strong>{{ exp.title }}</strong>
+                        {{ exp.title }}
                       </h5>
                     </div>
                     <div>
@@ -426,7 +426,7 @@ export default {
   data() {
     return {
       sectionTabs: [
-        "Education & Skills",
+        "Education and Skills",
         "Professional Experience",
         "Volunteer Experience",
       ],
@@ -546,7 +546,7 @@ export default {
 
 @media (min-width: 960px) {
   .about-pane {
-    width: 460px;
+    width: 470px;
     border-top-left-radius: 10px !important;
     border-bottom-left-radius: 10px !important;
   }

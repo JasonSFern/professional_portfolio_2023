@@ -41,11 +41,11 @@
           }"
         >
           <div style="height: 40%">
-            <p
+            <h6
               class="text-center persubtext accent-color-bg rounded-lg px-3 py-1"
             >
               {{ item.subtitle }}
-            </p>
+            </h6>
           </div>
           <div style="height: 60%" class="d-flex justify-content-center">
             <img

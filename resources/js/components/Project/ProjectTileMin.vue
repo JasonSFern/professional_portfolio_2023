@@ -26,10 +26,10 @@
             class="per-holder per-card-holder rounded-lg d-flex justify-content-center perholder2"
           >
             <div class="per-card rounded-lg perimage2">
-              <div class="d-flex justify-content-center">
-                <p class="persubtext" :style="{ color: themeCssStyles.color }">
+              <div class="mb-1 d-flex justify-content-center">
+                <h6 class="persubtext" :style="{ color: themeCssStyles.color }">
                   {{ item.subtitle }}
-                </p>
+                </h6>
               </div>
               <div class="d-flex justify-content-center align-end">
                 <img

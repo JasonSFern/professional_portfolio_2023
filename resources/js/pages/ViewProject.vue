@@ -12,7 +12,7 @@
               'pane-light': !$vuetify.theme.dark,
             }"
           >
-            <div class="d-block mt-1 project-icon-section">
+            <div class="d-block mt-2 project-icon-section">
               <img
                 v-for="(icon, index) in this.icons"
                 :key="index"

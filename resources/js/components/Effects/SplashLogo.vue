@@ -87,7 +87,7 @@ export default {
 
 .layer1 {
   border-radius: 50px;
-  margin: 30px auto 30px auto;
+  margin: 8px auto 30px auto;
 }
 
 @media (min-width: 500px) {
@@ -119,7 +119,7 @@ export default {
 }
 
 .greeting {
-  font-size: 60px;
+  font-size: 80px;
   text-transform: uppercase;
 }
 </style>
