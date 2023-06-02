@@ -70,6 +70,7 @@ export default {
       projects: "projects/getAllProjects",
     }),
     items() {
+      if (this.projects.length == 0) return [];
       if (this.classification > 0) {
         let filtered = this.projects.filter(
           (row) => row.classification.id == this.classification
@@ -92,11 +93,8 @@ export default {
       return isMobile();
     },
   },
-  created() {
-    this.$store.dispatch("projects/getAllProjects").then((response) => {
-      this.isLoaded = true;
-      this.filteredItems = this.projects;
-    });
+  mounted() {
+    this.$store.dispatch("projects/getAllProjects");
   },
   methods: {
     setClassification(e) {
