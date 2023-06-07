@@ -1,6 +1,5 @@
 <template>
-  <div style="padding-top: 8vh">
-    <h1 ref="hello" class="greeting pa-0 ma-0 primary-color-c">Hello</h1>
+  <div ref="logo">
     <div v-if="mobileDevice" class="logo-static">
       <img src="/img/splash/logo_layer_1.png" alt="logo" />
     </div>
@@ -11,19 +10,6 @@
         </div>
       </div>
     </div>
-    <vue-typer
-      :text="typerText"
-      :repeat="Infinity"
-      :shuffle="false"
-      initial-action="typing"
-      :pre-type-delay="2000"
-      :type-delay="70"
-      :pre-erase-delay="1980"
-      :erase-delay="150"
-      erase-style="select-back"
-      :erase-on-complete="false"
-      caret-animation="smooth"
-    />
   </div>
 </template>
 <script
@@ -34,22 +20,13 @@
 <script>
 import $ from "jquery";
 import { isMobile } from "../../plugins/helpers";
-import { VueTyper } from "vue-typer";
 
 export default {
-  name: "SplashLogo",
-  components: {
-    VueTyper,
-  },
+  name: "PersonalLogo",
   computed: {
     mobileDevice() {
       return isMobile();
     },
-  },
-  data() {
-    return {
-      typerText: ["< code_monkey /> 👨‍💻", "DESIGNER ~ 🎨", "Night Owl * 🌙"],
-    };
   },
   mounted() {
     if (!this.mobileDevice) {
@@ -75,12 +52,6 @@ export default {
             "deg)"
         );
       });
-
-      this.gsap.fromTo(
-        this.$refs.hello,
-        { opacity: 0 },
-        { duration: 0.5, opacity: 1, delay: 1 }
-      );
     }
   },
 };
@@ -134,10 +105,5 @@ export default {
 .layer4 {
   transform: translateZ(40px);
   background-image: url("/img/splash/logo_layer_4.png");
-}
-
-.greeting {
-  font-size: 80px;
-  text-transform: uppercase;
 }
 </style>

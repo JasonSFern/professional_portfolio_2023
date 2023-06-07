@@ -1,7 +1,26 @@
 <template>
   <div>
-    <div ref="grid">
-      <PerspectiveGrid class="d-none d-sm-flex" />
+    <div ref="grid" class="d-none d-sm-block">
+      <vue-particles
+        v-if="isSafari"
+        :key="particlesKey"
+        :color="starColor"
+        :particleOpacity="0.3"
+        :particlesNumber="99"
+        shapeType="polygon"
+        :particleSize="4"
+        :linesColor="linesColor"
+        :linesWidth="1"
+        :lineLinked="true"
+        :lineOpacity="0.2"
+        :linesDistance="120"
+        :moveSpeed="2"
+        :hoverEffect="false"
+        hoverMode="grab"
+        :clickEffect="false"
+        clickMode="push"
+      />
+      <PerspectiveGrid v-else class="d-none d-sm-flex" />
     </div>
     <div ref="logo" class="centered-logo" @click="navigateToAboutMe">
       <SplashLogo />
@@ -10,8 +29,8 @@
 </template>
 
 <script>
-import SplashLogo from "../components/Effects/SplashLogo.vue";
-import PerspectiveGrid from "../components/Effects/PerspectiveGrid.vue";
+import SplashLogo from "../components/Splash/SplashTitles.vue";
+import PerspectiveGrid from "../components/Splash/PerspectiveGrid.vue";
 
 export default {
   name: `Home`,
@@ -19,19 +38,28 @@ export default {
     PerspectiveGrid,
     SplashLogo,
   },
+  computed: {
+    starColor() {
+      return this.$vuetify.theme.currentTheme.accent;
+    },
+    linesColor() {
+      return this.$vuetify.theme.currentTheme.primary;
+    },
+    isSafari() {
+      return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    },
+  },
+  watch: {
+    starColor() {
+      this.particlesKey++;
+    },
+  },
   mounted() {
-    this.gsap
-      .timeline()
-      .fromTo(
-        this.$refs.grid,
-        { opacity: 0 },
-        { duration: 0.75, opacity: 1, delay: 1 }
-      )
-      .fromTo(
-        this.$refs.logo,
-        { opacity: 0 },
-        { duration: 0.5, opacity: 1, delay: 0.25 }
-      );
+    this.gsap.fromTo(
+      this.$refs.grid,
+      { opacity: 0 },
+      { duration: 0.75, opacity: 1, delay: 1 }
+    );
   },
   data() {
     return {

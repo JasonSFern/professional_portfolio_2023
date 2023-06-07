@@ -44,8 +44,8 @@ export default {
   bottom: 0;
   width: 100%;
   height: 100%;
-  margin-top: -50px;
-  transform: rotateX(60deg);
+  margin-top: 0px;
+  transform: rotateX(75deg);
 }
 
 .line {
