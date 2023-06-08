@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div ref="classifications-menu">
     <div class="d-flex" :class="cssClasses">
       <div
         v-for="item in items"
@@ -57,6 +57,11 @@ export default {
     this.onWindowResize();
   },
   mounted() {
+    this.gsap.fromTo(
+      ".classifications-menu",
+      { opacity: 0 },
+      { duration: 0.5, opacity: 1, delay: 2 }
+    );
     this.$nextTick(() => {
       window.addEventListener("resize", this.onWindowResize);
     });

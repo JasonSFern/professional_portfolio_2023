@@ -1,12 +1,16 @@
 <template>
   <v-app :dark="goDark">
-    <HeaderBar :goDark="goDark" @darkMode="darkMode($event)" />
+    <div ref="header">
+      <HeaderBar :goDark="goDark" @darkMode="darkMode($event)" />
+    </div>
 
     <TransitionPage>
       <router-view />
     </TransitionPage>
 
-    <FooterBar />
+    <div ref="footer">
+      <FooterBar />
+    </div>
   </v-app>
 </template>
 
@@ -62,6 +66,20 @@ export default {
       this.$vuetify.theme.dark = this.isDark =
         darkMode == "true" ? true : false;
     }
+  },
+  mounted() {
+    this.gsap
+      .timeline()
+      .fromTo(
+        this.$refs.header,
+        { opacity: 0 },
+        { duration: 0.5, opacity: 1, delay: 2 }
+      )
+      .fromTo(
+        this.$refs.footer,
+        { opacity: 0 },
+        { duration: 0.5, opacity: 1, delay: 0 }
+      );
   },
   methods: {
     darkMode() {

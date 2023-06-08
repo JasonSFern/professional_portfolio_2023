@@ -1,5 +1,5 @@
 <template>
-  <div style="padding-top: 6vh">
+  <div style="padding-top: 5.5vh">
     <!-- Name -->
     <div class="d-flex justify-content-around">
       <div class="d-block d-sm-flex">
@@ -16,7 +16,7 @@
       </div>
     </div>
     <!-- Title typer -->
-    <div ref="typer">
+    <div ref="typer" class="mb-5">
       <vue-typer
         :text="typerText"
         :repeat="Infinity"
@@ -39,7 +39,7 @@
     <div class="d-flex justify-content-around">
       <div class="d-block d-sm-flex">
         <h3 class="pa-0 ma-0 primary-color-c" style="font-weight: 400">
-          <span class="tagsec1">Bridging&nbsp;</span>
+          <span class="tagsec1">Fusing&nbsp;</span>
           <span class="secondary-color-c secondary-color-c-glow tagsec2"
             >Art&nbsp;</span
           >
@@ -49,7 +49,7 @@
           <span class="secondary-color-c secondary-color-c-glow tagsec2"
             >Tech&nbsp;</span
           >
-          <span class="tagsec3">to Enhance Human Interaction</span>
+          <span class="tagsec3">for Elevated User Experiences</span>
         </h3>
       </div>
     </div>
@@ -85,13 +85,13 @@ export default {
       )
       .fromTo(
         this.$refs.firstname,
-        { opacity: 0 },
-        { duration: 0.5, opacity: 1, delay: 0.5 }
+        { opacity: 0, yPercent: -30 },
+        { duration: 0.5, opacity: 1, yPercent: 0, delay: 0.5 }
       )
       .fromTo(
         this.$refs.lastname,
-        { opacity: 0 },
-        { duration: 0.5, opacity: 1, delay: 0.2 }
+        { opacity: 0, yPercent: -30 },
+        { duration: 0.5, opacity: 1, yPercent: 0, delay: 0.2 }
       )
       .fromTo(
         this.$refs.typer,

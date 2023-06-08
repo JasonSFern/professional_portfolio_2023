@@ -44,6 +44,9 @@ export default {
       touchStartY: 0,
     };
   },
+  mounted() {
+    this.gsap.set(".sections-menu", { opacity: 0 });
+  },
   methods: {
     init() {
       this.calculateSectionOffsets();
@@ -73,15 +76,14 @@ export default {
         };
 
         this.offsets.push(sectionOffsetData);
-      }
 
-      this.gsap
-        .timeline()
-        .fromTo(
+        // animate
+        this.gsap.fromTo(
           ".sections-menu",
           { opacity: 0 },
-          { duration: 0.5, opacity: 1 }
+          { duration: 0.5, opacity: 1, delay: 2 }
         );
+      }
     },
     movePage(dir) {
       this.inMove = true;
