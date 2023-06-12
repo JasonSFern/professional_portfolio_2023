@@ -69,7 +69,7 @@ export default {
   data() {
     return {
       typerText: [
-        "UX/UI DESIGNER 🎨 📐",
+        "UX/UI DESIGNER 🧑‍🎨",
         "< software_developer /> 👨‍💻",
         "Night Owl * 🌙",
       ],
