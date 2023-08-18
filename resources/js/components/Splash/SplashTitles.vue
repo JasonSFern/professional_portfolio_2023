@@ -22,7 +22,7 @@
         :repeat="Infinity"
         :shuffle="false"
         initial-action="typing"
-        :pre-type-delay="3000"
+        :pre-type-delay="2000"
         :type-delay="70"
         :pre-erase-delay="1980"
         :erase-delay="150"
@@ -69,9 +69,9 @@ export default {
   data() {
     return {
       typerText: [
+        "< full_stack_developer /> 👨‍💻",
         "UX/UI DESIGNER 🧑‍🎨",
-        "< software_developer /> 👨‍💻",
-        "Night Owl * 🌙",
+        "Night Owl * 🌙 🦉",
       ],
     };
   },
@@ -96,7 +96,7 @@ export default {
       .fromTo(
         this.$refs.typer,
         { opacity: 0 },
-        { duration: 0.5, opacity: 1, delay: 0.2 }
+        { duration: 0.5, opacity: 1, delay: 0.3 }
       )
       .fromTo(
         ".tagsec1",
