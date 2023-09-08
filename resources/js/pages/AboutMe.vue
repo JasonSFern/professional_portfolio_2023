@@ -84,7 +84,7 @@
             </div>
             <!-- Services -->
             <div class="resume-services-section py-10">
-              <!-- <hr class="primary-color-bg" /> -->
+              <hr class="primary-color-bg" />
             </div>
             <div class="resume-services-section">
               <div class="w-100">
@@ -122,7 +122,7 @@
             </div>
             <!-- Toolbox -->
             <div class="resume-toolbox-section py-10">
-              <!-- <hr class="primary-color-bg" /> -->
+              <hr class="primary-color-bg" />
             </div>
             <div class="resume-toolbox-section">
               <div class="w-100">
@@ -169,7 +169,7 @@
             </div>
             <!-- Ethos -->
             <div class="resume-ethos-section py-10">
-              <!-- <hr class="primary-color-bg" /> -->
+              <hr class="primary-color-bg" />
             </div>
             <div class="resume-ethos-section">
               <div class="w-100">
@@ -208,7 +208,7 @@
             </div>
             <!-- CTA -->
             <div class="resume-cta-section py-10">
-              <!-- <hr class="primary-color-bg" /> -->
+              <hr class="primary-color-bg" />
             </div>
             <div ref="resumeCta" class="resume-cta-section">
               <div v-if="profile">
