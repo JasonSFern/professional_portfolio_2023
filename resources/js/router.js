@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 import Home from './pages/Home.vue';
 import AboutMe from './pages/AboutMe.vue';
 import Projects from './pages/Projects.vue';
+import Contact from './pages/Contact.vue';
 import BetaTesting from './pages/BetaTesting.vue';
 import ViewProject from './pages/ViewProject.vue';
 import PageNotFound from './pages/PageNotFound.vue';
@@ -30,7 +31,7 @@ export default new VueRouter({
             icon: "mdi-account",
             hidden: false,
             component: AboutMe,
-            meta: { transitionName: 'slide' },
+            meta: { transitionName: 'fade' },
         },
         {
             path: "/projects",
@@ -48,12 +49,21 @@ export default new VueRouter({
             icon: "",
             hidden: true,
             component: ViewProject,
-            meta: { transitionName: 'slide' },
+            meta: { transitionName: 'fade' },
             props(route) {
                 let props = { ...route.params }
                 props.item_id = props.item_id
                 return props
             }
+        },
+        {
+            path: "/contact",
+            name: "Contact",
+            title: 'Contact',
+            icon: "mdi-card-account-details",
+            hidden: false,
+            component: Contact,
+            meta: { transitionName: 'fade' },
         },
         {
             path: "/beta-testing",

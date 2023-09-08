@@ -43,8 +43,9 @@ export default {
 
         data.location = JSON.parse(data.location);
         data.contact = JSON.parse(data.contact);
-        data.skills = JSON.parse(data.skills);
-        data.strengths = JSON.parse(data.strengths);
+        data.bio = JSON.parse(data.bio);
+        data.services = JSON.parse(data.services);
+        data.ethos = JSON.parse(data.ethos);
 
         context.commit('getProfile', data)
         return data

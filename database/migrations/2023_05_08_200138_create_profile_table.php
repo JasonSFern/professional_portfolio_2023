@@ -17,13 +17,12 @@ class CreateProfileTable extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
-            $table->json('location');
             $table->string('pronouns');
             $table->string('title');
-            $table->string('blurb', 500);
-            $table->string('summary', 500);
-            $table->json('strengths');
-            $table->json('skills');
+            $table->json('location');
+            $table->json('bio');
+            $table->json('services');
+            $table->json('ethos');
             $table->json('contact');
             $table->timestamps();
         });

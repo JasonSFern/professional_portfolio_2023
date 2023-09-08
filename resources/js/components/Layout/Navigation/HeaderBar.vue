@@ -9,10 +9,10 @@
         solid: mobileDevice,
       }"
     >
-      <v-btn to="/" depressed plain x-small class="d-flex d-sm-none nav-link">
-        <h5 class="pt-2 primary-color-c primary-color-c-glow">J</h5>
+      <v-btn to="/" depressed plain x-small class="d-flex d-md-none nav-link">
+        <h6 class="pt-2 primary-color-c primary-color-c-glow">J</h6>
         <strong class="pt-2 bold"
-          ><h5 class="accent-color-c accent-color-c-glow">F</h5></strong
+          ><h6 class="accent-color-c accent-color-c-glow">F</h6></strong
         >
       </v-btn>
 
@@ -21,11 +21,11 @@
           <v-app-bar-nav-icon
             small
             depressed
-            class="d-flex d-sm-none mx-1"
+            class="d-flex d-md-none mx-1"
             v-bind="attrs"
             v-on="on"
           />
-          <p class="d-flex d-sm-none pt-4 primary-color-c">
+          <p class="d-flex d-md-none pt-4 primary-color-c">
             &nbsp;&nbsp;|&nbsp;
           </p>
         </template>
@@ -40,7 +40,7 @@
         </v-list>
       </v-menu>
 
-      <v-btn to="/" depressed plain x-small class="d-none d-sm-flex nav-link">
+      <v-btn to="/" depressed plain x-small class="d-none d-md-flex nav-link">
         <p class="pt-4 primary-color-c primary-color-c-glow">
           Jason&nbsp;&nbsp;
         </p>
@@ -49,7 +49,7 @@
         >
       </v-btn>
 
-      <p class="d-none d-sm-flex pt-4 primary-color-c">&nbsp;|&nbsp;</p>
+      <p class="d-none d-md-flex pt-4 primary-color-c">&nbsp;|&nbsp;</p>
 
       <v-btn
         v-for="route in routes"
@@ -58,7 +58,7 @@
         depressed
         plain
         medium
-        class="d-none d-sm-flex nav-link"
+        class="d-none d-md-flex nav-link"
       >
         <v-icon class="pr-1 pt-0 primary-color-c" small>{{
           route.icon
@@ -81,7 +81,7 @@
         outlined
         small
       >
-        PDF Resume&nbsp;&nbsp;
+        Resume&nbsp;&nbsp;
         <v-icon x-small>mdi-download</v-icon>
       </v-btn>
 
