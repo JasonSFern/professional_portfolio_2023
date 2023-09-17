@@ -2,7 +2,7 @@
   <div>
     <div ref="grid" class="d-none d-sm-block">
       <vue-particles
-        v-if="isSafari"
+        v-if="isNotChrome"
         :key="particlesKey"
         :color="starColor"
         :particleOpacity="0.3"
@@ -45,8 +45,8 @@ export default {
     linesColor() {
       return this.$vuetify.theme.currentTheme.primary;
     },
-    isSafari() {
-      return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    isNotChrome() {
+      return /^((?!chrome|android).)*safari|firefox/i.test(navigator.userAgent);
     },
   },
   watch: {

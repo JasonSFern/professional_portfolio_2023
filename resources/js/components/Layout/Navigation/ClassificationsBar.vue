@@ -43,13 +43,23 @@ export default {
       classifications: "general/getClassifications",
     }),
     items() {
-      return this.classifications.filter((c) => c.type == this.filter);
+      let items = this.classifications.filter(
+        (c) => c.type == this.filter && c.project_count > 0
+      );
+
+      var obj = {};
+      obj.id = 0;
+      obj.name = "All";
+      obj.type = "project";
+      items.unshift(obj);
+
+      return items;
     },
   },
   data() {
     return {
       selectedClassification: 0,
-      cssClasses: "justify-content-center",
+      cssClasses: "justify-center",
     };
   },
   created() {
@@ -78,7 +88,7 @@ export default {
       if (isMobile && window.innerWidth < 500) {
         this.cssClasses = "px-4 overflow-x-auto";
       } else {
-        this.cssClasses = "justify-content-center";
+        this.cssClasses = "justify-center";
       }
     },
   },

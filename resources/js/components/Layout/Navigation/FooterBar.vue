@@ -163,7 +163,7 @@ export default {
   },
   computed: {
     applyFrosted: function () {
-      if (this.mobileDevice) {
+      if (this.mobileDevice || this.specialBrowser) {
         if (this.$route.name !== "home") {
           return true;
         } else {
@@ -176,6 +176,11 @@ export default {
           return false;
         }
       }
+    },
+    specialBrowser() {
+      if (/^((?!chrome|android).)*safari|firefox/i.test(navigator.userAgent))
+        return true;
+      return false;
     },
     mobileDevice() {
       return isMobile();

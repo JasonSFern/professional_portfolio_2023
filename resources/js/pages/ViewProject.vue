@@ -1,103 +1,59 @@
 <template>
   <div>
     <div ref="mainCont">
-      <v-row class="my-sm-15">
-        <v-col class="d-none d-sm-flex col-sm-1" />
-        <v-col class="d-block d-md-flex col-12 col-sm-10">
-          <!-- Skill icons -->
-          <div
-            class="d-block mt-16 content-pane icon-pane pa-6"
-            :class="{
-              'pane-dark': $vuetify.theme.dark,
-              'pane-light': !$vuetify.theme.dark,
-            }"
-          >
-            <div class="d-block mt-2 project-icon-section">
-              <img
-                v-for="(icon, index) in this.icons"
-                :key="index"
-                :src="icon"
-                class="skill-icon px-1 mb-0 mb-md-4 mr-4 mr-md-0"
-              />
-            </div>
-          </div>
-          <!-- Project information -->
-          <div class="d-block d-lg-flex mt-md-16">
-            <!-- Headers section -->
+      <v-row class="my-sm-12">
+        <v-col class="d-none d-sm-flex col-sm-1 col-lg-3" />
+        <v-col class="col-12 col-sm-10 col-lg-6">
+          <div class="mt-sm-12 resume-pane">
             <div
-              class="d-block px-5 pb-4 mb-md-0 content-pane about-pane"
-              :class="{
-                'pane-dark': $vuetify.theme.dark,
-                'pane-light': !$vuetify.theme.dark,
-              }"
+              class="d-block px-5 pb-4 mb-14 mb-md-0 content-pane resume-pane-int w-100 pt-16"
             >
-              <div class="project-headers-section">
-                <div class="my-2 pt-5">
-                  <h2 class="primary-color-c">{{ item.title }}</h2>
-                  <p class="mb-0 primary-color-c">{{ item.subtitle }}</p>
+              <div class="project-headers-section pt-16 pt-lg-0">
+                <div class="per-title per-title-back">
+                  <h1 class="pertext">{{ item.title }}</h1>
                 </div>
-                <div>
-                  <hr class="primary-color-bg" />
-                </div>
-                <div class="d-flex justify-content-around">
-                  <v-carousel
-                    class="carousel-wrap pt-0"
-                    hide-delimiters
-                    height="auto"
-                  >
-                    <v-carousel-item
-                      v-for="(image, index) in showcase"
-                      :key="index"
-                    >
-                      <img :src="image" ref="" class="image-wrap" />
-                    </v-carousel-item>
-                  </v-carousel>
-                </div>
-                <div>
-                  <hr class="primary-color-bg" />
-                </div>
-                <div v-if="item.links">
-                  <v-btn
-                    v-for="(link, index) in this.item.links"
-                    :key="index"
-                    :href="link.path"
-                    :target="target(link.type)"
-                    class="mr-2"
-                    color="accent"
-                  >
-                    <v-icon class="primary-color-c" v-if="link.icon" dark
-                      >fab fa-{{ link.icon }}</v-icon
-                    >
-                    <span class="primary-color-c" v-if="link.label"
-                      >&nbsp;{{ link.label }}</span
-                    >
-                  </v-btn>
+                <div style="">
+                  <h6 class="text-center">
+                    {{ item.subtitle }}
+                  </h6>
                 </div>
               </div>
-            </div>
-            <!-- Description section -->
-            <div
-              class="d-block px-5 pb-4 mb-14 mb-md-0 content-pane description-pane"
-              :class="{
-                'pane-dark': $vuetify.theme.dark,
-                'pane-light': !$vuetify.theme.dark,
-              }"
-            >
-              <div class="mx-3 my-2 pt-5 project-description-section">
+              <div class="py-10" />
+              <carousel
+                class="project-photos-section"
+                :per-page="1"
+                :mouse-drag="false"
+                :centerMode="true"
+                :paginationActiveColor="accentColour"
+              >
+                <slide v-for="(image, index) in showcase" :key="index">
+                  <div class="d-flex justify-center">
+                    <img
+                      :src="image"
+                      ref=""
+                      :style="photoStyles"
+                      class="image-wrap"
+                    />
+                  </div>
+                </slide>
+              </carousel>
+              <div class="py-10" />
+              <div ref="descriptionSection" class="project-description-section">
                 <div
                   v-for="(content, index) in this.item.contents"
                   :key="index"
                   class="mb-5"
                 >
                   <!-- Content - header -->
-                  <div v-if="content.type == 'header'">
-                    <h3>
+                  <div v-if="content.type == 'header'" class="pt-10 pb-5">
+                    <h3 class="text-center">
                       <span
                         v-for="(c, indexr) in content.content"
                         :key="indexr"
                         :class="c.class"
-                        class="text-uppercase"
-                        >{{ c.text }}
+                        class="text-left text-uppercase w-100"
+                      >
+                        {{ c.text }}
                       </span>
                     </h3>
                   </div>
@@ -109,27 +65,23 @@
                         (content.type == 'disclaimer')
                     "
                   >
-                    <div
-                      v-if="content.type == 'disclaimer'"
-                      class="resume-main-section"
-                    >
+                    <div v-if="content.type == 'disclaimer'">
                       <hr class="primary-color-bg" />
                     </div>
 
-                    <p class="primary-color-c">
-                      <span
-                        :class="{
-                          'disclaimer-text': content.type == 'disclaimer',
-                        }"
-                      >
-                        {{ content.type == "disclaimer" ? "Disclaimer: " : "" }}
-                        {{ content.content }}
-                      </span>
+                    <p
+                      class="primary-color-c"
+                      :class="{
+                        'disclaimer-text': content.type == 'disclaimer',
+                      }"
+                    >
+                      {{ content.type == "disclaimer" ? "Disclaimer: " : "" }}
+                      {{ content.content }}
                     </p>
                   </div>
 
                   <!-- Content - bullets -->
-                  <div v-if="content.type == 'bullet'">
+                  <div v-if="content.type == 'bullet'" class="">
                     <ul>
                       <li
                         v-for="(bullet, indexb) in content.content"
@@ -141,10 +93,46 @@
                   </div>
                 </div>
               </div>
+              <div class="py-10" />
+              <div
+                v-if="item.links"
+                class="d-flex justify-center project-links-section"
+              >
+                <v-btn
+                  v-for="(link, index) in this.item.links"
+                  :key="index"
+                  :href="link.path"
+                  :target="target(link.type)"
+                  class="mr-2"
+                  color="accent"
+                  x-large
+                >
+                  <v-icon class="primary-color-c" v-if="link.icon" dark
+                    >fab fa-{{ link.icon }}</v-icon
+                  >
+                  <span class="primary-color-c" v-if="link.label"
+                    >&nbsp;{{ link.label }}</span
+                  >
+                </v-btn>
+              </div>
+              <!-- <div class="pt-16">
+                <div style="">
+                  <h6 class="text-center pb-8">Skills Used:</h6>
+                </div>
+
+                <div class="d-flex justify-center mt-2 project-icon-section">
+                  <img
+                    v-for="(icon, index) in this.icons"
+                    :key="index"
+                    :src="icon"
+                    class="skill-icon px-1 mb-0 mb-md-4 mr-4 mr-md-0"
+                  />
+                </div>
+              </div> -->
             </div>
           </div>
         </v-col>
-        <v-col class="d-none d-sm-flex col-sm-1" />
+        <v-col class="d-none d-sm-flex col-sm-1 col-lg-3" />
       </v-row>
     </div>
   </div>
@@ -153,13 +141,23 @@
 <script>
 import projectsApi from "../api/projects";
 import { getThemeData } from "../plugins/custom_themes";
+import { Carousel, Slide } from "vue-carousel";
 
 export default {
   name: `ViewProject`,
+  components: {
+    Carousel,
+    Slide,
+  },
   props: {
     item_id: {
       required: true,
       type: String,
+    },
+  },
+  computed: {
+    showcase() {
+      return this.photos;
     },
   },
   data() {
@@ -167,9 +165,14 @@ export default {
       item: {},
       icons: {},
       photos: {},
+      photoStyles: {},
+      accentColour: "#ff9800",
     };
   },
   mounted() {
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.onWindowResize);
+    });
     this.gsap.set(this.$refs.mainCont, { opacity: 0 });
     projectsApi
       .getProjectById(this.item_id)
@@ -198,13 +201,13 @@ export default {
         }
       });
   },
-  computed: {
-    showcase() {
-      return this.photos;
-    },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onWindowResize);
   },
   methods: {
     loadContent() {
+      this.onWindowResize();
+      this.getAccentColour();
       this.gsap
         .timeline()
         .fromTo(
@@ -218,12 +221,17 @@ export default {
           { duration: 0.5, opacity: 1 }
         )
         .fromTo(
+          ".project-photos-section",
+          { opacity: 0 },
+          { duration: 0.5, opacity: 1 }
+        )
+        .fromTo(
           ".project-description-section",
           { opacity: 0 },
           { duration: 0.5, opacity: 1 }
         )
         .fromTo(
-          ".project-icon-section",
+          ".project-links-section",
           { opacity: 0 },
           { duration: 0.5, opacity: 1 }
         );
@@ -242,6 +250,18 @@ export default {
       this.$vuetify.theme.dark =
         this.item.display_theme.split("--")[1] == "dark";
     },
+    onWindowResize() {
+      let object = {};
+      let width = this.$refs.descriptionSection.clientWidth;
+
+      object.width = width >= 600 ? "600px" : `${width}px`;
+      this.photoStyles = object;
+    },
+    getAccentColour() {
+      this.accentColour = getComputedStyle(
+        document.documentElement
+      ).getPropertyValue("--v-accent-base");
+    },
   },
 };
 </script>
@@ -249,56 +269,26 @@ export default {
 <style scoped>
 .image-wrap {
   border-radius: 20px;
-  width: 100% !important;
-  height: auto !important;
 }
 
-.carousel-wrap {
-  width: 600px !important;
-  height: auto !important;
+.per-title h1 {
+  text-shadow: -1px 1px 2px var(--v-accent-base),
+    1px 1px 2px var(--v-accent-base), 1px -1px 0 var(--v-accent-base),
+    -1px -1px 0 var(--v-accent-base);
+  text-align: center;
+  color: var(--v-primary-base);
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: uppercase;
 }
 
-.v-image {
-  height: auto !important;
-}
-
-@media (min-width: 600px) and (max-width: 959px) {
-  .icon-pane {
-    width: auto;
-    border-top-right-radius: 10px !important;
-    border-top-left-radius: 10px !important;
-  }
-  .description-pane {
-    border-bottom-right-radius: 10px !important;
-    border-bottom-left-radius: 10px !important;
+@media (max-width: 520px) {
+  .per-title h1 {
+    font-size: 60px !important;
   }
 }
-
-@media (min-width: 960px) {
-  .icon-pane {
-    width: 95px;
-    border-top-left-radius: 10px !important;
-    border-bottom-left-radius: 10px !important;
-  }
-}
-
-@media (min-width: 960px) and (max-width: 1264px) {
-  .about-pane {
-    border-top-right-radius: 10px !important;
-  }
-  .description-pane {
-    border-bottom-right-radius: 10px !important;
-  }
-}
-
-@media (min-width: 1265px) {
-  .about-pane {
-    width: 40%;
-  }
-  .description-pane {
-    width: auto;
-    border-top-right-radius: 10px !important;
-    border-bottom-right-radius: 10px !important;
+@media (min-width: 521px) {
+  .per-title h1 {
+    font-size: 100px !important;
   }
 }
 </style>

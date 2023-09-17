@@ -1,10 +1,10 @@
 <template>
   <div ref="mainCont">
     <v-row class="my-sm-12">
-      <v-col class="d-none d-sm-flex col-sm-1 col-lg-1 col-xl-2" />
-      <v-col class="col-12 col-sm-10 col-lg-10 col-xl-8">
+      <v-col class="d-none d-sm-flex col-sm-1 col-lg-2 col-xl-3" />
+      <v-col class="col-12 col-sm-10 col-lg-8 col-xl-6">
         <!-- Profile info -->
-        <div v-if="profile" class="mt-sm-12 contact-pane">
+        <div v-if="profile" class="mt-sm-16 contact-pane">
           <!-- Profile info -->
           <div
             class="d-block px-5 pb-4 mb-14 mb-md-0 content-pane contact-pane-int w-100"
@@ -78,17 +78,19 @@
                             }}</v-icon>
                             <span class="primary-color-c">{{ c.label }}</span>
                           </v-btn>
-                          <div class="mt-8 mt-lg-12 d-block d-lg-flex">
+                          <div
+                            class="mt-8 mt-lg-12 d-block d-lg-flex flex-wrap"
+                          >
                             <div class="pr-0 pr-lg-2">
                               <v-btn
                                 class="my-2"
-                                color="primary"
+                                color="gradient1"
                                 block
                                 x-large
                                 @click="addContact"
                               >
-                                <span class="accent-color-c">
-                                  <v-icon class="mr-4 accent-color-c" dark>
+                                <span class="primary-color-c">
+                                  <v-icon class="mr-4 primary-color-c" dark>
                                     mdi-account-plus
                                   </v-icon>
                                   Add contact
@@ -98,13 +100,13 @@
                             <div v-if="vcardInfo">
                               <v-btn
                                 class="my-2"
-                                color="primary"
+                                color="gradient1"
                                 block
                                 x-large
                                 @click="showQRCode = true"
                               >
-                                <span class="accent-color-c">
-                                  <v-icon class="mr-4 accent-color-c" dark>
+                                <span class="primary-color-c">
+                                  <v-icon class="mr-4 primary-color-c" dark>
                                     mdi-qrcode
                                   </v-icon>
                                   Scan QR Code
@@ -122,7 +124,7 @@
           </div>
         </div>
       </v-col>
-      <v-col class="d-none d-sm-flex col-sm-1 col-lg-1 col-xl-2" />
+      <v-col class="d-none d-sm-flex col-sm-1 col-lg-2 col-xl-3" />
     </v-row>
 
     <v-dialog v-model="showQRCode" scrollable max-width="500px">

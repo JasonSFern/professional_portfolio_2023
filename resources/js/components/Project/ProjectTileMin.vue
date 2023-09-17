@@ -1,18 +1,20 @@
 <template>
-  <div v-show="isLoaded">
+  <div v-show="isLoaded" class="mx-0 mx-sm-10">
     <!-- Add :class="theme" for future theme addtions for backgrounds -->
     <section v-show="!hidden" class="d-flex justify-content-center">
       <div class="d-flex justify-content-around">
         <div
           class="project-wrap mx-6 mx-sm-0 rounded-xl d-block"
           v-on:click="viewProject(item.project_code)"
-          :style="{ background: themeCssStyles.linear_gradient }"
+          :class="{
+            'pane-dark': $vuetify.theme.dark,
+            'pane-light': !$vuetify.theme.dark,
+          }"
         >
           <div class="per-title">
             <h1
               class="pertext"
               :style="{
-                'text-shadow': themeCssStyles.text_shadow,
                 color: themeCssStyles.color,
               }"
             >
@@ -48,6 +50,7 @@
 </template>
 
 <script>
+import { isMobile } from "../../plugins/helpers";
 import { getThemeData } from "../../plugins/custom_themes";
 
 export default {
@@ -69,31 +72,16 @@ export default {
           .fromTo(
             ".project-wrap",
             { opacity: 0 },
-            { duration: 0.5, opacity: 1 }
-          )
-          .fromTo(
-            ".perholder1",
-            { yPercent: -100 },
-            { duration: 0.5, yPercent: 0 }
+            { duration: 0.5, opacity: 1, delay: 0.5 }
           )
           .fromTo(
             ".perimage1",
-            { yPercent: -100 },
-            { duration: 0.5, yPercent: 0 },
-            ">"
+            { opacity: 0 },
+            { duration: 0.5, opacity: 1, delay: 1 }
           )
           .fromTo(".pertext", { opacity: 0 }, { duration: 0.5, opacity: 1 })
-          .fromTo(
-            ".perholder2",
-            { yPercent: -100 },
-            { duration: 0.5, yPercent: 0 }
-          )
-          .fromTo(
-            ".perimage2",
-            { yPercent: -100 },
-            { duration: 0.5, yPercent: 0 }
-          )
-          .fromTo(".persubtext", { opacity: 0 }, { duration: 0.5, opacity: 1 });
+          .fromTo(".persubtext", { opacity: 0 }, { duration: 0.5, opacity: 1 })
+          .fromTo(".perimage2", { opacity: 0 }, { duration: 0.5, opacity: 1 });
       }
     },
   },
@@ -118,6 +106,9 @@ export default {
     },
     themeType() {
       return this.item.display_theme.split("--")[1];
+    },
+    mobileDevice() {
+      return isMobile();
     },
   },
   mounted() {
@@ -156,7 +147,8 @@ section {
 }
 
 .per-image {
-  width: 100%;
+  border-radius: 20px;
+  width: 95%;
   max-width: 350px;
   filter: brightness(70%);
 }

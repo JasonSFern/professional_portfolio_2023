@@ -81,7 +81,7 @@ export default new VueRouter({
             icon: "mdi-head-question-outline",
             hidden: true,
             component: PageNotFound,
-            meta: { transitionName: `zoom` },
+            meta: { transitionName: `fade` },
         }
     ],
     mode: 'history',

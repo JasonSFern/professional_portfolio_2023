@@ -4,7 +4,7 @@
       :elevation="elevation"
       app
       :class="{
-        frosted: applyFrosted && !mobileDevice,
+        frosted: applyFrosted,
         transparent: !mobileDevice,
         solid: mobileDevice,
       }"
@@ -175,11 +175,7 @@ export default {
       return this.allRoutes.filter((i) => !i.hidden);
     },
     applyFrosted: function () {
-      if (this.validateRoute()) {
-        return true;
-      } else {
-        return false;
-      }
+      return this.validateRoute();
     },
     elevation: function () {
       if (this.validateRoute()) {
@@ -192,6 +188,11 @@ export default {
       if (this.$route.name == "projects" || this.$route.name == "viewproject")
         return false;
       return true;
+    },
+    specialBrowser() {
+      if (/^((?!chrome|android).)*safari|firefox/i.test(navigator.userAgent))
+        return true;
+      return false;
     },
     mobileDevice() {
       return isMobile();
@@ -223,16 +224,18 @@ export default {
       });
     },
     validateRoute() {
-      if (
-        this.$route.name !== "home" &&
-        this.$route.name !== "projects" &&
-        this.$route.name !== "contact" &&
-        this.$route.name !== "page-not-found"
-      ) {
-        return true;
+      if (this.mobileDevice || this.specialBrowser) {
+        if (this.$route.name !== "home") {
+          return true;
+        } else {
+          return false;
+        }
       } else {
-        if (this.$route.name == "projects" && this.mobileDevice) return true;
-        return false;
+        if (this.$route.name !== "home" && this.$route.name !== "projects") {
+          return true;
+        } else {
+          return false;
+        }
       }
     },
   },

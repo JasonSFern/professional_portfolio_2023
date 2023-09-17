@@ -1,6 +1,8 @@
 <template>
   <section>
-    <slot></slot>
+    <div class="d-flex justify-center flex-wrap px-0 px-lg-10">
+      <slot></slot>
+    </div>
   </section>
 </template>
 

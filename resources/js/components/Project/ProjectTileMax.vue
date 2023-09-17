@@ -174,7 +174,7 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Wix+Madefor+Display:wght@800");
 
 .fullpage {
-  padding-top: 30vh;
+  padding-top: 25vh;
   background-color: transparent;
 }
 

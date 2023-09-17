@@ -13,6 +13,7 @@ import router from './router';
 import App from './layouts/App.vue';
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import VueCarousel from 'vue-carousel';
 import { store } from "./store/store.js";
 
 import $ from 'jquery';
@@ -32,6 +33,7 @@ import VueParticles from 'vue-particles'
 import VueCookies from 'vue-cookies'
 Vue.use(VueParticles)
 Vue.use(VueCookies, { expires: -1})
+Vue.use(VueCarousel)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -1,13 +1,17 @@
 <template>
   <v-layout row justify-center align-center wrap class="mt-2 pt-2">
-    <div class="d-flex main-text main-glow">
-      <h1>4</h1>
-      <h1>0</h1>
-      <h1>4</h1>
+    <div>
+      <div class="d-flex main-text main-glow">
+        <h1>4</h1>
+        <h1>0</h1>
+        <h1>4</h1>
+      </div>
+      <div>
+        <p class="text-center secondary-glow">
+          <strong>{{ chosenText }}&nbsp;&nbsp;&nbsp;PAGE NOT FOUND</strong>
+        </p>
+      </div>
     </div>
-    <p class="secondary-glow">
-      <strong>{{ chosenText }}&nbsp;&nbsp;&nbsp;PAGE NOT FOUND</strong>
-    </p>
   </v-layout>
 </template>
 
@@ -26,7 +30,7 @@ export default {
       .fromTo(
         ".main-glow",
         { opacity: 0 },
-        { duration: 0.75, opacity: 1, delay: 1 }
+        { duration: 0.75, opacity: 1, delay: 1.5 }
       )
       .fromTo(
         ".secondary-glow",
@@ -50,7 +54,7 @@ export default {
 <style scoped>
 p {
   position: relative;
-  padding-top: 85px;
+  padding-top: 0px;
   color: var(--v-primary-base);
   z-index: 9;
 }

@@ -38,6 +38,7 @@
     "swiper": "^5.4.5",
     "vue-apexcharts": "^1.6.2",
     "vue-awesome-swiper": "^4.1.1",
+    "vue-carousel": "^0.18.0",
     "vue-compare-image": "^0.2.0",
     "vue-cookies": "^1.8.3",
     "vue-router": "^3.5.3",

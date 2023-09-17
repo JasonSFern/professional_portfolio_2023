@@ -3,12 +3,13 @@
     <ClassificationsBar
       class="classifications-menu"
       :class="{
+        'pt-5': !mobileDevice,
         mobile: mobileDevice,
       }"
       @filterProjects="setClassification($event)"
     ></ClassificationsBar>
     <ScrollSnap
-      v-if="!mobileDevice"
+      v-if="!mobileDevice && !specialBrowser"
       :isLoaded="isLoaded"
       ref="scrollsnap"
       @setProjectTheme="setProjectTheme($event)"
@@ -22,7 +23,7 @@
       />
     </ScrollSnap>
 
-    <ScrollSkew v-if="mobileDevice" :items="items">
+    <ScrollSkew v-if="specialBrowser | mobileDevice" :items="items">
       <ProjectTileMin
         v-for="item in items"
         :key="`project-${item.project_code}`"
@@ -88,6 +89,11 @@ export default {
 
         return this.projects;
       }
+    },
+    specialBrowser() {
+      if (/^((?!chrome|android).)*safari|firefox/i.test(navigator.userAgent))
+        return true;
+      return false;
     },
     mobileDevice() {
       return isMobile();

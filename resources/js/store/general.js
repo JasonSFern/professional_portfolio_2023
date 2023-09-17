@@ -14,12 +14,6 @@ export default {
     getClassifications(context, payload) {
       return Api.getClassifications(payload).then(response => {
         let data = response.data
-        
-        var obj = {}
-        obj.id = 0
-        obj.name = 'All'
-        obj.type = 'project'
-        data.unshift(obj)
 
         context.commit('getClassifications', data)
         return data
